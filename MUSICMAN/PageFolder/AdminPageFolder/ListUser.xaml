@@ -1,0 +1,83 @@
+﻿<Page x:Class="MUSICMAN.PageFolder.AdminPageFolder.ListUser"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="clr-namespace:MUSICMAN.PageFolder.AdminPageFolder"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      mc:Ignorable="d"
+      d:DesignHeight="450"
+      d:DesignWidth="800"
+      Title="Список пользователей">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10" />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="70" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+
+
+        <TextBox x:Name="SearchTb"
+                 Grid.Column="1"
+                 FontSize="13"
+                 FontWeight="Medium"
+                 FontFamily="Montserrat"
+                 Foreground="Black"
+                 CaretBrush="LightGray"
+                 BorderBrush="DarkGray"
+                 BorderThickness="0, 0, 0, 1"
+                 Height="28"
+                 VerticalAlignment="Top"
+                 Margin="0,24,101,0"
+                 TextChanged="SearchTb_TextChanged">
+            <materialDesign:HintAssist.Hint>
+                <StackPanel Orientation="Horizontal">
+                    <materialDesign:PackIcon Kind="Search" />
+                    <TextBlock Text="Поиск" />
+                </StackPanel>
+            </materialDesign:HintAssist.Hint>
+        </TextBox>
+        <Border Grid.Column="1">
+        <Button Background="#706F6F" Click="Button_Click"
+                Margin="925,19,22,19" Content="+" Foreground="White" 
+                FontSize="20" Padding="0 0 0.5 6"/>
+        </Border>
+
+        <DataGrid x:Name="ListUserDG"
+                  Foreground="Black"
+                  AutoGenerateColumns="False"
+                  IsReadOnly="True"
+                  Grid.Row="1"
+                  RowHeight="30"
+                  Grid.ColumnSpan="3"
+                  ItemsSource="{Binding User}">
+            <DataGrid.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="Удалить пользователя"
+                              x:Name="DeleteM1"
+                              Click="DeleteM1_Click" />
+                    <MenuItem Header="Редактировать пользователя"
+                              x:Name="EditM1"
+                              Click="EditM1_Click" />
+                </ContextMenu>
+            </DataGrid.ContextMenu>
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Логин"
+                                    Binding="{Binding Login}"
+                                    Width="*" />
+                <DataGridTextColumn Header="Пароль"
+                                    Binding="{Binding Password}"
+                                    Width="*" />
+
+                <DataGridTextColumn Header="Роль"
+                                    Binding="{Binding Roles.NameRole}"
+                                    Width="*" />
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Page>
