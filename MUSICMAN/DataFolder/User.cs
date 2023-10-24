@@ -23,7 +23,6 @@ namespace MUSICMAN.DataFolder
         public string Login { get; set; }
         public string Password { get; set; }
         public int IdRole { get; set; }
-        public bool IsLocked { get; set; }
     
         public virtual Roles Roles { get; set; }
         public virtual ICollection<Workers> Workers { get; set; }

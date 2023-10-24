@@ -21,6 +21,9 @@ namespace MUSICMAN.DataFolder
     
         public int IdComposer { get; set; }
         public string ComposerName { get; set; }
+        public int MusicCount { get; set; }
+        public string Rating { get; set; }
+        public byte[] PhotoStaff { get; set; }
     
         public virtual ICollection<Plates> Plates { get; set; }
     }

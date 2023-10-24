@@ -12,18 +12,17 @@ namespace MUSICMAN.DataFolder
     using System;
     using System.Collections.Generic;
     
-    public partial class Streets
+    public partial class Stocks
     {
-        public Streets()
+        public Stocks()
         {
-            this.Adress = new HashSet<Adress>();
-            this.ProviderAdress = new HashSet<ProviderAdress>();
+            this.Plates = new HashSet<Plates>();
         }
     
-        public int IdStreet { get; set; }
-        public string Street { get; set; }
+        public int IdStock { get; set; }
+        public string StockNumber { get; set; }
+        public string IndividualAdress { get; set; }
     
-        public virtual ICollection<Adress> Adress { get; set; }
-        public virtual ICollection<ProviderAdress> ProviderAdress { get; set; }
+        public virtual ICollection<Plates> Plates { get; set; }
     }
 }

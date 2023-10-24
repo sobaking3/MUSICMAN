@@ -30,9 +30,12 @@ namespace MUSICMAN.DataFolder
         public DbSet<Composer> Composer { get; set; }
         public DbSet<Country> Country { get; set; }
         public DbSet<Plates> Plates { get; set; }
+        public DbSet<Provider> Provider { get; set; }
+        public DbSet<ProviderAdress> ProviderAdress { get; set; }
         public DbSet<Publisher> Publisher { get; set; }
         public DbSet<Roles> Roles { get; set; }
         public DbSet<Shop> Shop { get; set; }
+        public DbSet<Stocks> Stocks { get; set; }
         public DbSet<Streets> Streets { get; set; }
         public DbSet<sysdiagrams> sysdiagrams { get; set; }
         public DbSet<User> User { get; set; }

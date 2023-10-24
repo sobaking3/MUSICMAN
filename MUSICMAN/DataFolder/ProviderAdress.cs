@@ -12,18 +12,22 @@ namespace MUSICMAN.DataFolder
     using System;
     using System.Collections.Generic;
     
-    public partial class Streets
+    public partial class ProviderAdress
     {
-        public Streets()
+        public ProviderAdress()
         {
-            this.Adress = new HashSet<Adress>();
-            this.ProviderAdress = new HashSet<ProviderAdress>();
+            this.Provider = new HashSet<Provider>();
         }
     
+        public int IdProviderAdress { get; set; }
+        public int IdCountry { get; set; }
+        public int IdCity { get; set; }
         public int IdStreet { get; set; }
-        public string Street { get; set; }
+        public int Home { get; set; }
     
-        public virtual ICollection<Adress> Adress { get; set; }
-        public virtual ICollection<ProviderAdress> ProviderAdress { get; set; }
+        public virtual City City { get; set; }
+        public virtual Country Country { get; set; }
+        public virtual ICollection<Provider> Provider { get; set; }
+        public virtual Streets Streets { get; set; }
     }
 }

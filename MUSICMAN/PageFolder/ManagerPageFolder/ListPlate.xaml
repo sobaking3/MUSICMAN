@@ -21,7 +21,14 @@
                 <RowDefinition />
             </Grid.RowDefinitions>
 
-
+            <Border Grid.Column="1">
+                <Button Background="#706F6F"
+                        Margin="1008,44,17,31"
+                        Content="+"
+                        Foreground="White"
+                        FontSize="20"
+                        Padding="0 0 0.5 6" />
+            </Border>
 
             <TextBox x:Name="SearchTb"
                      Grid.Column="1"

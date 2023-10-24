@@ -21,6 +21,8 @@ namespace MUSICMAN.DataFolder
     
         public int IdPublisher { get; set; }
         public string PublisherName { get; set; }
+        public string PublisherContractTil { get; set; }
+        public string Rating { get; set; }
     
         public virtual ICollection<Plates> Plates { get; set; }
     }
