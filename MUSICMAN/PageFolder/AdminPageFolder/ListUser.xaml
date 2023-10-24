@@ -49,13 +49,15 @@
         </Border>
 
         <DataGrid x:Name="ListUserDG"
+                  AlternatingRowBackground="#D8D8D8" AlternationCount="2"
                   Foreground="Black"
                   AutoGenerateColumns="False"
-                  IsReadOnly="True"
+                  IsReadOnly="True" 
                   Grid.Row="1"
                   RowHeight="30"
                   Grid.ColumnSpan="3"
                   ItemsSource="{Binding User}">
+
             <DataGrid.ContextMenu>
                 <ContextMenu>
                     <MenuItem Header="Удалить пользователя"

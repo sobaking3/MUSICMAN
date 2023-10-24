@@ -51,10 +51,10 @@
                         FontSize="20"
                         Padding="0 0 0.5 6" />
             </Border>
-            <ListBox Grid.Row="1"
+            <ListBox Grid.Row="1" 
                      Grid.ColumnSpan="2"
                      x:Name="ListShopLB"
-                     Foreground="White">
+                     Foreground="White" >
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <Grid>

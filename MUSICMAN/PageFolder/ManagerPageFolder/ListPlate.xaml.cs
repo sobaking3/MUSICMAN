@@ -24,5 +24,10 @@ namespace MUSICMAN.PageFolder.ManagerPageFolder
         {
             InitializeComponent();
         }
+
+        private void SearchTb_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
     }
 }
