@@ -65,7 +65,7 @@ namespace MUSICMAN.PageFolder.ManagerPageFolder
             }
         }
 
-        private void AddUserBtn_Click(object sender, RoutedEventArgs e)
+        private void WorkerInfoAdd()
         {
             if (ElementsToolsClass.AllFieldsFilled(this))
             {
@@ -81,23 +81,10 @@ namespace MUSICMAN.PageFolder.ManagerPageFolder
                     IdUser = user.IdUser,
                     PhotoStaff = !string.IsNullOrEmpty(selectedFileName) ? ImageClass.ConvertImageToByteArray(selectedFileName) : null
                 };
-                try
-                {
                     DBEntities.GetContext().Workers.Add(Workers);
                     DBEntities.GetContext().SaveChanges();
-                }
-                catch (DbEntityValidationException ex)
-                {
-                    // Обработка ошибок проверки сущностей
-                    foreach (var validationErrors in ex.EntityValidationErrors)
-                    {
-                        foreach (var validationError in validationErrors.ValidationErrors)
-                        {
-                            Console.WriteLine($"Ошибка в свойстве: {validationError.PropertyName}");
-                            Console.WriteLine($"Сообщение об ошибке: {validationError.ErrorMessage}");
-                        }
-                    }
-                }
+
+
             }
         }
 
@@ -119,6 +106,32 @@ namespace MUSICMAN.PageFolder.ManagerPageFolder
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             Close();
+        }
+
+
+        private void AddBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+            if (ElementsToolsClass.AllFieldsFilled(this))
+            {
+                try
+                {
+                    AddUser();
+                    WorkerInfoAdd();
+
+                    MBClass.InfoMB("Сотрудник добавлен");
+                    ElementsToolsClass.ClearAllControls(this);
+                }
+                catch (DbEntityValidationException ex)
+                {
+                    MBClass.ErrorMB(ex);
+                }
+            }
+            else
+            {
+                MBClass.ErrorMB("Вы не ввели все нужные данные!");
+            }
+
         }
     }
 }

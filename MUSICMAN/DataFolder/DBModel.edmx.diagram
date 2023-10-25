@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="8faa1561272d4c4aa02c8b5a22212a51" Name="Diagram1">
+      <Diagram DiagramId="7768d0bc4485491585fb1ef9e948a4f7" Name="Diagram1">
         <EntityTypeShape EntityType="DBModel.Adress" Width="1.5" PointX="3" PointY="7.75" IsExpanded="true" />
         <EntityTypeShape EntityType="DBModel.City" Width="1.5" PointX="0.75" PointY="5.125" IsExpanded="true" />
         <EntityTypeShape EntityType="DBModel.Composer" Width="1.5" PointX="3" PointY="11.5" IsExpanded="true" />
@@ -17,7 +17,7 @@
         <EntityTypeShape EntityType="DBModel.Shop" Width="1.5" PointX="5.25" PointY="11.875" IsExpanded="true" />
         <EntityTypeShape EntityType="DBModel.Stocks" Width="1.5" PointX="8.25" PointY="15.875" IsExpanded="true" />
         <EntityTypeShape EntityType="DBModel.Streets" Width="1.5" PointX="0.75" PointY="11.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="DBModel.sysdiagrams" Width="1.5" PointX="5.125" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="DBModel.User" Width="1.5" PointX="5.25" PointY="16.25" IsExpanded="true" />
         <EntityTypeShape EntityType="DBModel.Workers" Width="1.5" PointX="7.5" PointY="11.625" IsExpanded="true" />
         <AssociationConnector Association="DBModel.FK_Adress_City" ManuallyRouted="false" />
@@ -35,7 +35,7 @@
         <AssociationConnector Association="DBModel.FK_Provider_ProviderAdress" ManuallyRouted="false" />
         <AssociationConnector Association="DBModel.FK_ProviderAdress_Streets" ManuallyRouted="false" />
         <AssociationConnector Association="DBModel.FK_User_Roles1" ManuallyRouted="false" />
-        <AssociationConnector Association="DBModel.FK_Workers_Shop" ManuallyRouted="false" />
+        <AssociationConnector Association="DBModel.FK_Workers_Shop1" ManuallyRouted="false" />
         <AssociationConnector Association="DBModel.FK_Workers_User" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>

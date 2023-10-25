@@ -168,7 +168,7 @@
                                            Grid.Column="4">
                             <Run Text="Роль: "
                                     FontWeight="Bold" />
-                            <Run Text="{Binding User.Role.NameRole}" />
+                            <Run Text="{Binding User.Roles.NameRole}" />
                                 </TextBlock>
 
                                 <TextBlock Grid.Row="8"

@@ -334,7 +334,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Workers_Shop">
+        <Association Name="FK_Workers_Shop1">
           <End Role="Shop" Type="Self.Shop" Multiplicity="0..1" />
           <End Role="Workers" Type="Self.Workers" Multiplicity="*" />
           <ReferentialConstraint>
@@ -434,7 +434,7 @@
             <End Role="Roles" EntitySet="Roles" />
             <End Role="User" EntitySet="User" />
           </AssociationSet>
-          <AssociationSet Name="FK_Workers_Shop" Association="Self.FK_Workers_Shop">
+          <AssociationSet Name="FK_Workers_Shop1" Association="Self.FK_Workers_Shop1">
             <End Role="Shop" EntitySet="Shop" />
             <End Role="Workers" EntitySet="Workers" />
           </AssociationSet>
@@ -573,7 +573,7 @@
           <Property Name="PhoneOfDirector" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Adress" Relationship="Self.FK_Shop_Adress" FromRole="Shop" ToRole="Adress" />
           <NavigationProperty Name="Plates" Relationship="Self.FK_Plates_Shop" FromRole="Shop" ToRole="Plates" />
-          <NavigationProperty Name="Workers" Relationship="Self.FK_Workers_Shop" FromRole="Shop" ToRole="Workers" />
+          <NavigationProperty Name="Workers" Relationship="Self.FK_Workers_Shop1" FromRole="Shop" ToRole="Workers" />
         </EntityType>
         <EntityType Name="Stocks">
           <Key>
@@ -628,7 +628,7 @@
           <Property Name="IdShop" Type="Int32" />
           <Property Name="PhotoStaff" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="IdUser" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Shop" Relationship="Self.FK_Workers_Shop" FromRole="Workers" ToRole="Shop" />
+          <NavigationProperty Name="Shop" Relationship="Self.FK_Workers_Shop1" FromRole="Workers" ToRole="Shop" />
           <NavigationProperty Name="User" Relationship="Self.FK_Workers_User" FromRole="Workers" ToRole="User" />
         </EntityType>
         <Association Name="FK_Adress_City">
@@ -811,7 +811,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Workers_Shop">
+        <Association Name="FK_Workers_Shop1">
           <End Role="Shop" Type="Self.Shop" Multiplicity="0..1" />
           <End Role="Workers" Type="Self.Workers" Multiplicity="*" />
           <ReferentialConstraint>
@@ -911,7 +911,7 @@
             <End Role="Roles" EntitySet="Roles" />
             <End Role="User" EntitySet="User" />
           </AssociationSet>
-          <AssociationSet Name="FK_Workers_Shop" Association="Self.FK_Workers_Shop">
+          <AssociationSet Name="FK_Workers_Shop1" Association="Self.FK_Workers_Shop1">
             <End Role="Shop" EntitySet="Shop" />
             <End Role="Workers" EntitySet="Workers" />
           </AssociationSet>

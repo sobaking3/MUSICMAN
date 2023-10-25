@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MUSICMAN.PageFolder.ManagerPageFolder"
         mc:Ignorable="d"
-        Title="AddPlate" Height="450" Width="800">
+        Title="Добавление пластинки" Height="450" Width="800">
     <Grid>
         
     </Grid>
