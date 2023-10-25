@@ -63,6 +63,8 @@ namespace MUSICMAN.WindowFolder
                     }
                     else
                     {
+                        App.CurrentUser = user;
+                        
                         switch (user.IdRole)
                         {
                             case 1:

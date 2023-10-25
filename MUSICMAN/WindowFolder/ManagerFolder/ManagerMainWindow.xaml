@@ -108,7 +108,7 @@
                                        FontSize="26"
                                        Margin="5 10 0 10"
                                        FontWeight="SemiBold"
-                                       Text="Фредди Мишка"
+                                       Text=""
                                        DockPanel.Dock="Top"
                                        TextAlignment="Center" />
                             <TextBlock Text="Менеджер"
@@ -163,7 +163,7 @@
 
                                 <Button Style="{StaticResource menuButton}"
                                         HorizontalAlignment="Stretch"
-                                        Margin="10 0 20 10"
+                                        Margin="10 0 20 10" Click="ShopListBtn_Click"
                                         Background="#534C4C"
                                         Height="50">
                                     <StackPanel Orientation="Horizontal">
@@ -207,6 +207,25 @@
                                                                  Height="25"
                                                                  Width="25" />
                                         <TextBlock Text="Список издателей" />
+
+
+                                    </StackPanel>
+
+                                </Button>
+
+                                <Button Style="{StaticResource menuButton}"
+                                        HorizontalAlignment="Stretch"
+                                        Margin="10 0 20 10"
+                                        Background="#534C4C"
+                                        x:Name="ListProvider"
+                                        Click="ListProvider_Click"
+                                        Height="50">
+                                    <StackPanel Orientation="Horizontal">
+                                        <materialDesign:PackIcon Kind="Car"
+                                                                 Margin="10 0 10 0"
+                                                                 Height="25"
+                                                                 Width="25" />
+                                        <TextBlock Text="Список поставщиков" />
 
 
                                     </StackPanel>

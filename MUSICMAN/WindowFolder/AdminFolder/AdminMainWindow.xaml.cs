@@ -1,4 +1,5 @@
 ﻿using MUSICMAN.ClassFolder;
+using MUSICMAN.DataFolder;
 using MUSICMAN.PageFolder.AdminPageFolder;
 using System;
 using System.Collections.Generic;
@@ -24,6 +25,7 @@ namespace MUSICMAN.WindowFolder.AdminFolder
         public AdminMainWindow()
         {
             InitializeComponent();
+            EmpName.Text = App.GetCurrentWorkerInitials();
         }
 
         private void ListUserBtn_Click(object sender, RoutedEventArgs e)

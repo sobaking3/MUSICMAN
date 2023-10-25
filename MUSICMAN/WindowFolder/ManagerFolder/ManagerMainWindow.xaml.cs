@@ -25,6 +25,7 @@ namespace MUSICMAN.WindowFolder.ManagerFolder
         public ManagerMainWindow()
         {
             InitializeComponent();
+            EmpName.Text = App.GetCurrentWorkerInitials();
         }
         private void ListUserBtn_Click(object sender, RoutedEventArgs e)
         {
@@ -80,6 +81,11 @@ namespace MUSICMAN.WindowFolder.ManagerFolder
         private void ListPublisher_Click(object sender, RoutedEventArgs e)
         {
             MainFrame.Navigate(new ListPublisher());
+        }
+
+        private void ListProvider_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(new ListProvider());
         }
     }
 }

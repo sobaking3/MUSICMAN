@@ -22,12 +22,11 @@ namespace MUSICMAN.DataFolder
     
         public int IdShop { get; set; }
         public string ShopName { get; set; }
-        public int IdShopPlace { get; set; }
+        public string ShopPlace { get; set; }
         public string OpeningTime { get; set; }
         public string ClosingTime { get; set; }
         public string PhoneOfDirector { get; set; }
     
-        public virtual Adress Adress { get; set; }
         public virtual ICollection<Plates> Plates { get; set; }
         public virtual ICollection<Workers> Workers { get; set; }
     }

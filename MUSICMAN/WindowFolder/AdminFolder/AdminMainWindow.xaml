@@ -109,7 +109,7 @@
                                        FontSize="26"
                                        Margin="5 10 0 10"
                                        FontWeight="SemiBold"
-                                       Text="Админ"
+                                       Text=""
                                        DockPanel.Dock="Top"
                                        TextAlignment="Center" />
                             <TextBlock Text="Администратор"

@@ -34,7 +34,6 @@ namespace MUSICMAN.PageFolder.ManagerPageFolder
             {
                 ListProviderDG.ItemsSource = DBEntities.GetContext()
                     .Provider.Where(s => s.ProviderName
-                    .StartsWith(SearchTb.Text) || s.ProviderUrAdress
                     .StartsWith(SearchTb.Text))
                     .ToList().OrderBy(s => s.ProviderName);
             }
