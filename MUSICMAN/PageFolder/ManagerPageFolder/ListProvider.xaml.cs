@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MUSICMAN.ClassFolder;
+using MUSICMAN.DataFolder;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +25,24 @@ namespace MUSICMAN.PageFolder.ManagerPageFolder
         public ListProvider()
         {
             InitializeComponent();
+            ListProviderDG.ItemsSource = DBEntities.GetContext()
+                .Provider.ToList().OrderBy(u => u.IdProvider);
         }
+        private void SearchTb_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            try
+            {
+                ListProviderDG.ItemsSource = DBEntities.GetContext()
+                    .Provider.Where(s => s.ProviderName
+                    .StartsWith(SearchTb.Text) || s.ProviderUrAdress
+                    .StartsWith(SearchTb.Text))
+                    .ToList().OrderBy(s => s.ProviderName);
+            }
+            catch (Exception ex)
+            {
+                MBClass.ErrorMB(ex);
+            }
+        }
+
     }
 }

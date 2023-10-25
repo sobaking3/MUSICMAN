@@ -65,18 +65,8 @@
           </Key>
           <Property Name="IdProvider" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ProviderName" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="IdProviderAdress" Type="int" Nullable="false" />
+          <Property Name="ProviderUrAdress" Type="int" Nullable="false" />
           <Property Name="ContractTil" Type="nvarchar" MaxLength="50" Nullable="false" />
-        </EntityType>
-        <EntityType Name="ProviderAdress">
-          <Key>
-            <PropertyRef Name="IdProviderAdress" />
-          </Key>
-          <Property Name="IdProviderAdress" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="IdCountry" Type="int" Nullable="false" />
-          <Property Name="IdCity" Type="int" Nullable="false" />
-          <Property Name="IdStreet" Type="int" Nullable="false" />
-          <Property Name="Home" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Publisher">
           <Key>
@@ -262,54 +252,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Provider_ProviderAdress">
-          <End Role="ProviderAdress" Type="Self.ProviderAdress" Multiplicity="1" />
-          <End Role="Provider" Type="Self.Provider" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ProviderAdress">
-              <PropertyRef Name="IdProviderAdress" />
-            </Principal>
-            <Dependent Role="Provider">
-              <PropertyRef Name="IdProviderAdress" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_ProviderAdress_City">
-          <End Role="City" Type="Self.City" Multiplicity="1" />
-          <End Role="ProviderAdress" Type="Self.ProviderAdress" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="City">
-              <PropertyRef Name="IdCity" />
-            </Principal>
-            <Dependent Role="ProviderAdress">
-              <PropertyRef Name="IdCity" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_ProviderAdress_Country">
-          <End Role="Country" Type="Self.Country" Multiplicity="1" />
-          <End Role="ProviderAdress" Type="Self.ProviderAdress" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Country">
-              <PropertyRef Name="IdCountry" />
-            </Principal>
-            <Dependent Role="ProviderAdress">
-              <PropertyRef Name="IdCountry" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_ProviderAdress_Streets">
-          <End Role="Streets" Type="Self.Streets" Multiplicity="1" />
-          <End Role="ProviderAdress" Type="Self.ProviderAdress" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Streets">
-              <PropertyRef Name="IdStreet" />
-            </Principal>
-            <Dependent Role="ProviderAdress">
-              <PropertyRef Name="IdStreet" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Shop_Adress">
           <End Role="Adress" Type="Self.Adress" Multiplicity="1" />
           <End Role="Shop" Type="Self.Shop" Multiplicity="*" />
@@ -365,7 +307,6 @@
           <EntitySet Name="Country" EntityType="Self.Country" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Plates" EntityType="Self.Plates" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Provider" EntityType="Self.Provider" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="ProviderAdress" EntityType="Self.ProviderAdress" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Publisher" EntityType="Self.Publisher" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Shop" EntityType="Self.Shop" Schema="dbo" store:Type="Tables" />
@@ -409,22 +350,6 @@
           <AssociationSet Name="FK_Plates_Stocks" Association="Self.FK_Plates_Stocks">
             <End Role="Stocks" EntitySet="Stocks" />
             <End Role="Plates" EntitySet="Plates" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Provider_ProviderAdress" Association="Self.FK_Provider_ProviderAdress">
-            <End Role="ProviderAdress" EntitySet="ProviderAdress" />
-            <End Role="Provider" EntitySet="Provider" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ProviderAdress_City" Association="Self.FK_ProviderAdress_City">
-            <End Role="City" EntitySet="City" />
-            <End Role="ProviderAdress" EntitySet="ProviderAdress" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ProviderAdress_Country" Association="Self.FK_ProviderAdress_Country">
-            <End Role="Country" EntitySet="Country" />
-            <End Role="ProviderAdress" EntitySet="ProviderAdress" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ProviderAdress_Streets" Association="Self.FK_ProviderAdress_Streets">
-            <End Role="Streets" EntitySet="Streets" />
-            <End Role="ProviderAdress" EntitySet="ProviderAdress" />
           </AssociationSet>
           <AssociationSet Name="FK_Shop_Adress" Association="Self.FK_Shop_Adress">
             <End Role="Adress" EntitySet="Adress" />
@@ -470,7 +395,6 @@
           <Property Name="IdCity" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Adress" Relationship="Self.FK_Adress_City" FromRole="City" ToRole="Adress" />
-          <NavigationProperty Name="ProviderAdress" Relationship="Self.FK_ProviderAdress_City" FromRole="City" ToRole="ProviderAdress" />
         </EntityType>
         <EntityType Name="Composer">
           <Key>
@@ -495,7 +419,6 @@
           <Property Name="Name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Adress" Relationship="Self.FK_Adress_Country" FromRole="Country" ToRole="Adress" />
           <NavigationProperty Name="Composer" Relationship="Self.FK_Composer_Country" FromRole="Country" ToRole="Composer" />
-          <NavigationProperty Name="ProviderAdress" Relationship="Self.FK_ProviderAdress_Country" FromRole="Country" ToRole="ProviderAdress" />
         </EntityType>
         <EntityType Name="Plates">
           <Key>
@@ -524,24 +447,9 @@
           </Key>
           <Property Name="IdProvider" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ProviderName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="IdProviderAdress" Type="Int32" Nullable="false" />
+          <Property Name="ProviderUrAdress" Type="Int32" Nullable="false" />
           <Property Name="ContractTil" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Plates" Relationship="Self.FK_Plates_Provider" FromRole="Provider" ToRole="Plates" />
-          <NavigationProperty Name="ProviderAdress" Relationship="Self.FK_Provider_ProviderAdress" FromRole="Provider" ToRole="ProviderAdress" />
-        </EntityType>
-        <EntityType Name="ProviderAdress">
-          <Key>
-            <PropertyRef Name="IdProviderAdress" />
-          </Key>
-          <Property Name="IdProviderAdress" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="IdCountry" Type="Int32" Nullable="false" />
-          <Property Name="IdCity" Type="Int32" Nullable="false" />
-          <Property Name="IdStreet" Type="Int32" Nullable="false" />
-          <Property Name="Home" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="City" Relationship="Self.FK_ProviderAdress_City" FromRole="ProviderAdress" ToRole="City" />
-          <NavigationProperty Name="Country" Relationship="Self.FK_ProviderAdress_Country" FromRole="ProviderAdress" ToRole="Country" />
-          <NavigationProperty Name="Provider" Relationship="Self.FK_Provider_ProviderAdress" FromRole="ProviderAdress" ToRole="Provider" />
-          <NavigationProperty Name="Streets" Relationship="Self.FK_ProviderAdress_Streets" FromRole="ProviderAdress" ToRole="Streets" />
         </EntityType>
         <EntityType Name="Publisher">
           <Key>
@@ -591,7 +499,6 @@
           <Property Name="IdStreet" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Street" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Adress" Relationship="Self.FK_Adress_Streets" FromRole="Streets" ToRole="Adress" />
-          <NavigationProperty Name="ProviderAdress" Relationship="Self.FK_ProviderAdress_Streets" FromRole="Streets" ToRole="ProviderAdress" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -679,18 +586,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_ProviderAdress_City">
-          <End Role="City" Type="Self.City" Multiplicity="1" />
-          <End Role="ProviderAdress" Type="Self.ProviderAdress" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="City">
-              <PropertyRef Name="IdCity" />
-            </Principal>
-            <Dependent Role="ProviderAdress">
-              <PropertyRef Name="IdCity" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Composer_Country">
           <End Role="Country" Type="Self.Country" Multiplicity="1" />
           <End Role="Composer" Type="Self.Composer" Multiplicity="*" />
@@ -712,18 +607,6 @@
             </Principal>
             <Dependent Role="Plates">
               <PropertyRef Name="IdComposer" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_ProviderAdress_Country">
-          <End Role="Country" Type="Self.Country" Multiplicity="1" />
-          <End Role="ProviderAdress" Type="Self.ProviderAdress" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Country">
-              <PropertyRef Name="IdCountry" />
-            </Principal>
-            <Dependent Role="ProviderAdress">
-              <PropertyRef Name="IdCountry" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -775,30 +658,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Provider_ProviderAdress">
-          <End Role="ProviderAdress" Type="Self.ProviderAdress" Multiplicity="1" />
-          <End Role="Provider" Type="Self.Provider" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ProviderAdress">
-              <PropertyRef Name="IdProviderAdress" />
-            </Principal>
-            <Dependent Role="Provider">
-              <PropertyRef Name="IdProviderAdress" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_ProviderAdress_Streets">
-          <End Role="Streets" Type="Self.Streets" Multiplicity="1" />
-          <End Role="ProviderAdress" Type="Self.ProviderAdress" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Streets">
-              <PropertyRef Name="IdStreet" />
-            </Principal>
-            <Dependent Role="ProviderAdress">
-              <PropertyRef Name="IdStreet" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_User_Roles1">
           <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
           <End Role="User" Type="Self.User" Multiplicity="*" />
@@ -842,7 +701,6 @@
           <EntitySet Name="Country" EntityType="Self.Country" />
           <EntitySet Name="Plates" EntityType="Self.Plates" />
           <EntitySet Name="Provider" EntityType="Self.Provider" />
-          <EntitySet Name="ProviderAdress" EntityType="Self.ProviderAdress" />
           <EntitySet Name="Publisher" EntityType="Self.Publisher" />
           <EntitySet Name="Roles" EntityType="Self.Roles" />
           <EntitySet Name="Shop" EntityType="Self.Shop" />
@@ -867,10 +725,6 @@
             <End Role="Adress" EntitySet="Adress" />
             <End Role="Shop" EntitySet="Shop" />
           </AssociationSet>
-          <AssociationSet Name="FK_ProviderAdress_City" Association="Self.FK_ProviderAdress_City">
-            <End Role="City" EntitySet="City" />
-            <End Role="ProviderAdress" EntitySet="ProviderAdress" />
-          </AssociationSet>
           <AssociationSet Name="FK_Composer_Country" Association="Self.FK_Composer_Country">
             <End Role="Country" EntitySet="Country" />
             <End Role="Composer" EntitySet="Composer" />
@@ -878,10 +732,6 @@
           <AssociationSet Name="FK_Plates_Composer" Association="Self.FK_Plates_Composer">
             <End Role="Composer" EntitySet="Composer" />
             <End Role="Plates" EntitySet="Plates" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ProviderAdress_Country" Association="Self.FK_ProviderAdress_Country">
-            <End Role="Country" EntitySet="Country" />
-            <End Role="ProviderAdress" EntitySet="ProviderAdress" />
           </AssociationSet>
           <AssociationSet Name="FK_Plates_Provider" Association="Self.FK_Plates_Provider">
             <End Role="Provider" EntitySet="Provider" />
@@ -898,14 +748,6 @@
           <AssociationSet Name="FK_Plates_Stocks" Association="Self.FK_Plates_Stocks">
             <End Role="Stocks" EntitySet="Stocks" />
             <End Role="Plates" EntitySet="Plates" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Provider_ProviderAdress" Association="Self.FK_Provider_ProviderAdress">
-            <End Role="ProviderAdress" EntitySet="ProviderAdress" />
-            <End Role="Provider" EntitySet="Provider" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ProviderAdress_Streets" Association="Self.FK_ProviderAdress_Streets">
-            <End Role="Streets" EntitySet="Streets" />
-            <End Role="ProviderAdress" EntitySet="ProviderAdress" />
           </AssociationSet>
           <AssociationSet Name="FK_User_Roles1" Association="Self.FK_User_Roles1">
             <End Role="Roles" EntitySet="Roles" />
@@ -990,19 +832,8 @@
               <MappingFragment StoreEntitySet="Provider">
                 <ScalarProperty Name="IdProvider" ColumnName="IdProvider" />
                 <ScalarProperty Name="ProviderName" ColumnName="ProviderName" />
-                <ScalarProperty Name="IdProviderAdress" ColumnName="IdProviderAdress" />
+                <ScalarProperty Name="ProviderUrAdress" ColumnName="ProviderUrAdress" />
                 <ScalarProperty Name="ContractTil" ColumnName="ContractTil" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="ProviderAdress">
-            <EntityTypeMapping TypeName="DBModel.ProviderAdress">
-              <MappingFragment StoreEntitySet="ProviderAdress">
-                <ScalarProperty Name="IdProviderAdress" ColumnName="IdProviderAdress" />
-                <ScalarProperty Name="IdCountry" ColumnName="IdCountry" />
-                <ScalarProperty Name="IdCity" ColumnName="IdCity" />
-                <ScalarProperty Name="IdStreet" ColumnName="IdStreet" />
-                <ScalarProperty Name="Home" ColumnName="Home" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

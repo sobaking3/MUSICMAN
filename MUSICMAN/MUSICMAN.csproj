@@ -115,9 +115,6 @@
     <Compile Include="DataFolder\Provider.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataFolder\ProviderAdress.cs">
-      <DependentUpon>DBModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="DataFolder\Publisher.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>

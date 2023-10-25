@@ -17,13 +17,11 @@ namespace MUSICMAN.DataFolder
         public Streets()
         {
             this.Adress = new HashSet<Adress>();
-            this.ProviderAdress = new HashSet<ProviderAdress>();
         }
     
         public int IdStreet { get; set; }
         public string Street { get; set; }
     
         public virtual ICollection<Adress> Adress { get; set; }
-        public virtual ICollection<ProviderAdress> ProviderAdress { get; set; }
     }
 }

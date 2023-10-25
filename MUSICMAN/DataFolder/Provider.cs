@@ -21,10 +21,9 @@ namespace MUSICMAN.DataFolder
     
         public int IdProvider { get; set; }
         public string ProviderName { get; set; }
-        public int IdProviderAdress { get; set; }
+        public int ProviderUrAdress { get; set; }
         public string ContractTil { get; set; }
     
         public virtual ICollection<Plates> Plates { get; set; }
-        public virtual ProviderAdress ProviderAdress { get; set; }
     }
 }

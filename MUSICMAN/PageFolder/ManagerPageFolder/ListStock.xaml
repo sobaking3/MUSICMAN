@@ -4,11 +4,92 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:MUSICMAN.PageFolder.ManagerPageFolder"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Список складов">
 
+
     <Grid>
-        
+        <Grid Margin="0,-35,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="10" />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="120" />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+
+            <Border Grid.Column="1"
+                    Margin="0,58,0,0">
+                <Button Background="#706F6F"
+                        Margin="828,44,27,31"
+                        Content="+"
+                        Foreground="White"
+                        FontSize="20"
+                        Padding="0 0 0.5 6" />
+            </Border>
+
+            <TextBox x:Name="SearchTb"
+                     Grid.Column="1"
+                     FontSize="16"
+                     TextChanged="SearchTb_TextChanged"
+                     FontWeight="Medium"
+                     FontFamily="Montserrat"
+                     Foreground="Black"
+                     CaretBrush="Black"
+                     BorderBrush="#747474"
+                     BorderThickness="0, 0, 0, 1"
+                     Height="28"
+                     VerticalAlignment="Top"
+                     Margin="0,58,122,0">
+                <materialDesign:HintAssist.Hint>
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="Search" />
+                        <TextBlock Text="Поиск" />
+                    </StackPanel>
+                </materialDesign:HintAssist.Hint>
+            </TextBox>
+            <materialDesign:Card   Grid.Column="1"
+                                   UniformCornerRadius="10"
+                                   Height="370"
+                                   Margin="0,0,10,10"
+                                   VerticalAlignment="Bottom"
+                                   materialDesign:ShadowAssist.ShadowDepth="Depth5"
+                                   Grid.RowSpan="2">
+                <DataGrid x:Name="ListStocksDG"
+                          AlternatingRowBackground="#D8D8D8"
+                          AlternationCount="2"
+                          AutoGenerateColumns="False"
+                          ScrollViewer.VerticalScrollBarVisibility="Visible"
+                          ScrollViewer.HorizontalScrollBarVisibility="Visible"
+                          IsReadOnly="True"
+                          ItemsSource="{Binding Stocks}"
+                          Margin="0,10,0,0"
+                          FontSize="16"
+                          BorderBrush="{x:Null}"
+                          Foreground="{x:Null}">
+                    <DataGrid.RowHeight>30</DataGrid.RowHeight>
+                    <DataGrid.Resources>
+                        <Style TargetType="DataGridCell">
+                            <Setter Property="VerticalAlignment"
+                                    Value="Center" />
+                            <Setter Property="HorizontalAlignment"
+                                    Value="Center" />
+                        </Style>
+                    </DataGrid.Resources>
+                    <DataGrid.Columns>
+
+                        <DataGridTextColumn Header="Номер склада"
+                                            Binding="{Binding StockNumber}"
+                                            Width="420" />
+                        <DataGridTextColumn Header="Инвидуальный адрес"
+                                            Binding="{Binding IndividualAdress}"
+                                            Width="350" />
+                    </DataGrid.Columns>
+                </DataGrid>
+            </materialDesign:Card>
+        </Grid>
     </Grid>
 </Page>
