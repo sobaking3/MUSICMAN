@@ -14,24 +14,18 @@ namespace MUSICMAN.DataFolder
     
     public partial class Workers
     {
-        public Workers()
-        {
-            this.Shop = new HashSet<Shop>();
-        }
-    
         public int IdWorkerInfo { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string MiddleName { get; set; }
-        public string DateOfBirth { get; set; }
+        public System.DateTime DateOfBirth { get; set; }
         public string Number { get; set; }
         public string Email { get; set; }
-        public int IdShop { get; set; }
-        public int IdUser { get; set; }
+        public Nullable<int> IdShop { get; set; }
         public byte[] PhotoStaff { get; set; }
+        public int IdUser { get; set; }
     
-        public virtual ICollection<Shop> Shop { get; set; }
-        public virtual Shop Shop1 { get; set; }
+        public virtual Shop Shop { get; set; }
         public virtual User User { get; set; }
     }
 }

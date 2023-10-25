@@ -24,7 +24,11 @@ namespace MUSICMAN.DataFolder
         public int MusicCount { get; set; }
         public string Rating { get; set; }
         public byte[] PhotoStaff { get; set; }
+        public int IdCountry { get; set; }
+        public string BitrhDate { get; set; }
+        public string DeathDate { get; set; }
     
+        public virtual Country Country { get; set; }
         public virtual ICollection<Plates> Plates { get; set; }
     }
 }

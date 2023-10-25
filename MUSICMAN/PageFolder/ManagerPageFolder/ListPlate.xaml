@@ -23,7 +23,7 @@
 
             <Border Grid.Column="1">
                 <Button Background="#706F6F"
-                        Margin="1008,44,17,31"
+                        Margin="828,44,27,31"
                         Content="+"
                         Foreground="White"
                         FontSize="20"
@@ -50,57 +50,63 @@
                     </StackPanel>
                 </materialDesign:HintAssist.Hint>
             </TextBox>
-            <DataGrid x:Name="ListPlatesDG"
-                      AlternatingRowBackground="#D8D8D8"
-                      AlternationCount="2"
-                      AutoGenerateColumns="False"
-                      ScrollViewer.VerticalScrollBarVisibility="Visible"
-                      ScrollViewer.HorizontalScrollBarVisibility="Visible"
-                      IsReadOnly="True"
-                      ItemsSource="{Binding Tickets}"
-                      Grid.Column="1"
-                      Margin="0,92,10,10"
-                      Grid.RowSpan="2"
-                      FontSize="16"
-                      BorderBrush="{x:Null}"
-                      Foreground="{x:Null}">
-                <DataGrid.RowHeight>30</DataGrid.RowHeight>
-                <DataGrid.Resources>
-                    <Style TargetType="DataGridCell">
-                        <Setter Property="VerticalAlignment"
-                                Value="Center" />
-                        <Setter Property="HorizontalAlignment"
-                                Value="Center" />
-                    </Style>
-                </DataGrid.Resources>
-                <DataGrid.Columns>
+            <materialDesign:Card   Grid.Column="1"
+                                   UniformCornerRadius="10"
+                                   Height="520"
+                                   Margin="0,0,10,10"
+                                   VerticalAlignment="Bottom"
+                                   materialDesign:ShadowAssist.ShadowDepth="Depth5"
+                                   Grid.RowSpan="2">
+                <DataGrid x:Name="ListPlatesDG"
+                          AlternatingRowBackground="#D8D8D8"
+                          AlternationCount="2"
+                          AutoGenerateColumns="False"
+                          ScrollViewer.VerticalScrollBarVisibility="Visible"
+                          ScrollViewer.HorizontalScrollBarVisibility="Visible"
+                          IsReadOnly="True"
+                          ItemsSource="{Binding Tickets}"
+                          Margin="0,22,10,0"
+                          FontSize="16"
+                          BorderBrush="{x:Null}"
+                          Foreground="{x:Null}">
+                    <DataGrid.RowHeight>30</DataGrid.RowHeight>
+                    <DataGrid.Resources>
+                        <Style TargetType="DataGridCell">
+                            <Setter Property="VerticalAlignment"
+                                    Value="Center" />
+                            <Setter Property="HorizontalAlignment"
+                                    Value="Center" />
+                        </Style>
+                    </DataGrid.Resources>
+                    <DataGrid.Columns>
 
-                    <DataGridTextColumn Header="Магазин"
-                                        Binding="{Binding Cinema.CinemaName}"
-                                        Width="150" />
-                    <DataGridTextColumn Header="Название    "
-                                        Binding="{Binding WorkerInfo.LastName}"
-                                        Width="150" />
-                    <DataGridTextColumn Header="Композитор"
-                                        Binding="{Binding TicketNumber}"
-                                        Width="150" />
-                    <DataGridTextColumn Header="Издатель"
-                                        Binding="{Binding Films.FilmName}"
-                                        Width="150" />
-                    <DataGridTextColumn Header="Цена"
-                                        Binding="{Binding SellDate, StringFormat='yyyy/MM/dd HH:mm:ss'}"
-                                        Width="100" />
-                    <DataGridTextColumn Header="Длительность"
-                                        Binding="{Binding Halls.HallName}"
-                                        Width="150" />
-                    <DataGridTextColumn Header="Дата создания"
-                                        Binding="{Binding Seats.RowSeatsNumber}"
-                                        Width="130" />
-                    <DataGridTextColumn Header="Количество"
-                                        Binding="{Binding Seats.SeatNumber}"
-                                        Width="100" />
-                </DataGrid.Columns>
-            </DataGrid>
+                        <DataGridTextColumn Header="Магазин"
+                                            Binding="{Binding Cinema.CinemaName}"
+                                            Width="120" />
+                        <DataGridTextColumn Header="Название    "
+                                            Binding="{Binding WorkerInfo.LastName}"
+                                            Width="150" />
+                        <DataGridTextColumn Header="Композитор"
+                                            Binding="{Binding TicketNumber}"
+                                            Width="150" />
+                        <DataGridTextColumn Header="Издатель"
+                                            Binding="{Binding Films.FilmName}"
+                                            Width="150" />
+                        <DataGridTextColumn Header="Цена"
+                                            Binding="{Binding SellDate, StringFormat='yyyy/MM/dd HH:mm:ss'}"
+                                            Width="80" />
+                        <DataGridTextColumn Header="Длительность"
+                                            Binding="{Binding Halls.HallName}"
+                                            Width="130" />
+                        <DataGridTextColumn Header="Дата создания"
+                                            Binding="{Binding Seats.RowSeatsNumber}"
+                                            Width="130" />
+                        <DataGridTextColumn Header="Количество"
+                                            Binding="{Binding Seats.SeatNumber}"
+                                            Width="100" />
+                    </DataGrid.Columns>
+                </DataGrid>
+            </materialDesign:Card>
         </Grid>
     </Grid>
 </Page>

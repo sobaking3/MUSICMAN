@@ -54,7 +54,8 @@
             <ListBox Grid.Row="1" 
                      Grid.ColumnSpan="2"
                      x:Name="ListShopLB"
-                     Foreground="White" >
+                     Foreground="White"
+                    >
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <Grid>

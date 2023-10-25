@@ -154,8 +154,23 @@
     <Compile Include="PageFolder\AdminPageFolder\ListUser.xaml.cs">
       <DependentUpon>ListUser.xaml</DependentUpon>
     </Compile>
+    <Compile Include="PageFolder\DirectorPageFolder\AddShop.xaml.cs">
+      <DependentUpon>AddShop.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PageFolder\ManagerPageFolder\AddCompositor.xaml.cs">
+      <DependentUpon>AddCompositor.xaml</DependentUpon>
+    </Compile>
     <Compile Include="PageFolder\ManagerPageFolder\AddEmployee.xaml.cs">
       <DependentUpon>AddEmployee.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PageFolder\ManagerPageFolder\AddPlate.xaml.cs">
+      <DependentUpon>AddPlate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PageFolder\ManagerPageFolder\AddProvider.xaml.cs">
+      <DependentUpon>AddProvider.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PageFolder\ManagerPageFolder\AddPublisher.xaml.cs">
+      <DependentUpon>AddPublisher.xaml</DependentUpon>
     </Compile>
     <Compile Include="PageFolder\ManagerPageFolder\ListCompositors.xaml.cs">
       <DependentUpon>ListCompositors.xaml</DependentUpon>
@@ -165,6 +180,15 @@
     </Compile>
     <Compile Include="PageFolder\ManagerPageFolder\ListPlate.xaml.cs">
       <DependentUpon>ListPlate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PageFolder\ManagerPageFolder\ListProvider.xaml.cs">
+      <DependentUpon>ListProvider.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PageFolder\ManagerPageFolder\ListPublisher.xaml.cs">
+      <DependentUpon>ListPublisher.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PageFolder\ManagerPageFolder\ListStock.xaml.cs">
+      <DependentUpon>ListStock.xaml</DependentUpon>
     </Compile>
     <Compile Include="WindowFolder\Authorization.xaml.cs">
       <DependentUpon>Authorization.xaml</DependentUpon>
@@ -230,7 +254,27 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="PageFolder\DirectorPageFolder\AddShop.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PageFolder\ManagerPageFolder\AddCompositor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="PageFolder\ManagerPageFolder\AddEmployee.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PageFolder\ManagerPageFolder\AddPlate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PageFolder\ManagerPageFolder\AddProvider.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PageFolder\ManagerPageFolder\AddPublisher.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -243,6 +287,18 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="PageFolder\ManagerPageFolder\ListPlate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PageFolder\ManagerPageFolder\ListProvider.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PageFolder\ManagerPageFolder\ListPublisher.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PageFolder\ManagerPageFolder\ListStock.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -278,7 +334,6 @@
     <Resource Include="ResourceFolder\background.png" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="PageFolder\DirectorPageFolder\" />
     <Folder Include="PageFolder\EmployeePageFolder\" />
   </ItemGroup>
   <ItemGroup>

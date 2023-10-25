@@ -7,9 +7,10 @@
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       mc:Ignorable="d"
       Style="{x:Null}"
+      Background="Transparent"
       d:DesignHeight="450"
       d:DesignWidth="800"
-      Title="Список фильмов">
+      Title="Список авторов">
     <Grid>
         <Grid>
             <Grid.ColumnDefinitions>
@@ -17,7 +18,7 @@
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition Height="120" />
+                <RowDefinition Height="65" />
                 <RowDefinition />
             </Grid.RowDefinitions>
 
@@ -33,8 +34,8 @@
                      BorderBrush="DarkGray"
                      BorderThickness="0, 0, 0, 1"
                      Height="28"
-                     VerticalAlignment="Top"
-                     Margin="0,24,101,0"
+                     VerticalAlignment="Center"
+                     Margin="0,0,101,0"
                      TextChanged="SearchTb_TextChanged">
                 <materialDesign:HintAssist.Hint>
                     <StackPanel Orientation="Horizontal">
@@ -63,96 +64,127 @@
                 </Button>
             </Border>
 
-            <ListBox x:Name="ListCompositorsLB"
-                     Foreground="Black"
-                     Grid.Column="1"
-                     d:ItemsSource="{d:SampleData ItemCount=5}"
-                     Height="380"
-                     Margin="0,0,10,10"
-                     VerticalAlignment="Bottom"
-                     Grid.RowSpan="2">
-                <ListBox.ContextMenu>
-                    <ContextMenu>
-                        <MenuItem Header="Удалить композитора"
-                                  x:Name="DeleteM1"
-                                  Click="DeleteM1_Click" />
-                    </ContextMenu>
-                </ListBox.ContextMenu>
-                <ListBox.ItemTemplate>
-                    <DataTemplate>
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="70" />
-                                <ColumnDefinition Width="5" />
-                                <ColumnDefinition Width="250" />
-                                <ColumnDefinition />
-                                <ColumnDefinition Width="250" />
-                            </Grid.ColumnDefinitions>
-
-                            <Grid.RowDefinitions>
-                                <RowDefinition />
-                                <RowDefinition />
-                                <RowDefinition />
-                                <RowDefinition />
-                                <RowDefinition />
-                            </Grid.RowDefinitions>
-
-                            <Border Grid.RowSpan="5"
-                                    CornerRadius="10"
-                                    BorderThickness="2"
-                                    Width="70"
-                                    Height="100">
-
-                                <Border.Background>
-                                    <ImageBrush Stretch="UniformToFill"
-                                                ImageSource="{Binding FilmPoster}" />
-                                </Border.Background>
+            <materialDesign:Card   Grid.Column="1"
+                                   UniformCornerRadius="10"
+                                   Height="560"
+                                   Margin="0,0,10,10"
+                                   VerticalAlignment="Bottom"
+                                   materialDesign:ShadowAssist.ShadowDepth="Depth5"
+                                   Grid.RowSpan="2">
 
 
-                                <Border.BorderBrush>
-                                    <LinearGradientBrush StartPoint="0,0"
-                                                         EndPoint="1,1">
-                                        <GradientStop Color="#462AD8"
-                                                      Offset="0" />
-                                        <GradientStop Color="#DA34AE"
-                                                      Offset="0.75" />
-                                        <GradientStop Color="#8A16C1"
-                                                      Offset="1" />
-                                    </LinearGradientBrush>
+                <ListBox x:Name="ListCompositorsLB"
+                        
+                         Foreground="Black" BorderThickness="0"
+                         d:ItemsSource="{d:SampleData ItemCount=5}"
+                         Margin="10,10,10,0">
+                    <ListBox.ContextMenu>
+                        <ContextMenu>
+                            <MenuItem Header="Удалить композитора"
+                                      x:Name="DeleteM1"
+                                      Click="DeleteM1_Click" />
+                        </ContextMenu>
+                    </ListBox.ContextMenu>
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Grid >
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="70" />
+                                    <ColumnDefinition Width="5" />
+                                    <ColumnDefinition Width="290" />
+                                    <ColumnDefinition />
+                                    <ColumnDefinition Width="250" />
+                                </Grid.ColumnDefinitions>
 
-                                </Border.BorderBrush>
-                            </Border>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                </Grid.RowDefinitions>
+
+                                <Border Grid.RowSpan="5"
+                                        CornerRadius="10"
+                                        BorderThickness="2"
+                                        Width="70"
+                                        Height="100">
+
+                                    <Border.Background>
+                                        <ImageBrush Stretch="UniformToFill"
+                                                    ImageSource="{Binding PhotoStaff}" />
+                                    </Border.Background>
+
+
+                                    <Border.BorderBrush>
+                                        <LinearGradientBrush StartPoint="0,0"
+                                                             EndPoint="1,1">
+                                            <GradientStop Color="#462AD8"
+                                                          Offset="0" />
+                                            <GradientStop Color="#DA34AE"
+                                                          Offset="0.75" />
+                                            <GradientStop Color="#8A16C1"
+                                                          Offset="1" />
+                                        </LinearGradientBrush>
+
+                                    </Border.BorderBrush>
+                                </Border>
 
 
 
-                            <TextBlock Grid.Column="2"
-                                       Grid.Row="0"
-                                       Margin="0 3 0 0">
+                                <TextBlock Grid.Column="2"
+                                           Grid.Row="0"
+                                           Margin="0 3 0 0">
                             <Run Text="Наименование: "
-                                 FontWeight="Bold" />
-                            <Run Text="{Binding FilmName}" />
-                            </TextBlock>
+                                    FontWeight="Bold" />
+                            <Run Text="{Binding ComposerName}" />
+                                </TextBlock>
 
-                            <TextBlock Grid.Row="1"
-                                       Margin="0 3 0 0"
-                                       Grid.Column="2">
-                            <Run Text="Выпущенных песен: "
-                                 FontWeight="Bold" />
-                            <Run Text="{Binding Genres.NameGenre}" />
-                            </TextBlock>
+                                <TextBlock Grid.Row="1"
+                                           Margin="0 3 0 0"
+                                           Grid.Column="2">
+                            <Run Text="Количество треков: "
+                                    FontWeight="Bold" />
+                            <Run Text="{Binding MusicCount}" />
+                                </TextBlock>
 
-                          
-                            <TextBlock Grid.Column="2"
-                                       Margin="0 3 0 0"
-                                       Grid.Row="2">
+                                <TextBlock Grid.Row="0"
+                                           Margin="0 3 0 0"
+                                           Grid.Column="4">
+                            <Run Text="Страна: "
+                                    FontWeight="Bold" />
+                            <Run Text="{Binding Country.Name}" />
+                                </TextBlock>
+
+                                <TextBlock Grid.Row="1"
+                                           Margin="0 3 0 0"
+                                           Grid.Column="4">
+                            <Run Text="Дата рождения: "
+                                    FontWeight="Bold" />
+                            <Run Text="{Binding BitrhDate}" />
+                                </TextBlock>
+
+                                <TextBlock Grid.Column="2"
+                                           Margin="0 3 0 0"
+                                           Grid.Row="2">
                             <Run Text="Рейтинг: "
-                                 FontWeight="Bold" />
+                                    FontWeight="Bold" />
                             <Run Text="{Binding Rating}" />
-                            </TextBlock>
-                        </Grid>
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>
+                                </TextBlock>
+
+                                <TextBlock Grid.Column="4"
+                                           Margin="0 3 0 0"
+                                           Grid.Row="2">
+                            <Run Text="Дата смерти: "
+                                    FontWeight="Bold" />
+                            <Run Text="{Binding DeathDate}" />
+                                </TextBlock>
+                            </Grid>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </materialDesign:Card>
         </Grid>
+
     </Grid>
 </Page>

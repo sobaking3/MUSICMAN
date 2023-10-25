@@ -49,11 +49,6 @@ namespace MUSICMAN.WindowFolder.ManagerFolder
             MBClass.MBLogOut(this);
         }
 
-        private void AddUser_Click(object sender, RoutedEventArgs e)
-        {
-            MainFrame.Navigate(new AddEmployee());
-        }
-
         private void ShopListBtn_Click(object sender, RoutedEventArgs e)
         {
             MainFrame.Navigate(new ListShop());
@@ -74,27 +69,17 @@ namespace MUSICMAN.WindowFolder.ManagerFolder
 
         private void PlastList_Click(object sender, RoutedEventArgs e)
         {
-
+            MainFrame.Navigate(new ListPlate());
         }
 
         private void ListAuthor_Click(object sender, RoutedEventArgs e)
         {
-
-        }
-
-        private void AddAuthor_Click(object sender, RoutedEventArgs e)
-        {
-
+            MainFrame.Navigate(new ListCompositors());
         }
 
         private void ListPublisher_Click(object sender, RoutedEventArgs e)
         {
-
-        }
-
-        private void AddPublisher_Click(object sender, RoutedEventArgs e)
-        {
-
+            MainFrame.Navigate(new ListPublisher());
         }
     }
 }

@@ -69,8 +69,7 @@ namespace MUSICMAN.PageFolder.AdminPageFolder
                         DBEntities.GetContext().User.Remove(ListUserDG.SelectedItem as User);
                         DBEntities.GetContext().SaveChanges();
                         MBClass.InfoMB("Пользователь удален");
-                        ListUserDG.ItemsSource = DBEntities.GetContext()
-                    .User.ToList().OrderBy(u => u.Login);
+                        UpdateList();
                     }
                 }
             }

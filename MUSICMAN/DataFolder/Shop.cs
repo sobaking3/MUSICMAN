@@ -17,7 +17,7 @@ namespace MUSICMAN.DataFolder
         public Shop()
         {
             this.Plates = new HashSet<Plates>();
-            this.Workers1 = new HashSet<Workers>();
+            this.Workers = new HashSet<Workers>();
         }
     
         public int IdShop { get; set; }
@@ -26,11 +26,9 @@ namespace MUSICMAN.DataFolder
         public string OpeningTime { get; set; }
         public string ClosingTime { get; set; }
         public string PhoneOfDirector { get; set; }
-        public int IdWorkerInfo { get; set; }
     
         public virtual Adress Adress { get; set; }
         public virtual ICollection<Plates> Plates { get; set; }
-        public virtual Workers Workers { get; set; }
-        public virtual ICollection<Workers> Workers1 { get; set; }
+        public virtual ICollection<Workers> Workers { get; set; }
     }
 }

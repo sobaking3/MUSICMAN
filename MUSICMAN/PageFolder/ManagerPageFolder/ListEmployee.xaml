@@ -64,117 +64,124 @@
                     </Button.RenderTransform>
                 </Button>
             </Border>
-            <ListBox x:Name="ListEmployeeLB"
-                     Foreground="Black"
-                     Grid.Column="1"
-                     Margin="0,5,10,10"
-                     Grid.Row="1"
-                     d:ItemsSource="{d:SampleData ItemCount=5}">
-                <ListBox.ContextMenu>
-                    <ContextMenu>
-                        <MenuItem Header="Удалить сотрудника"
-                                  x:Name="DeleteM1"
-                                  Click="DeleteM1_Click" />
-                    </ContextMenu>
-                </ListBox.ContextMenu>
-                <ListBox.ItemTemplate>
-                    <DataTemplate>
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="70" />
-                                <ColumnDefinition Width="5" />
-                                <ColumnDefinition Width="250" />
-                                <ColumnDefinition Width="5" />
-                                <ColumnDefinition Width="250" />
-                            </Grid.ColumnDefinitions>
+            <materialDesign:Card   Grid.Column="1"
+                                   UniformCornerRadius="10"
+                                   Height="560"
+                                   Margin="0 0 10 10"
+                                   VerticalAlignment="Bottom"
+                                   materialDesign:ShadowAssist.ShadowDepth="Depth5"
+                                   Grid.Row="1">
+                <ListBox x:Name="ListEmployeeLB"
+                         Foreground="Black"
+                         BorderThickness="0"
+                         d:ItemsSource="{d:SampleData ItemCount=5}"
+                         Margin="10,10,10,0">
+                    <ListBox.ContextMenu>
+                        <ContextMenu>
+                            <MenuItem Header="Удалить сотрудника"
+                                      x:Name="DeleteM1"
+                                      Click="DeleteM1_Click" />
+                        </ContextMenu>
+                    </ListBox.ContextMenu>
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="70" />
+                                    <ColumnDefinition Width="5" />
+                                    <ColumnDefinition Width="250" />
+                                    <ColumnDefinition Width="5" />
+                                    <ColumnDefinition Width="250" />
+                                </Grid.ColumnDefinitions>
 
-                            <Grid.RowDefinitions>
-                                <RowDefinition />
-                                <RowDefinition Height="20" />
-                                <RowDefinition />
-                                <RowDefinition Height="20" />
-                                <RowDefinition />
-                                <RowDefinition Height="20" />
-                                <RowDefinition />
-                            </Grid.RowDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition />
+                                    <RowDefinition Height="20" />
+                                    <RowDefinition />
+                                    <RowDefinition Height="20" />
+                                    <RowDefinition />
+                                    <RowDefinition Height="20" />
+                                    <RowDefinition />
+                                </Grid.RowDefinitions>
 
-                            <Ellipse Height="70"
-                                     Width="70"
-                                     Grid.RowSpan="8"
-                                     Stroke="{DynamicResource FillBorder}"
-                                     StrokeThickness="2">
-                                <Ellipse.Fill>
-                                    <ImageBrush x:Name="StaffImage"
-                                                ImageSource="{Binding PhotoStaff}"
-                                                Stretch="UniformToFill" />
-                                </Ellipse.Fill>
-                            </Ellipse>
+                                <Ellipse Height="70"
+                                         Width="70"
+                                         Grid.RowSpan="8"
+                                         Stroke="{DynamicResource FillBorder}"
+                                         StrokeThickness="2">
+                                    <Ellipse.Fill>
+                                        <ImageBrush x:Name="StaffImage"
+                                                    ImageSource="{Binding PhotoStaff}"
+                                                    Stretch="UniformToFill" />
+                                    </Ellipse.Fill>
+                                </Ellipse>
 
 
-                            <TextBlock Grid.Column="2"
-                                       Grid.Row="1">
+                                <TextBlock Grid.Column="2"
+                                           Grid.Row="1">
                             <Run Text="Фамилия: "
-                                 FontWeight="Bold" />
+                                    FontWeight="Bold" />
                             <Run Text="{Binding LastName}" />
-                            </TextBlock>
+                                </TextBlock>
 
-                            <TextBlock Grid.Row="3"
-                                       Grid.Column="2">
+                                <TextBlock Grid.Row="3"
+                                           Grid.Column="2">
                             <Run Text="Имя: "
-                                 FontWeight="Bold" />
+                                    FontWeight="Bold" />
                             <Run Text="{Binding FirstName}" />
-                            </TextBlock>
+                                </TextBlock>
 
-                            <TextBlock Grid.Row="5"
-                                       Grid.Column="2">
+                                <TextBlock Grid.Row="5"
+                                           Grid.Column="2">
                             <Run Text="Отчество: "
-                                 FontWeight="Bold" />
+                                    FontWeight="Bold" />
                             <Run Text="{Binding MiddleName}" />
-                            </TextBlock>
+                                </TextBlock>
 
-                            <TextBlock Grid.Row="8"
-                                       Grid.Column="2">
+                                <TextBlock Grid.Row="8"
+                                           Grid.Column="2">
                             <Run Text="Номер телефона: "
-                                 FontWeight="Bold" />
+                                    FontWeight="Bold" />
                             <Run Text="{Binding Number}" />
-                            </TextBlock>
+                                </TextBlock>
 
 
 
 
 
 
-                            <TextBlock Grid.Column="4"
-                                       Grid.Row="1">
+                                <TextBlock Grid.Column="4"
+                                           Grid.Row="1">
                             <Run Text="Логин: "
-                                 FontWeight="Bold" />
+                                    FontWeight="Bold" />
                             <Run Text="{Binding User.Login}" />
-                            </TextBlock>
+                                </TextBlock>
 
-                            <TextBlock Grid.Column="4"
-                                       Grid.Row="3">
+                                <TextBlock Grid.Column="4"
+                                           Grid.Row="3">
                             <Run Text="Пароль: "
-                                 FontWeight="Bold" />
+                                    FontWeight="Bold" />
                             <Run Text="{Binding User.Password}" />
-                            </TextBlock>
+                                </TextBlock>
 
-                            <TextBlock Grid.Row="5"
-                                       Grid.Column="4">
+                                <TextBlock Grid.Row="5"
+                                           Grid.Column="4">
                             <Run Text="Роль: "
-                                 FontWeight="Bold" />
+                                    FontWeight="Bold" />
                             <Run Text="{Binding User.Role.NameRole}" />
-                            </TextBlock>
+                                </TextBlock>
 
-                            <TextBlock Grid.Row="8"
-                                       Grid.Column="4">
+                                <TextBlock Grid.Row="8"
+                                           Grid.Column="4">
                             <Run Text="Магазин: "
-                                 FontWeight="Bold" />
+                                    FontWeight="Bold" />
                             <Run Text="{Binding Shop.ShopName}" />
-                            </TextBlock>
-                        </Grid>
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>
+                                </TextBlock>
+                            </Grid>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </materialDesign:Card>
         </Grid>
     </Grid>
 </Page>

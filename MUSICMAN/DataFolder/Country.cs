@@ -17,6 +17,7 @@ namespace MUSICMAN.DataFolder
         public Country()
         {
             this.Adress = new HashSet<Adress>();
+            this.Composer = new HashSet<Composer>();
             this.ProviderAdress = new HashSet<ProviderAdress>();
         }
     
@@ -24,6 +25,7 @@ namespace MUSICMAN.DataFolder
         public string Name { get; set; }
     
         public virtual ICollection<Adress> Adress { get; set; }
+        public virtual ICollection<Composer> Composer { get; set; }
         public virtual ICollection<ProviderAdress> ProviderAdress { get; set; }
     }
 }

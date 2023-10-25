@@ -32,6 +32,9 @@
           <Property Name="MusicCount" Type="int" Nullable="false" />
           <Property Name="Rating" Type="nvarchar" MaxLength="10" Nullable="false" />
           <Property Name="PhotoStaff" Type="varbinary(max)" />
+          <Property Name="IdCountry" Type="int" Nullable="false" />
+          <Property Name="BitrhDate" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="DeathDate" Type="nvarchar" MaxLength="20" />
         </EntityType>
         <EntityType Name="Country">
           <Key>
@@ -101,7 +104,6 @@
           <Property Name="OpeningTime" Type="nvarchar" MaxLength="30" Nullable="false" />
           <Property Name="ClosingTime" Type="nvarchar" MaxLength="30" Nullable="false" />
           <Property Name="PhoneOfDirector" Type="nvarchar" MaxLength="15" Nullable="false" />
-          <Property Name="IdWorkerInfo" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Stocks">
           <Key>
@@ -145,12 +147,12 @@
           <Property Name="FirstName" Type="nvarchar" MaxLength="30" Nullable="false" />
           <Property Name="LastName" Type="nvarchar" MaxLength="30" Nullable="false" />
           <Property Name="MiddleName" Type="nvarchar" MaxLength="30" />
-          <Property Name="DateOfBirth" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="DateOfBirth" Type="date" Nullable="false" />
           <Property Name="Number" Type="nvarchar" MaxLength="15" Nullable="false" />
           <Property Name="Email" Type="nvarchar" MaxLength="30" Nullable="false" />
-          <Property Name="IdShop" Type="int" Nullable="false" />
-          <Property Name="IdUser" Type="int" Nullable="false" />
+          <Property Name="IdShop" Type="int" />
           <Property Name="PhotoStaff" Type="varbinary(max)" />
+          <Property Name="IdUser" Type="int" Nullable="false" />
         </EntityType>
         <Association Name="FK_Adress_City">
           <End Role="City" Type="Self.City" Multiplicity="1" />
@@ -185,6 +187,18 @@
             </Principal>
             <Dependent Role="Adress">
               <PropertyRef Name="IdStreet" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Composer_Country">
+          <End Role="Country" Type="Self.Country" Multiplicity="1" />
+          <End Role="Composer" Type="Self.Composer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="IdCountry" />
+            </Principal>
+            <Dependent Role="Composer">
+              <PropertyRef Name="IdCountry" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -308,18 +322,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Shop_Workers">
-          <End Role="Workers" Type="Self.Workers" Multiplicity="1" />
-          <End Role="Shop" Type="Self.Shop" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Workers">
-              <PropertyRef Name="IdWorkerInfo" />
-            </Principal>
-            <Dependent Role="Shop">
-              <PropertyRef Name="IdWorkerInfo" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_User_Roles1">
           <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
           <End Role="User" Type="Self.User" Multiplicity="*" />
@@ -333,7 +335,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Workers_Shop">
-          <End Role="Shop" Type="Self.Shop" Multiplicity="1" />
+          <End Role="Shop" Type="Self.Shop" Multiplicity="0..1" />
           <End Role="Workers" Type="Self.Workers" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Shop">
@@ -384,6 +386,10 @@
             <End Role="Streets" EntitySet="Streets" />
             <End Role="Adress" EntitySet="Adress" />
           </AssociationSet>
+          <AssociationSet Name="FK_Composer_Country" Association="Self.FK_Composer_Country">
+            <End Role="Country" EntitySet="Country" />
+            <End Role="Composer" EntitySet="Composer" />
+          </AssociationSet>
           <AssociationSet Name="FK_Plates_Composer" Association="Self.FK_Plates_Composer">
             <End Role="Composer" EntitySet="Composer" />
             <End Role="Plates" EntitySet="Plates" />
@@ -422,10 +428,6 @@
           </AssociationSet>
           <AssociationSet Name="FK_Shop_Adress" Association="Self.FK_Shop_Adress">
             <End Role="Adress" EntitySet="Adress" />
-            <End Role="Shop" EntitySet="Shop" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Shop_Workers" Association="Self.FK_Shop_Workers">
-            <End Role="Workers" EntitySet="Workers" />
             <End Role="Shop" EntitySet="Shop" />
           </AssociationSet>
           <AssociationSet Name="FK_User_Roles1" Association="Self.FK_User_Roles1">
@@ -479,6 +481,10 @@
           <Property Name="MusicCount" Type="Int32" Nullable="false" />
           <Property Name="Rating" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="PhotoStaff" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="IdCountry" Type="Int32" Nullable="false" />
+          <Property Name="BitrhDate" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DeathDate" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Country" Relationship="Self.FK_Composer_Country" FromRole="Composer" ToRole="Country" />
           <NavigationProperty Name="Plates" Relationship="Self.FK_Plates_Composer" FromRole="Composer" ToRole="Plates" />
         </EntityType>
         <EntityType Name="Country">
@@ -488,6 +494,7 @@
           <Property Name="IdCountry" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Adress" Relationship="Self.FK_Adress_Country" FromRole="Country" ToRole="Adress" />
+          <NavigationProperty Name="Composer" Relationship="Self.FK_Composer_Country" FromRole="Country" ToRole="Composer" />
           <NavigationProperty Name="ProviderAdress" Relationship="Self.FK_ProviderAdress_Country" FromRole="Country" ToRole="ProviderAdress" />
         </EntityType>
         <EntityType Name="Plates">
@@ -564,11 +571,9 @@
           <Property Name="OpeningTime" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="ClosingTime" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="PhoneOfDirector" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="IdWorkerInfo" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Adress" Relationship="Self.FK_Shop_Adress" FromRole="Shop" ToRole="Adress" />
           <NavigationProperty Name="Plates" Relationship="Self.FK_Plates_Shop" FromRole="Shop" ToRole="Plates" />
-          <NavigationProperty Name="Workers" Relationship="Self.FK_Shop_Workers" FromRole="Shop" ToRole="Workers" />
-          <NavigationProperty Name="Workers1" Relationship="Self.FK_Workers_Shop" FromRole="Shop" ToRole="Workers" />
+          <NavigationProperty Name="Workers" Relationship="Self.FK_Workers_Shop" FromRole="Shop" ToRole="Workers" />
         </EntityType>
         <EntityType Name="Stocks">
           <Key>
@@ -617,14 +622,13 @@
           <Property Name="FirstName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="LastName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="MiddleName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
-          <Property Name="DateOfBirth" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DateOfBirth" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="Number" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Email" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="IdShop" Type="Int32" Nullable="false" />
-          <Property Name="IdUser" Type="Int32" Nullable="false" />
+          <Property Name="IdShop" Type="Int32" />
           <Property Name="PhotoStaff" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <NavigationProperty Name="Shop" Relationship="Self.FK_Shop_Workers" FromRole="Workers" ToRole="Shop" />
-          <NavigationProperty Name="Shop1" Relationship="Self.FK_Workers_Shop" FromRole="Workers" ToRole="Shop" />
+          <Property Name="IdUser" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Shop" Relationship="Self.FK_Workers_Shop" FromRole="Workers" ToRole="Shop" />
           <NavigationProperty Name="User" Relationship="Self.FK_Workers_User" FromRole="Workers" ToRole="User" />
         </EntityType>
         <Association Name="FK_Adress_City">
@@ -684,6 +688,18 @@
             </Principal>
             <Dependent Role="ProviderAdress">
               <PropertyRef Name="IdCity" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Composer_Country">
+          <End Role="Country" Type="Self.Country" Multiplicity="1" />
+          <End Role="Composer" Type="Self.Composer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="IdCountry" />
+            </Principal>
+            <Dependent Role="Composer">
+              <PropertyRef Name="IdCountry" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -795,20 +811,8 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Shop_Workers">
-          <End Role="Workers" Type="Self.Workers" Multiplicity="1" />
-          <End Role="Shop" Type="Self.Shop" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Workers">
-              <PropertyRef Name="IdWorkerInfo" />
-            </Principal>
-            <Dependent Role="Shop">
-              <PropertyRef Name="IdWorkerInfo" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Workers_Shop">
-          <End Role="Shop" Type="Self.Shop" Multiplicity="1" />
+          <End Role="Shop" Type="Self.Shop" Multiplicity="0..1" />
           <End Role="Workers" Type="Self.Workers" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Shop">
@@ -867,6 +871,10 @@
             <End Role="City" EntitySet="City" />
             <End Role="ProviderAdress" EntitySet="ProviderAdress" />
           </AssociationSet>
+          <AssociationSet Name="FK_Composer_Country" Association="Self.FK_Composer_Country">
+            <End Role="Country" EntitySet="Country" />
+            <End Role="Composer" EntitySet="Composer" />
+          </AssociationSet>
           <AssociationSet Name="FK_Plates_Composer" Association="Self.FK_Plates_Composer">
             <End Role="Composer" EntitySet="Composer" />
             <End Role="Plates" EntitySet="Plates" />
@@ -902,10 +910,6 @@
           <AssociationSet Name="FK_User_Roles1" Association="Self.FK_User_Roles1">
             <End Role="Roles" EntitySet="Roles" />
             <End Role="User" EntitySet="User" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Shop_Workers" Association="Self.FK_Shop_Workers">
-            <End Role="Workers" EntitySet="Workers" />
-            <End Role="Shop" EntitySet="Shop" />
           </AssociationSet>
           <AssociationSet Name="FK_Workers_Shop" Association="Self.FK_Workers_Shop">
             <End Role="Shop" EntitySet="Shop" />
@@ -950,6 +954,9 @@
                 <ScalarProperty Name="MusicCount" ColumnName="MusicCount" />
                 <ScalarProperty Name="Rating" ColumnName="Rating" />
                 <ScalarProperty Name="PhotoStaff" ColumnName="PhotoStaff" />
+                <ScalarProperty Name="IdCountry" ColumnName="IdCountry" />
+                <ScalarProperty Name="BitrhDate" ColumnName="BitrhDate" />
+                <ScalarProperty Name="DeathDate" ColumnName="DeathDate" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1026,7 +1033,6 @@
                 <ScalarProperty Name="OpeningTime" ColumnName="OpeningTime" />
                 <ScalarProperty Name="ClosingTime" ColumnName="ClosingTime" />
                 <ScalarProperty Name="PhoneOfDirector" ColumnName="PhoneOfDirector" />
-                <ScalarProperty Name="IdWorkerInfo" ColumnName="IdWorkerInfo" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1079,8 +1085,8 @@
                 <ScalarProperty Name="Number" ColumnName="Number" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="IdShop" ColumnName="IdShop" />
-                <ScalarProperty Name="IdUser" ColumnName="IdUser" />
                 <ScalarProperty Name="PhotoStaff" ColumnName="PhotoStaff" />
+                <ScalarProperty Name="IdUser" ColumnName="IdUser" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
