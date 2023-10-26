@@ -22,6 +22,7 @@ namespace MUSICMAN.PageFolder.ManagerPageFolder
     /// </summary>
     public partial class ListStock : Page
     {
+        
         public ListStock()
         {
             InitializeComponent();

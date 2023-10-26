@@ -17,7 +17,7 @@
         Background="Transparent"
         WindowStyle="None"
         AllowsTransparency="True"
-        ResizeMode="NoResize">
+        ResizeMode="NoResize" Loaded="Window_Loaded">
 
     <Window.Resources>
         <BooleanToVisibilityConverter x:Key="BoolToVis" />
@@ -304,9 +304,10 @@
                     <!--TopButtons-->
 
                 </Grid>
-                <Grid Grid.Column="1"
-                      Background="White"
-                      Margin="0,100,0,0">
+                <Border Grid.Column="1"
+                        Background="White"
+                        Margin="0,100,0,0" CornerRadius="20 20 20 0">
+                <Grid >
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="164*" />
                         <ColumnDefinition Width="309*" />
@@ -322,12 +323,14 @@
                            Content="{Binding Content.Title, ElementName=MainFrame}"
                            Margin="10,-180,114,0"
                            Grid.ColumnSpan="2" />
-                    <Frame x:Name="MainFrame"
+                    
+                    <Frame x:Name="MainFrame"       
                            NavigationUIVisibility="Hidden"
                            Margin="0,10,0,0"
                            Grid.RowSpan="2"
                            Grid.ColumnSpan="2" />
                 </Grid>
+                </Border>
             </Grid>
         </Border>
     </Border>

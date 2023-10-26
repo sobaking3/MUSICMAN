@@ -13,6 +13,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using ToastNotifications;
+using ToastNotifications.Messages;
 
 namespace MUSICMAN.PageFolder.AdminPageFolder
 {
@@ -21,9 +23,11 @@ namespace MUSICMAN.PageFolder.AdminPageFolder
     /// </summary>
     public partial class AddUsers : Window
     {
+        Notifier notifier;
         public AddUsers()
         {
             InitializeComponent();
+            notifier = App.GetWindowNotifer(this);
             RoleCb.ItemsSource = DBEntities.GetContext()
             .Roles.Except(DBEntities.GetContext().Roles.Where(r => r.NameRole == "Администратор" || r.NameRole == "Директор"))
             .ToList();
@@ -33,22 +37,22 @@ namespace MUSICMAN.PageFolder.AdminPageFolder
         {
             if (string.IsNullOrEmpty(LoginTb.Text))
             {
-                MBClass.ErrorMB("Введите логин");
+                notifier.ShowError("Введите логин");
             }
             else if (string.IsNullOrEmpty(PasswordPb.Text))
             {
-                MBClass.ErrorMB("Введите пароль");
+                notifier.ShowError("Введите пароль");
             }
             else if (RoleCb.SelectedIndex == -1)
             {
-                MBClass.ErrorMB("Вы не выбрали роль");
+                notifier.ShowError("Вы не выбрали роль");
             }
             else if (DBEntities.GetContext()
                         .User
                         .FirstOrDefault(
                 u => u.Login == LoginTb.Text) != null)
             {
-                MBClass.ErrorMB("Такой пользователь уже создан");
+                notifier.ShowError($"Пользователь {LoginTb.Text} уже создан");
 
                 LoginTb.Focus();
 
@@ -63,7 +67,7 @@ namespace MUSICMAN.PageFolder.AdminPageFolder
                     (RoleCb.SelectedValue.ToString());
                 context.User.Add(user);
                 context.SaveChanges();
-                MBClass.InfoMB("Пользователь создан");
+                notifier.ShowSuccess($"Пользователь {LoginTb.Text} создан");
                 ElementsToolsClass.ClearAllControls(this);
                 
             }

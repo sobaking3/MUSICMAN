@@ -15,6 +15,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Windows.Threading;
+using ToastNotifications;
+using ToastNotifications.Messages;
 
 namespace MUSICMAN.WindowFolder
 {
@@ -23,8 +25,10 @@ namespace MUSICMAN.WindowFolder
     /// </summary>
     public partial class Authorization : Window
     {
+        Notifier notifier;
         public Authorization()
         {
+            notifier = App.GetWindowNotifer(this);
             InitializeComponent();
         }
 
@@ -40,7 +44,7 @@ namespace MUSICMAN.WindowFolder
         {
             if (string.IsNullOrEmpty(LoginTb.Text) || string.IsNullOrEmpty(PasswordPb.Password))
             {
-                MBClass.ErrorMB("Пожалуйста, введите логин и пароль");
+                notifier.ShowError("Пожалуйста, введите логин и пароль");
             }
             else if (timer.IsEnabled)
             {
@@ -55,28 +59,28 @@ namespace MUSICMAN.WindowFolder
                         .FirstOrDefault(u => u.Login == LoginTb.Text);
                     if (user == null)
                     {
-                        MBClass.ErrorMB("Пароль или логин введен неверно");
+                        notifier.ShowError("Пароль или логин введен неверно");
                         LoginTb.Focus();
                     }
                     else if (user.Password != PasswordPb.Password)
                     {
-                        MBClass.ErrorMB("Пароль или логин введен неверно");                       
+                        notifier.ShowError("Пароль или логин введен неверно");                    
                     }
                     else
                     {
                         App.CurrentUser = user;
-
+                        Hide();
+                        Window window = null;
                         switch (user.IdRole)
                         {
                             case 1:
-                                MBClass.InfoMB("Администратор");
-                                new AdminFolder.AdminMainWindow().ShowDialog();
-                                Hide();
+                                window = new AdminFolder.AdminMainWindow();
+
                                 break;
-                            case 2:
-                                MBClass.InfoMB("Менеджер");
-                                new ManagerFolder.ManagerMainWindow().ShowDialog();
-                                Hide();
+                            case 2:      
+                                window = new ManagerFolder.ManagerMainWindow();
+                                
+
                                 break;
                                 //case 3:
                                 //    MBClass.InfoMB("Сотрудник");
@@ -88,6 +92,15 @@ namespace MUSICMAN.WindowFolder
                                 //    Hide();
                                 //    break;
                         }
+
+                        if(window != null)
+                        {
+                            //Application.Current.MainWindow = window;
+                            window.Show();
+                        }
+                        
+
+                        Close();
                     }
                 }
                 catch (Exception ex)

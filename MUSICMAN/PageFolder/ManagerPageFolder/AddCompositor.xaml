@@ -50,7 +50,7 @@
                 <RowDefinition Height="70" />
                 <RowDefinition />
             </Grid.RowDefinitions>
-            <Button Grid.Column="1"
+            <Button Grid.Column="1" x:Name="Back"
                     Grid.Row="0"
                     Background="#706F6F"
                     Margin="10,34,143,34"
@@ -80,7 +80,7 @@
                         FontSize="30"
                         Click="AddPhoto_Click"
                         Style="{DynamicResource ButtonsStyle}"
-                        Margin="416,353,-850,-301"
+                        Margin="416,278, -850,-301"
                         Grid.Column="1"
                         Grid.RowSpan="3"
                         RenderTransformOrigin="0.5,0.5">

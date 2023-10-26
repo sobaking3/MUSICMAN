@@ -1,4 +1,5 @@
-﻿using MUSICMAN.DataFolder;
+﻿using MUSICMAN.ClassFolder;
+using MUSICMAN.DataFolder;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -7,6 +8,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using ToastNotifications;
+using ToastNotifications.Lifetime;
+using ToastNotifications.Position;
 
 namespace MUSICMAN
 {
@@ -18,9 +22,14 @@ namespace MUSICMAN
         public static User CurrentUser { get; set; }
         public byte[] PhotoStaff { get; set; }
 
+        public static Func<int, Window> GetCurrentWindow = (_) =>
+        {
+            return Application.Current.MainWindow;
+        };
+
         public static string GetCurrentWorkerInitials()
         {
-            if(CurrentUser == null)
+            if (CurrentUser == null)
             {
                 return string.Empty;
             }
@@ -31,6 +40,39 @@ namespace MUSICMAN
             }
             return $"{worker.LastName} {worker.FirstName[0]}." +
                 (string.IsNullOrEmpty(worker.MiddleName) ? string.Empty : worker.LastName[0] + ".");
+        }
+        public static Notifier Notifier { get; set; } = new Notifier(cfg =>
+        {
+            cfg.PositionProvider = new WindowPositionProviderCustom(
+                parentWindow: GetCurrentWindow,
+                corner: Corner.TopRight,
+                offsetX: 10,
+                offsetY: 10);
+
+
+            cfg.LifetimeSupervisor = new TimeAndCountBasedLifetimeSupervisor(
+                notificationLifetime: TimeSpan.FromSeconds(3),
+                maximumNotificationCount: MaximumNotificationCount.FromCount(5));
+
+            cfg.Dispatcher = Application.Current.Dispatcher;
+        });
+
+        public static Notifier GetWindowNotifer(Window window)
+        {
+            return new Notifier(cfg =>
+            {
+                cfg.PositionProvider = new WindowPositionProvider(
+                    parentWindow: window,
+                    corner: Corner.TopRight,
+                    offsetX: 10,
+                    offsetY: 10);
+
+                cfg.LifetimeSupervisor = new TimeAndCountBasedLifetimeSupervisor(
+                    notificationLifetime: TimeSpan.FromSeconds(3),
+                    maximumNotificationCount: MaximumNotificationCount.FromCount(5));
+
+                cfg.Dispatcher = Application.Current.Dispatcher;
+            });
         }
     }
 }

@@ -15,6 +15,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using ToastNotifications;
+using ToastNotifications.Messages;
 
 namespace MUSICMAN.WindowFolder.AdminFolder
 {
@@ -23,10 +25,13 @@ namespace MUSICMAN.WindowFolder.AdminFolder
     /// </summary>
     public partial class AdminMainWindow : Window
     {
+        Notifier notifier;      
         public AdminMainWindow()
         {
+            notifier = App.GetWindowNotifer(this);
             InitializeComponent();
             EmpName.Text = App.GetCurrentWorkerInitials();
+            
         }
 
         private void ListUserBtn_Click(object sender, RoutedEventArgs e)
@@ -73,6 +78,11 @@ namespace MUSICMAN.WindowFolder.AdminFolder
         private void ListShopBtn_Click(object sender, RoutedEventArgs e)
         {
             MainFrame.Navigate(new ListShop());
+        }
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            //App.Notifier.ShowInformation("Добро пожаловать суикн сын, рутинной работы!");
+            notifier.ShowInformation("Добро пожаловать!");
         }
     }
 }

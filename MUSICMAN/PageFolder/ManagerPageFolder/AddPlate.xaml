@@ -4,9 +4,247 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MUSICMAN.PageFolder.ManagerPageFolder"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="Добавление пластинки" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        Background="Transparent"
+        Title="Добавить автора"
+        Height="540"
+        Width="900">
+
+    <materialDesign:Card UniformCornerRadius="25"
+                         Margin="5"
+                         Width="880"
+                         Height="500"
+                         materialDesign:ShadowAssist.ShadowDepth="Depth1">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="20" />
+                <ColumnDefinition Width="0" />
+                <ColumnDefinition Width="72" />
+                <ColumnDefinition Width="166" />
+                <ColumnDefinition Width="181" />
+                <ColumnDefinition Width="23" />
+                <ColumnDefinition Width="177" />
+                <ColumnDefinition Width="184" />
+                <ColumnDefinition Width="70" />
+                <ColumnDefinition Width="69" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100" />
+                <RowDefinition Height="50" />
+                <RowDefinition Height="10" />
+                <RowDefinition Height="50" />
+                <RowDefinition Height="10" />
+                <RowDefinition Height="50" />
+                <RowDefinition Height="10" />
+                <RowDefinition Height="50" />
+                <RowDefinition Height="10" />
+
+                <RowDefinition Height="70" />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Button Grid.Column="1"
+                    x:Name="Back"
+                    Grid.Row="0"
+                    Background="#706F6F"
+                    Margin="10,34,143,34"
+                    BorderThickness="0"
+                    Click="Back_Click"
+                    Grid.ColumnSpan="3">
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="18">
+                            <ContentPresenter HorizontalAlignment="Center"
+                                              VerticalAlignment="Center" />
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+                <materialDesign:PackIcon Kind="KeyboardBackspace"
+                                         Foreground="White"
+                                         Height="36"
+                                         Width="30"
+                                         HorizontalAlignment="Center"
+                                         VerticalAlignment="Center" />
+            </Button>
+
+            <Label Content="Магазин"
+                   Style="{DynamicResource NormalLabel}"
+                   Grid.Column="3"
+                   Grid.Row="1"
+                   Margin="10,0,10,0"
+                   Height="30" />
+
+            <ComboBox x:Name="ComboShop"
+                      Grid.Column="4"
+                      Grid.Row="1"
+                      Foreground="Black"
+                      IsTextSearchEnabled="False"
+                      TextBoxBase.TextChanged="ComboShopCb_TextChanged"
+                      Background="Transparent"
+                      SelectedValuePath="IdShop"
+                      SelectedItem="{Binding Shop.Name}"
+                      DisplayMemberPath="Name"
+                      BorderBrush="DarkGray"
+                      Height="24">
+            </ComboBox>
+
+
+            <Label Content="Название"
+                   Style="{DynamicResource NormalLabel}"
+                   Grid.Column="3"
+                   Grid.Row="3"
+                   Margin="10,0,10,0"
+                   Height="30" />
+
+            <TextBox x:Name="NameTb"
+                     Style="{DynamicResource TBStyle}"
+                     Grid.Row="3"
+                     Grid.Column="4"
+                     Height="28" />
+
+
+            <Label Content="Композитор"
+                   Style="{DynamicResource NormalLabel}"
+                   Grid.Column="3"
+                   Grid.Row="5"
+                   Margin="10,0,10,0"
+                   Height="30" />
+
+            <ComboBox x:Name="ComboComposer"
+                      Grid.Column="4"
+                      Grid.Row="5"
+                      Foreground="Black"
+                      IsTextSearchEnabled="False"
+                      Background="Transparent"
+                      SelectedValuePath="IdComposer"
+                      SelectedItem="{Binding Composer.ComposerName}"
+                      DisplayMemberPath="ComposerName"
+                      BorderBrush="DarkGray"
+                      Height="24">
+            </ComboBox>
+
+
+            <Label Content="Цена"
+                   Style="{DynamicResource NormalLabel}"
+                   Grid.Column="6"
+                   Grid.Row="1"
+                   Margin="10,0,10,0"
+                   Height="30" />
+
+            <TextBox x:Name="CostTb"
+                     Style="{DynamicResource TBStyle}"
+                     Grid.Row="1"
+                     Grid.Column="7"
+                     Height="28" />
+
+            <Label Content="Издатель"
+                   Style="{DynamicResource NormalLabel}"
+                   Grid.Column="3"
+                   Grid.Row="7"
+                   Margin="10,0,10,0"
+                   Height="30" />
+
+            <ComboBox x:Name="ComboPublisher"
+                      Grid.Column="4"
+                      Grid.Row="7"
+                      Foreground="Black"
+                      IsTextSearchEnabled="False"
+                      Background="Transparent"
+                      SelectedValuePath="IdPublisher"
+                      SelectedItem="{Binding Publisher.PublisherName}"
+                      DisplayMemberPath="PublisherName"
+                      BorderBrush="DarkGray"
+                      Height="24">
+            </ComboBox>
+
+
+
+            <Label Style="{DynamicResource NormalLabel}"
+                   Grid.Column="6"
+                   Grid.Row="3"
+                   Grid.ColumnSpan="2"
+                   Margin="10,0,10,0"
+                   Height="30">
+                <Label.Content>
+                    <TextBlock TextWrapping="Wrap">Длительность</TextBlock>
+                </Label.Content>
+            </Label>
+
+            <materialDesign:TimePicker  x:Name="DurationTP"
+                                        Grid.Row="3"
+                                        Grid.Column="7"
+                                        Is24Hours="True"
+                                        BorderBrush="DarkGray"
+                                        Foreground="Black"
+                                        Height="24" />
+
+            <Label Content="Дата создания"
+                   Style="{DynamicResource NormalLabel}"
+                   Grid.Column="6"
+                   Grid.Row="5"
+                   Margin="10,0,10,0"
+                   Height="30" />
+
+            <DatePicker x:Name="DatePickerTb"
+                        SelectedDate="{Binding DateOfBirth}"
+                        Grid.Column="7"
+                        Grid.Row="5"
+                        BorderBrush="DarkGray"
+                        Foreground="Black"
+                        Height="24">
+                <DatePicker.CalendarStyle>
+                    <Style TargetType="Calendar"
+                           BasedOn="{StaticResource MaterialDesignCalendarPortrait}">
+                        <Style.Resources>
+                            <SolidColorBrush x:Key="PrimaryHueMidBrush"
+                                             Color="#373A6B" />
+                        </Style.Resources>
+                    </Style>
+                </DatePicker.CalendarStyle>
+
+            </DatePicker>
+            <Label Content="Количество"
+                   Style="{DynamicResource NormalLabel}"
+                   Grid.Column="6"
+                   Grid.Row="7"
+                   Margin="10,0,10,0"
+                   Height="30" />
+
+            <TextBox x:Name="CountTb"
+                     Style="{DynamicResource TBStyle}"
+                     Grid.Row="7"
+                     Grid.Column="7"
+                     Height="28" />
+
+
+
+            <Button x:Name="AddCompositorBtn"
+                    Grid.Row="9"
+                    Content="Добавить"
+                   Click="AddCompositorBtn_Click"
+                    Style="{DynamicResource ButtonsStyle}"
+                    Margin="0,10,0,10"
+                    Grid.ColumnSpan="9">
+                <Button.Template>
+
+                    <ControlTemplate TargetType="Button">
+                        <Border Width="150"
+                                Height="40"
+                                CornerRadius="20"
+                                Background="{TemplateBinding Background}">
+                            <ContentPresenter VerticalAlignment="Center"
+                                              HorizontalAlignment="Center" />
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+        </Grid>
+    </materialDesign:Card>
 </Window>

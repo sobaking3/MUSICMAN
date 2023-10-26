@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using ToastNotifications;
 
 namespace MUSICMAN.ClassFolder
 {
@@ -12,6 +13,7 @@ namespace MUSICMAN.ClassFolder
     {
         public static void ErrorMB(Exception ex)
         {
+          
             MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK,
                 MessageBoxImage.Error);
         }
