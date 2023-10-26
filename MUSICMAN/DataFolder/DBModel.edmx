@@ -33,8 +33,8 @@
           <Property Name="Rating" Type="nvarchar" MaxLength="10" Nullable="false" />
           <Property Name="PhotoStaff" Type="varbinary(max)" />
           <Property Name="IdCountry" Type="int" Nullable="false" />
-          <Property Name="BitrhDate" Type="nvarchar" MaxLength="20" Nullable="false" />
-          <Property Name="DeathDate" Type="nvarchar" MaxLength="20" />
+          <Property Name="BitrhDate" Type="date" Nullable="false" />
+          <Property Name="DeathDate" Type="date" />
         </EntityType>
         <EntityType Name="Country">
           <Key>
@@ -389,8 +389,8 @@
           <Property Name="Rating" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="PhotoStaff" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="IdCountry" Type="Int32" Nullable="false" />
-          <Property Name="BitrhDate" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="DeathDate" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="BitrhDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="DeathDate" Type="DateTime" Precision="0" />
           <NavigationProperty Name="Country" Relationship="Self.FK_Composer_Country" FromRole="Composer" ToRole="Country" />
           <NavigationProperty Name="Plates" Relationship="Self.FK_Plates_Composer" FromRole="Composer" ToRole="Plates" />
         </EntityType>

@@ -2,6 +2,7 @@
 using MUSICMAN.DataFolder;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -64,7 +65,7 @@ namespace MUSICMAN.WindowFolder
                     else
                     {
                         App.CurrentUser = user;
-                        
+
                         switch (user.IdRole)
                         {
                             case 1:

@@ -30,7 +30,10 @@ namespace MUSICMAN.PageFolder.AdminPageFolder
             .User.Where(u => u.Roles.NameRole != "Директор" && u.Roles.NameRole != "Администратор")
             .ToList().OrderBy(u => u.Login);
         }
-
+        private void ShowPassword_Click(object sender, RoutedEventArgs e)
+        {
+            passwordBox.PasswordChar = '\0';
+        }
         private void SearchTb_TextChanged(object sender, TextChangedEventArgs e)
         {
             try

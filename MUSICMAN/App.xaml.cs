@@ -6,6 +6,7 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace MUSICMAN
 {
@@ -15,6 +16,7 @@ namespace MUSICMAN
     public partial class App : Application
     {
         public static User CurrentUser { get; set; }
+        public byte[] PhotoStaff { get; set; }
 
         public static string GetCurrentWorkerInitials()
         {

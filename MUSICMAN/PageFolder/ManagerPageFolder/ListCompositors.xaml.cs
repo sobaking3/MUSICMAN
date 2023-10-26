@@ -33,11 +33,7 @@ namespace MUSICMAN.PageFolder.ManagerPageFolder
         {
             try
             {
-                ListCompositorsLB.ItemsSource = DBEntities.GetContext()
-                    .Composer.Where(s => s.ComposerName
-                    .StartsWith(SearchTb.Text) || s.ComposerName
-                    .StartsWith(SearchTb.Text))
-                    .ToList().OrderBy(s => s.ComposerName);
+                UpdateList();
             }
             catch (Exception ex)
             {
@@ -45,9 +41,19 @@ namespace MUSICMAN.PageFolder.ManagerPageFolder
             }
         }
 
+        private void UpdateList()
+        {
+            ListCompositorsLB.ItemsSource = DBEntities.GetContext()
+                .Composer.Where(s => s.ComposerName
+                .StartsWith(SearchTb.Text) || s.ComposerName
+                .StartsWith(SearchTb.Text))
+                .ToList().OrderBy(s => s.ComposerName);
+        }
+
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-
+            new AddCompositor().ShowDialog();
+            UpdateList();
         }
 
         private void DeleteM1_Click(object sender, RoutedEventArgs e)

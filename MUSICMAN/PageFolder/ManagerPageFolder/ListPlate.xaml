@@ -82,28 +82,28 @@
                     <DataGrid.Columns>
 
                         <DataGridTextColumn Header="Магазин"
-                                            Binding="{Binding Cinema.CinemaName}"
+                                            Binding="{Binding Shop.ShopName}"
                                             Width="120" />
                         <DataGridTextColumn Header="Название    "
-                                            Binding="{Binding WorkerInfo.LastName}"
+                                            Binding="{Binding PlateName}"
                                             Width="150" />
                         <DataGridTextColumn Header="Композитор"
-                                            Binding="{Binding TicketNumber}"
+                                            Binding="{Binding Composer.ComposerName}"
                                             Width="150" />
                         <DataGridTextColumn Header="Издатель"
-                                            Binding="{Binding Films.FilmName}"
+                                            Binding="{Binding Publisher.PublisherName}"
                                             Width="150" />
                         <DataGridTextColumn Header="Цена"
-                                            Binding="{Binding SellDate, StringFormat='yyyy/MM/dd HH:mm:ss'}"
+                                            Binding="{Binding Cost}"
                                             Width="80" />
                         <DataGridTextColumn Header="Длительность"
-                                            Binding="{Binding Halls.HallName}"
+                                            Binding="{Binding Duration}"
                                             Width="130" />
                         <DataGridTextColumn Header="Дата создания"
-                                            Binding="{Binding Seats.RowSeatsNumber}"
+                                            Binding="{Binding CreationDate}"
                                             Width="130" />
                         <DataGridTextColumn Header="Количество"
-                                            Binding="{Binding Seats.SeatNumber}"
+                                            Binding="{Binding Count}"
                                             Width="100" />
                     </DataGrid.Columns>
                 </DataGrid>

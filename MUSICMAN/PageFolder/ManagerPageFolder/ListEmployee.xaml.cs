@@ -27,7 +27,7 @@ namespace MUSICMAN.PageFolder.ManagerPageFolder
         {
             InitializeComponent();
             ListEmployeeLB.ItemsSource = DBEntities.GetContext()
-            .Workers.Where(u => u.User.Roles.NameRole != "Директор" && u.User.Roles.NameRole != "Администратор")
+            .Workers.Where(u => u.User.Roles.NameRole != "Директор" && u.User.Roles.NameRole != "Администратор" && u.User.Roles.NameRole != "Менеджер")
             .ToList().OrderBy(u => u.LastName);
         }
 
@@ -46,8 +46,9 @@ namespace MUSICMAN.PageFolder.ManagerPageFolder
         private void UpdateList()
         {
             ListEmployeeLB.ItemsSource = DBEntities.GetContext()
-                    .User.Where(u => u.Login.StartsWith(SearchTb.Text) && u.Roles.NameRole != "Администратор" && u.Roles.NameRole != "Директор")
-                    .OrderBy(u => u.Login)
+                    .Workers.Where(u => u.FirstName.StartsWith(SearchTb.Text) && u.User.Roles.NameRole != "Администратор" &&
+                    u.User.Roles.NameRole != "Директор" && u.User.Roles.NameRole != "Менеджер")
+                    .OrderBy(u => u.FirstName)
                     .ToList();
         }
 
@@ -69,8 +70,7 @@ namespace MUSICMAN.PageFolder.ManagerPageFolder
                         DBEntities.GetContext().Workers.Remove(ListEmployeeLB.SelectedItem as Workers);
                         DBEntities.GetContext().SaveChanges();
                         MBClass.InfoMB("Пользователь удален");
-                        ListEmployeeLB.ItemsSource = DBEntities.GetContext()
-                    .Workers.ToList();
+                        UpdateList();
                     }
                 }
             }
