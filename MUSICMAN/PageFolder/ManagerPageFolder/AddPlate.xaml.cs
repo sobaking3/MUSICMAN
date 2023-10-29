@@ -1,6 +1,8 @@
-﻿using MUSICMAN.DataFolder;
+﻿using MUSICMAN.ClassFolder;
+using MUSICMAN.DataFolder;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Validation;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +14,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using ToastNotifications;
+using ToastNotifications.Messages;
 
 namespace MUSICMAN.PageFolder.ManagerPageFolder
 {
@@ -20,10 +24,13 @@ namespace MUSICMAN.PageFolder.ManagerPageFolder
     /// </summary>
     public partial class AddPlate : Window
     {
+        Notifier notifier;
         public AddPlate()
         {
             InitializeComponent();
             ComboShop.ItemsSource = DBEntities.GetContext().Shop.ToList();
+            ComboComposer.ItemsSource = DBEntities.GetContext().Composer.ToList();
+            ComboPublisher.ItemsSource = DBEntities.GetContext().Publisher.ToList();
         }
 
         private void Back_Click(object sender, RoutedEventArgs e)
@@ -49,9 +56,47 @@ namespace MUSICMAN.PageFolder.ManagerPageFolder
             }
         }
 
-        private void AddCompositorBtn_Click(object sender, RoutedEventArgs e)
+        private void PlateInfoAdd()
         {
+            if (ElementsToolsClass.AllFieldsFilled(this))
+            {
+                var Plates = new Plates()
+                {
+                    IdShop = Int32.Parse(ComboShop.SelectedValue.ToString()),
+                    PlateName = NameTb.Text,
+                    IdComposer = Int32.Parse(ComboComposer.SelectedValue.ToString()),
+                    IdPublisher = Int32.Parse(ComboPublisher.SelectedValue.ToString()),
+                    Cost = CostTb.Text,
+                    Duration = DurationTP.Text,
+                    CreationDate = DatePickerTb.SelectedDate.Value,
+                    Count = CountTb.Text,
+                };
+                DBEntities.GetContext().Plates.Add(Plates);
+                DBEntities.GetContext().SaveChanges();
 
+
+            }
+        }
+
+        private void AddPlateBtn_Click(object sender, RoutedEventArgs e)
+        {
+            if (ElementsToolsClass.AllFieldsFilled(this))
+            {
+                try
+                {
+                    PlateInfoAdd();
+                    notifier.ShowSuccess("Пластинка добавлена");
+                    ElementsToolsClass.ClearAllControls(this);
+                }
+                catch (DbEntityValidationException ex)
+                {
+                    MBClass.ErrorMB(ex);
+                }
+            }
+            else
+            {
+                MBClass.ErrorMB("Вы не ввели все нужные данные!");
+            }
         }
     }
 }
