@@ -27,15 +27,28 @@ namespace MUSICMAN.PageFolder.ManagerPageFolder
         Notifier notifier;
         public AddPlate()
         {
+            notifier = App.GetWindowNotifer(this);
             InitializeComponent();
             ComboShop.ItemsSource = DBEntities.GetContext().Shop.ToList();
             ComboComposer.ItemsSource = DBEntities.GetContext().Composer.ToList();
             ComboPublisher.ItemsSource = DBEntities.GetContext().Publisher.ToList();
+            ComboStock.ItemsSource = DBEntities.GetContext().Stocks.ToList();
+            ComboProvider.ItemsSource = DBEntities.GetContext().Provider.ToList();
         }
 
         private void Back_Click(object sender, RoutedEventArgs e)
         {
             Close();
+        }
+
+        private void CountTb_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            // Проверяем, является ли вводимый символ цифрой
+            if (!char.IsDigit(e.Text, e.Text.Length - 1))
+            {
+                // Если символ не является цифрой, отменяем его ввод
+                e.Handled = true;
+            }
         }
 
         private void ComboShopCb_TextChanged(object sender, TextChangedEventArgs e)
@@ -70,6 +83,8 @@ namespace MUSICMAN.PageFolder.ManagerPageFolder
                     Duration = DurationTP.Text,
                     CreationDate = DatePickerTb.SelectedDate.Value,
                     Count = Convert.ToInt32(CountTb.Text),
+                    IdStock = Int32.Parse(ComboStock.SelectedValue.ToString()),
+                    IdProvider = Int32.Parse(ComboProvider.SelectedValue.ToString()),
                 };
                 DBEntities.GetContext().Plates.Add(Plates);
                 DBEntities.GetContext().SaveChanges();

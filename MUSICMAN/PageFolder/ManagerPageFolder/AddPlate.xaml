@@ -43,6 +43,8 @@
                 <RowDefinition Height="10" />
                 <RowDefinition Height="50" />
                 <RowDefinition Height="10" />
+                <RowDefinition Height="50" />
+                <RowDefinition Height="10" />
 
                 <RowDefinition Height="70" />
                 <RowDefinition />
@@ -89,8 +91,8 @@
                       TextBoxBase.TextChanged="ComboShopCb_TextChanged"
                       Background="Transparent"
                       SelectedValuePath="IdShop"
-                      SelectedItem="{Binding Shop.Name}"
-                      DisplayMemberPath="Name"
+                      SelectedItem="{Binding Shop.ShopName}"
+                      DisplayMemberPath="ShopName"
                       BorderBrush="DarkGray"
                       Height="24">
             </ComboBox>
@@ -121,6 +123,7 @@
                       Grid.Column="4"
                       Grid.Row="5"
                       Foreground="Black"
+                      FontFamily="16"
                       IsTextSearchEnabled="False"
                       Background="Transparent"
                       SelectedValuePath="IdComposer"
@@ -154,12 +157,34 @@
             <ComboBox x:Name="ComboPublisher"
                       Grid.Column="4"
                       Grid.Row="7"
+                      FontFamily="16"
                       Foreground="Black"
                       IsTextSearchEnabled="False"
                       Background="Transparent"
                       SelectedValuePath="IdPublisher"
                       SelectedItem="{Binding Publisher.PublisherName}"
                       DisplayMemberPath="PublisherName"
+                      BorderBrush="DarkGray"
+                      Height="24">
+            </ComboBox>
+
+            <Label Content="Поставщик"
+                   Style="{DynamicResource NormalLabel}"
+                   Grid.Column="3"
+                   Grid.Row="9"
+                   Margin="10,0,10,0"
+                   Height="30" />
+
+            <ComboBox x:Name="ComboProvider"
+                      Grid.Column="4"
+                      Grid.Row="9"
+                      FontFamily="16"
+                      Foreground="Black"
+                      IsTextSearchEnabled="False"
+                      Background="Transparent"
+                      SelectedValuePath="IdProvider"
+                      SelectedItem="{Binding Provider.ProviderName}"
+                      DisplayMemberPath="ProviderName"
                       BorderBrush="DarkGray"
                       Height="24">
             </ComboBox>
@@ -180,6 +205,7 @@
             <materialDesign:TimePicker  x:Name="DurationTP"
                                         Grid.Row="3"
                                         Grid.Column="7"
+                                        FontFamily="16"
                                         Is24Hours="True"
                                         BorderBrush="DarkGray"
                                         Foreground="Black"
@@ -196,6 +222,7 @@
                         SelectedDate="{Binding DateOfBirth}"
                         Grid.Column="7"
                         Grid.Row="5"
+                        FontFamily="16"
                         BorderBrush="DarkGray"
                         Foreground="Black"
                         Height="24">
@@ -203,8 +230,9 @@
                     <Style TargetType="Calendar"
                            BasedOn="{StaticResource MaterialDesignCalendarPortrait}">
                         <Style.Resources>
+
                             <SolidColorBrush x:Key="PrimaryHueMidBrush"
-                                             Color="#373A6B" />
+                                             Color="White" />
                         </Style.Resources>
                     </Style>
                 </DatePicker.CalendarStyle>
@@ -221,12 +249,34 @@
                      Style="{DynamicResource TBStyle}"
                      Grid.Row="7"
                      Grid.Column="7"
-                     Height="28" />
+                     Height="28"
+                     PreviewTextInput="CountTb_PreviewTextInput" />
+
+            <Label Content="Склад"
+                   Style="{DynamicResource NormalLabel}"
+                   Grid.Column="6"
+                   Grid.Row="9"
+                   Height="30" />
+
+            <ComboBox x:Name="ComboStock"
+                      Grid.Row="9"
+                      Grid.Column="7"
+                      Height="28"
+                      FontFamily="16"
+                      Foreground="Black"
+                      IsTextSearchEnabled="False"
+                      Background="Transparent"
+                      SelectedValuePath="IdStock"
+                      SelectedItem="{Binding Stocks.StockNumber}"
+                      DisplayMemberPath="StockNumber"
+                      BorderBrush="DarkGray">
+            </ComboBox>
+
 
 
 
             <Button x:Name="AddPlateBtn"
-                    Grid.Row="9"
+                    Grid.Row="11"
                     Content="Добавить"
                     Click="AddPlateBtn_Click"
                     Style="{DynamicResource ButtonsStyle}"

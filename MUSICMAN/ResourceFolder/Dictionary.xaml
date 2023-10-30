@@ -94,13 +94,17 @@
                                     Property="Background"
                                     Value="#706F6F" />
                         </Trigger>
-
-
-                       <Trigger Property="IsFocused"
+                        <Trigger Property="IsFocused"
                                  Value="True">
                             <Setter TargetName="buttonBorder"
                                     Property="Background"
                                     Value="#706F6F" />
+                        </Trigger>
+                        <Trigger Property="IsMouseOver"
+                                 Value="True">
+                            <Setter TargetName="buttonBorder"
+                                    Property="Background"
+                                    Value="#716E6E" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>

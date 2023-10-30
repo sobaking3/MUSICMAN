@@ -25,7 +25,7 @@
                     Margin="0,58,0,0">
                 <Button Background="#706F6F"
                         Margin="838,0,20, 21"
-                        Content="+"
+                        Content="+" Click="Button_Click"
                         Foreground="White"
                         FontSize="20"
                         Padding="0 0 0.5 6" />
@@ -60,7 +60,7 @@
                                    Grid.RowSpan="2">
                 <DataGrid x:Name="ListPlatesDG"
                           AlternatingRowBackground="#D8D8D8"
-                          AlternationCount="2"
+                          AlternationCount="2" Foreground="Black"
                           AutoGenerateColumns="False"
                           ScrollViewer.VerticalScrollBarVisibility="Visible"
                           ScrollViewer.HorizontalScrollBarVisibility="Visible"
@@ -68,8 +68,7 @@
                           ItemsSource="{Binding Tickets}"
                           Margin="0,22,10,0"
                           FontSize="16"
-                          BorderBrush="{x:Null}"
-                          Foreground="{x:Null}">
+                          BorderBrush="{x:Null}">
                     <DataGrid.RowHeight>30</DataGrid.RowHeight>
                     <DataGrid.Resources>
                         <Style TargetType="DataGridCell">
@@ -83,16 +82,19 @@
 
                         <DataGridTextColumn Header="Магазин"
                                             Binding="{Binding Shop.ShopName}"
-                                            Width="120" />
+                                            Width="100" />
                         <DataGridTextColumn Header="Название    "
                                             Binding="{Binding PlateName}"
                                             Width="150" />
                         <DataGridTextColumn Header="Композитор"
                                             Binding="{Binding Composer.ComposerName}"
-                                            Width="150" />
+                                            Width="120" />
                         <DataGridTextColumn Header="Издатель"
                                             Binding="{Binding Publisher.PublisherName}"
-                                            Width="150" />
+                                            Width="100" />
+                        <DataGridTextColumn Header="Поставщик"
+                                            Binding="{Binding Provider.ProviderName}"
+                                            Width="100" />
                         <DataGridTextColumn Header="Цена"
                                             Binding="{Binding Cost}"
                                             Width="80" />

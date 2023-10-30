@@ -65,7 +65,7 @@
           </Key>
           <Property Name="IdProvider" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ProviderName" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="ProviderUrAdress" Type="int" Nullable="false" />
+          <Property Name="ProviderUrAdress" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="ContractTil" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="Publisher">
@@ -74,8 +74,8 @@
           </Key>
           <Property Name="IdPublisher" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="PublisherName" Type="nvarchar" MaxLength="30" Nullable="false" />
-          <Property Name="PublisherContractTil" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Rating" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="PublisherContractTil" Type="date" Nullable="false" />
+          <Property Name="Rating" Type="nvarchar" MaxLength="4" Nullable="false" />
         </EntityType>
         <EntityType Name="Roles">
           <Key>
@@ -430,7 +430,7 @@
           </Key>
           <Property Name="IdProvider" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ProviderName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="ProviderUrAdress" Type="Int32" Nullable="false" />
+          <Property Name="ProviderUrAdress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="ContractTil" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Plates" Relationship="Self.FK_Plates_Provider" FromRole="Provider" ToRole="Plates" />
         </EntityType>
@@ -440,8 +440,8 @@
           </Key>
           <Property Name="IdPublisher" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="PublisherName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="PublisherContractTil" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Rating" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PublisherContractTil" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Rating" Type="String" MaxLength="4" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Plates" Relationship="Self.FK_Plates_Publisher" FromRole="Publisher" ToRole="Plates" />
         </EntityType>
         <EntityType Name="Roles">

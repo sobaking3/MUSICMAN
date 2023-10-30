@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MUSICMAN.ClassFolder;
+using MUSICMAN.DataFolder;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,11 +25,63 @@ namespace MUSICMAN.PageFolder.ManagerPageFolder
         public ListPlate()
         {
             InitializeComponent();
+            ListPlatesDG.ItemsSource = DBEntities.GetContext()
+                .Plates.ToList().OrderBy(u => u.IdPlate);
+        }
+
+
+        private void UpdateList()
+        {
+            ListPlatesDG.ItemsSource = DBEntities.GetContext()
+                 .Plates.Where(s => s.PlateName
+                 .StartsWith(SearchTb.Text) || s.Composer.ComposerName
+                 .StartsWith(SearchTb.Text))
+                 .ToList().OrderBy(s => s.PlateName);
+        }
+        private void Delete(object sender, TextChangedEventArgs e)
+        {
+            try
+            {
+                Plates Plates = ListPlatesDG.SelectedItem as Plates;
+
+                if (ListPlatesDG.SelectedItem == null)
+                {
+                    MBClass.ErrorMB("Пластинка не выбрана");
+                }
+                else
+                {
+                    if (MBClass.QuestionMB($"Удалить пластинку " +
+                    $"с названием {Plates.PlateName}?"))
+                    {
+                        DBEntities.GetContext().Plates.Remove(ListPlatesDG.SelectedItem as Plates);
+                        DBEntities.GetContext().SaveChanges();
+                        MBClass.InfoMB("Пластинка удалена");
+                        UpdateList();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MBClass.ErrorMB(ex);
+            }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            new AddPlate().ShowDialog();
+            UpdateList();
         }
 
         private void SearchTb_TextChanged(object sender, TextChangedEventArgs e)
         {
-
+            try
+            {
+                UpdateList();
+            }
+            catch (Exception ex)
+            {
+                MBClass.ErrorMB(ex);
+            }
         }
     }
 }
