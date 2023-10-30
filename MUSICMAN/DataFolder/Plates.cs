@@ -21,7 +21,7 @@ namespace MUSICMAN.DataFolder
         public int IdPublisher { get; set; }
         public string Cost { get; set; }
         public string Duration { get; set; }
-        public string CreationDate { get; set; }
+        public System.DateTime CreationDate { get; set; }
         public int Count { get; set; }
         public int IdProvider { get; set; }
         public int IdStock { get; set; }

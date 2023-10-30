@@ -54,7 +54,7 @@
           <Property Name="IdPublisher" Type="int" Nullable="false" />
           <Property Name="Cost" Type="nvarchar" MaxLength="30" Nullable="false" />
           <Property Name="Duration" Type="nvarchar" MaxLength="30" Nullable="false" />
-          <Property Name="CreationDate" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="CreationDate" Type="date" Nullable="false" />
           <Property Name="Count" Type="int" Nullable="false" />
           <Property Name="IdProvider" Type="int" Nullable="false" />
           <Property Name="IdStock" Type="int" Nullable="false" />
@@ -414,7 +414,7 @@
           <Property Name="IdPublisher" Type="Int32" Nullable="false" />
           <Property Name="Cost" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Duration" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="CreationDate" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CreationDate" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="Count" Type="Int32" Nullable="false" />
           <Property Name="IdProvider" Type="Int32" Nullable="false" />
           <Property Name="IdStock" Type="Int32" Nullable="false" />

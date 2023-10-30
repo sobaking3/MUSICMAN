@@ -69,7 +69,7 @@ namespace MUSICMAN.PageFolder.ManagerPageFolder
                     Cost = CostTb.Text,
                     Duration = DurationTP.Text,
                     CreationDate = DatePickerTb.SelectedDate.Value,
-                    Count = CountTb.Text,
+                    Count = Convert.ToInt32(CountTb.Text),
                 };
                 DBEntities.GetContext().Plates.Add(Plates);
                 DBEntities.GetContext().SaveChanges();
