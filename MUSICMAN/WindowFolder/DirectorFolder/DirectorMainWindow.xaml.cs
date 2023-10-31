@@ -1,5 +1,6 @@
 ﻿using MUSICMAN.ClassFolder;
 using MUSICMAN.PageFolder.AdminPageFolder;
+using MUSICMAN.PageFolder.DirectorPageFolder;
 using MUSICMAN.PageFolder.ManagerPageFolder;
 using System;
 using System.Collections.Generic;
@@ -17,20 +18,21 @@ using System.Windows.Shapes;
 using ToastNotifications;
 using ToastNotifications.Messages;
 
-namespace MUSICMAN.WindowFolder.ManagerFolder
+namespace MUSICMAN.WindowFolder.DirectorFolder
 {
     /// <summary>
-    /// Логика взаимодействия для ManagerMainWindow.xaml
+    /// Логика взаимодействия для DirectorMainWindow.xaml
     /// </summary>
-    public partial class ManagerMainWindow : Window
+    public partial class DirectorMainWindow : Window
     {
         Notifier notifier;
-        public ManagerMainWindow()
+        public DirectorMainWindow()
         {
             InitializeComponent();
             notifier = App.GetWindowNotifer(this);
             EmpName.Text = App.GetCurrentWorkerInitials();
         }
+
         private void ListUserBtn_Click(object sender, RoutedEventArgs e)
         {
             MainFrame.Navigate(new ListEmployee());
@@ -95,6 +97,11 @@ namespace MUSICMAN.WindowFolder.ManagerFolder
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             notifier.ShowInformation("Добро пожаловать!");
+        }
+
+        private void ListStock_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(new ListStockDir());
         }
     }
 }

@@ -57,7 +57,7 @@
                                    VerticalAlignment="Bottom"
                                    materialDesign:ShadowAssist.ShadowDepth="Depth5"
                                    Grid.RowSpan="2">
-                <DataGrid x:Name="ListProviderDG"
+                <DataGrid x:Name="ListPublisherDG"
                           AlternatingRowBackground="#D8D8D8"
                           AlternationCount="2"
                           AutoGenerateColumns="False"
@@ -81,14 +81,15 @@
                     <DataGrid.Columns>
 
                         <DataGridTextColumn Header="Название"
-                                            Binding="{Binding ProviderName}"
-                                            Width="*" />
-                        <DataGridTextColumn Header="Инвидуальный адрес"
-                                            Binding="{Binding ProviderUrAdress}"
-                                            Width="*" />
+                                            Binding="{Binding PublisherName}"
+                                            Width="*" />  
                         <DataGridTextColumn Header="Дата окончания контракта"
                                             Binding="{Binding ContractTil}"
                                             Width="*" />
+                        <DataGridTextColumn Header="Рейтинг"
+                                            Binding="{Binding Rating}"
+                                            Width="*" />
+                      
                     </DataGrid.Columns>
                 </DataGrid>
             </materialDesign:Card>

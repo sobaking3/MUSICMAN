@@ -38,7 +38,26 @@ namespace MUSICMAN.PageFolder.ManagerPageFolder
                  .StartsWith(SearchTb.Text))
                  .ToList().OrderBy(s => s.PlateName);
         }
-        private void Delete(object sender, TextChangedEventArgs e)
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            new AddPlate().ShowDialog();
+            UpdateList();
+        }
+
+        private void SearchTb_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            try
+            {
+                UpdateList();
+            }
+            catch (Exception ex)
+            {
+                MBClass.ErrorMB(ex);
+            }
+        }
+
+        private void DeleteM1_Click(object sender, RoutedEventArgs e)
         {
             try
             {
@@ -59,24 +78,6 @@ namespace MUSICMAN.PageFolder.ManagerPageFolder
                         UpdateList();
                     }
                 }
-            }
-            catch (Exception ex)
-            {
-                MBClass.ErrorMB(ex);
-            }
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            new AddPlate().ShowDialog();
-            UpdateList();
-        }
-
-        private void SearchTb_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            try
-            {
-                UpdateList();
             }
             catch (Exception ex)
             {

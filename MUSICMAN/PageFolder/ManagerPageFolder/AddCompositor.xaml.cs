@@ -1,6 +1,7 @@
 ﻿using Microsoft.Win32;
 using MUSICMAN.ClassFolder;
 using MUSICMAN.DataFolder;
+using MUSICMAN.WindowFolder.UtilsFolder;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity.Validation;
@@ -15,6 +16,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using ToastNotifications;
+using ToastNotifications.Messages;
 
 namespace MUSICMAN.PageFolder.ManagerPageFolder
 {
@@ -24,9 +27,11 @@ namespace MUSICMAN.PageFolder.ManagerPageFolder
     public partial class AddCompositor : Window
     {
         Composer Composer = new Composer();
+        Notifier notifier;
         public AddCompositor()
         {
             InitializeComponent();
+            notifier = App.GetWindowNotifer(this);
             CountryCb.ItemsSource = DBEntities.GetContext().Country.ToList();
         }
 
@@ -102,6 +107,13 @@ namespace MUSICMAN.PageFolder.ManagerPageFolder
             Close();
         }
 
+        private void CountryCb_DropDownOpened(object sender, EventArgs e)
+        {
+            TextBox textBox = (TextBox)((ComboBox)sender).Template.FindName("PART_EditableTextBox", (ComboBox)sender);
+            textBox.SelectionStart = ((ComboBox)sender).Text.Length;
+            textBox.SelectionLength = 0;
+        }
+
         private void CountryCb_TextChanged(object sender, TextChangedEventArgs e)
         {
             var tb = (TextBox)e.OriginalSource; if (tb.SelectionStart != 0)
@@ -117,7 +129,36 @@ namespace MUSICMAN.PageFolder.ManagerPageFolder
             {
                 CollectionView cv = (CollectionView)CollectionViewSource.GetDefaultView(CountryCb.ItemsSource);
                 cv.Filter = s => (s as Country).Name.IndexOf(CountryCb.Text, StringComparison.CurrentCultureIgnoreCase) >= 0;
+                if(cv.Count == 0)
+                {
+                    //CountryCb.IsDropDownOpen = false;
+                    CountryCbHelpText.Visibility = Visibility.Visible;
+                    CountryCb.IsDropDownOpen = false;
+                }
+                else
+                {
+                    CountryCbHelpText.Visibility = Visibility.Hidden;
+                }
             }
+        }
+
+        private void TextBlock_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            Country newCountry = null;
+            // Открытик окна
+            new AddCountryWindow(c => newCountry = c, CountryCb.Text).ShowDialog();
+
+            if(newCountry == null)
+            {
+                return;
+            }
+
+            CountryCb.ItemsSource = DBEntities.GetContext().Country.ToList();
+            CountryCb.SelectedItem = newCountry;
+
+            notifier.ShowSuccess($"Страна {newCountry.Name} добавлена!");
+
+            CountryCbHelpText.Visibility = Visibility.Hidden;
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using MUSICMAN.ClassFolder;
 using MUSICMAN.DataFolder;
+using MUSICMAN.WindowFolder.DirectorFolder;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -75,22 +76,16 @@ namespace MUSICMAN.WindowFolder
                         {
                             case 1:
                                 window = new AdminFolder.AdminMainWindow();
-
                                 break;
                             case 2:      
                                 window = new ManagerFolder.ManagerMainWindow();
-                                
-
+                                   break;
+                            case 3:
+                                window = new DirectorMainWindow();
                                 break;
-                                //case 3:
-                                //    MBClass.InfoMB("Сотрудник");
-                                //    new EmployeeFolder.EmployeeMainWindow().ShowDialog();
-                                //    break;
-                                //case 4:
-                                //    MBClass.InfoMB("Директор");
-                                //    new DirectorFolder.DirectorMainWindow().ShowDialog();
-                                //    Hide();
-                                //    break;
+                            case 4:
+                                window = new EmployeeMainWindow.EmployeeMainWindow();
+                                break;
                         }
 
                         if(window != null)

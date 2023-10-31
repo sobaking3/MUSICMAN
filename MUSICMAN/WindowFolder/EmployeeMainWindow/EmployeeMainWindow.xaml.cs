@@ -1,5 +1,6 @@
 ﻿using MUSICMAN.ClassFolder;
 using MUSICMAN.PageFolder.AdminPageFolder;
+using MUSICMAN.PageFolder.EmployeePageFolder;
 using MUSICMAN.PageFolder.ManagerPageFolder;
 using System;
 using System.Collections.Generic;
@@ -17,23 +18,19 @@ using System.Windows.Shapes;
 using ToastNotifications;
 using ToastNotifications.Messages;
 
-namespace MUSICMAN.WindowFolder.ManagerFolder
+namespace MUSICMAN.WindowFolder.EmployeeMainWindow
 {
     /// <summary>
-    /// Логика взаимодействия для ManagerMainWindow.xaml
+    /// Логика взаимодействия для EmployeeMainWindow.xaml
     /// </summary>
-    public partial class ManagerMainWindow : Window
+    public partial class EmployeeMainWindow : Window
     {
         Notifier notifier;
-        public ManagerMainWindow()
+        public EmployeeMainWindow()
         {
             InitializeComponent();
             notifier = App.GetWindowNotifer(this);
             EmpName.Text = App.GetCurrentWorkerInitials();
-        }
-        private void ListUserBtn_Click(object sender, RoutedEventArgs e)
-        {
-            MainFrame.Navigate(new ListEmployee());
         }
 
         private void Border_MouseDown(object sender, MouseButtonEventArgs e)
@@ -42,21 +39,6 @@ namespace MUSICMAN.WindowFolder.ManagerFolder
             {
                 DragMove();
             }
-        }
-
-        private void MinimizeBtn_Click(object sender, RoutedEventArgs e)
-        {
-            WindowState = WindowState.Minimized;
-        }
-
-        private void ExitBtn_Click(object sender, RoutedEventArgs e)
-        {
-            MBClass.MBLogOut(this);
-        }
-
-        private void ShopListBtn_Click(object sender, RoutedEventArgs e)
-        {
-            MainFrame.Navigate(new ListShop());
         }
 
         private void Border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -72,26 +54,26 @@ namespace MUSICMAN.WindowFolder.ManagerFolder
             MBClass.MBExit();
         }
 
+        private void MinimizeBtn_Click(object sender, RoutedEventArgs e)
+        {
+            WindowState = WindowState.Minimized;
+        }
+
+        private void ExitBtn_Click(object sender, RoutedEventArgs e)
+        {
+            MBClass.MBLogOut(this);
+        }
+
+
         private void PlastList_Click(object sender, RoutedEventArgs e)
         {
-            MainFrame.Navigate(new ListPlate());
+            MainFrame.Navigate(new ListPlateEmp());
         }
 
         private void ListAuthor_Click(object sender, RoutedEventArgs e)
         {
-            MainFrame.Navigate(new ListCompositors());
+            MainFrame.Navigate(new ListCompositorsEmp());
         }
-
-        private void ListPublisher_Click(object sender, RoutedEventArgs e)
-        {
-            MainFrame.Navigate(new ListPublisher());
-        }
-
-        private void ListProvider_Click(object sender, RoutedEventArgs e)
-        {
-            MainFrame.Navigate(new ListProvider());
-        }
-
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             notifier.ShowInformation("Добро пожаловать!");

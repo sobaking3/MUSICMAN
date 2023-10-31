@@ -15,29 +15,25 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace MUSICMAN.PageFolder.AdminPageFolder
+namespace MUSICMAN.PageFolder.EmployeePageFolder
 {
     /// <summary>
-    /// Логика взаимодействия для ListShop.xaml
+    /// Логика взаимодействия для ListPlateEmp.xaml
     /// </summary>
-    public partial class ListShop : Page
+    public partial class ListPlateEmp : Page
     {
-        public ListShop()
+        public ListPlateEmp()
         {
             InitializeComponent();
-            ListShopLB.ItemsSource = DBEntities.GetContext()
-                .Shop.ToList().OrderBy(u => u.ShopName);
+            ListPlatesDG.ItemsSource = DBEntities.GetContext()
+               .Plates.ToList().OrderBy(u => u.IdPlate);
         }
 
         private void SearchTb_TextChanged(object sender, TextChangedEventArgs e)
         {
             try
             {
-                ListShopLB.ItemsSource = DBEntities.GetContext()
-                    .Shop.Where(s => s.ShopName
-                    .StartsWith(SearchTb.Text) || s.ShopName
-                    .StartsWith(SearchTb.Text))
-                    .ToList().OrderBy(s => s.ShopName);
+                UpdateList();
             }
             catch (Exception ex)
             {
@@ -45,9 +41,14 @@ namespace MUSICMAN.PageFolder.AdminPageFolder
             }
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void UpdateList()
         {
-
+            ListPlatesDG.ItemsSource = DBEntities.GetContext()
+                 .Plates.Where(s => s.PlateName
+                 .StartsWith(SearchTb.Text) || s.Composer.ComposerName
+                 .StartsWith(SearchTb.Text))
+                 .ToList().OrderBy(s => s.PlateName);
         }
+
     }
 }

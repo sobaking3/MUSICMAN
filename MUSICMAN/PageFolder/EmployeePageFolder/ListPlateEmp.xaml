@@ -1,9 +1,9 @@
-﻿<Page x:Class="MUSICMAN.PageFolder.ManagerPageFolder.ListPlate"
+﻿<Page x:Class="MUSICMAN.PageFolder.EmployeePageFolder.ListPlateEmp"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-      xmlns:local="clr-namespace:MUSICMAN.PageFolder.ManagerPageFolder"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:MUSICMAN.PageFolder.EmployeePageFolder"
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       mc:Ignorable="d"
       d:DesignHeight="630"
@@ -21,16 +21,6 @@
                 <RowDefinition />
             </Grid.RowDefinitions>
 
-            <Border Grid.Column="1"
-                    Margin="0,58,0,0">
-                <Button Background="#706F6F"
-                        Margin="838,0,20, 21"
-                        Content="+" Click="Button_Click"
-                        Foreground="White"
-                        FontSize="20"
-                        Padding="0 0 0.5 6" />
-            </Border>
-
             <TextBox x:Name="SearchTb"
                      Grid.Column="1"
                      FontSize="16"
@@ -43,7 +33,7 @@
                      BorderThickness="0, 0, 0, 1"
                      Height="28"
                      VerticalAlignment="Top"
-                     Margin="0,58,122,0">
+                     Margin="51,58,48,0">
                 <materialDesign:HintAssist.Hint>
                     <StackPanel Orientation="Horizontal">
                         <materialDesign:PackIcon Kind="Search" />
@@ -60,7 +50,8 @@
                                    Grid.RowSpan="2">
                 <DataGrid x:Name="ListPlatesDG"
                           AlternatingRowBackground="#D8D8D8"
-                          AlternationCount="2" Foreground="Black"
+                          AlternationCount="2"
+                          Foreground="Black"
                           AutoGenerateColumns="False"
                           ScrollViewer.VerticalScrollBarVisibility="Visible"
                           ScrollViewer.HorizontalScrollBarVisibility="Visible"
@@ -69,13 +60,7 @@
                           Margin="0,22,10,0"
                           FontSize="16"
                           BorderBrush="{x:Null}">
-                    <DataGrid.ContextMenu>
-                        <ContextMenu>
-                            <MenuItem Header="Удалить пластинку"
-                                      x:Name="DeleteM1"
-                                      Click="DeleteM1_Click" />
-                        </ContextMenu>
-                    </DataGrid.ContextMenu>
+                    
                     <DataGrid.RowHeight>30</DataGrid.RowHeight>
                     <DataGrid.Resources>
                         <Style TargetType="DataGridCell">

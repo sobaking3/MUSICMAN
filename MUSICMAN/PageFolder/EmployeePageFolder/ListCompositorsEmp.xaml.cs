@@ -12,42 +12,41 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace MUSICMAN.PageFolder.AdminPageFolder
+namespace MUSICMAN.PageFolder.EmployeePageFolder
 {
     /// <summary>
-    /// Логика взаимодействия для ListShop.xaml
+    /// Логика взаимодействия для ListCompositorsEmp.xaml
     /// </summary>
-    public partial class ListShop : Page
+    public partial class ListCompositorsEmp : Window
     {
-        public ListShop()
+        public ListCompositorsEmp()
         {
             InitializeComponent();
-            ListShopLB.ItemsSource = DBEntities.GetContext()
-                .Shop.ToList().OrderBy(u => u.ShopName);
+            ListCompositorsLB.ItemsSource = DBEntities.GetContext()
+                .Composer.ToList().OrderBy(u => u.ComposerName);
+        }
+
+        private void UpdateList()
+        {
+            ListCompositorsLB.ItemsSource = DBEntities.GetContext()
+                .Composer.Where(s => s.ComposerName
+                .StartsWith(SearchTb.Text) || s.ComposerName
+                .StartsWith(SearchTb.Text))
+                .ToList().OrderBy(s => s.ComposerName);
         }
 
         private void SearchTb_TextChanged(object sender, TextChangedEventArgs e)
         {
             try
             {
-                ListShopLB.ItemsSource = DBEntities.GetContext()
-                    .Shop.Where(s => s.ShopName
-                    .StartsWith(SearchTb.Text) || s.ShopName
-                    .StartsWith(SearchTb.Text))
-                    .ToList().OrderBy(s => s.ShopName);
+                UpdateList();
             }
             catch (Exception ex)
             {
                 MBClass.ErrorMB(ex);
             }
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }

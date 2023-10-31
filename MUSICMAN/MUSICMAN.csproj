@@ -88,6 +88,9 @@
     <Compile Include="ClassFolder\ImageClass.cs" />
     <Compile Include="ClassFolder\MBClass.cs" />
     <Compile Include="ClassFolder\WindowsPositionProviderCustom.cs" />
+    <Compile Include="Components\Rating.xaml.cs">
+      <DependentUpon>Rating.xaml</DependentUpon>
+    </Compile>
     <Compile Include="DataFolder\Adress.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
@@ -161,6 +164,18 @@
     <Compile Include="PageFolder\DirectorPageFolder\AddShop.xaml.cs">
       <DependentUpon>AddShop.xaml</DependentUpon>
     </Compile>
+    <Compile Include="PageFolder\DirectorPageFolder\AddStock.xaml.cs">
+      <DependentUpon>AddStock.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PageFolder\DirectorPageFolder\ListStockDir.xaml.cs">
+      <DependentUpon>ListStockDir.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PageFolder\EmployeePageFolder\ListCompositorsEmp.xaml.cs">
+      <DependentUpon>ListCompositorsEmp.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PageFolder\EmployeePageFolder\ListPlateEmp.xaml.cs">
+      <DependentUpon>ListPlateEmp.xaml</DependentUpon>
+    </Compile>
     <Compile Include="PageFolder\ManagerPageFolder\AddCompositor.xaml.cs">
       <DependentUpon>AddCompositor.xaml</DependentUpon>
     </Compile>
@@ -197,11 +212,20 @@
     <Compile Include="WindowFolder\Authorization.xaml.cs">
       <DependentUpon>Authorization.xaml</DependentUpon>
     </Compile>
+    <Compile Include="WindowFolder\DirectorFolder\DirectorMainWindow.xaml.cs">
+      <DependentUpon>DirectorMainWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WindowFolder\EmployeeMainWindow\EmployeeMainWindow.xaml.cs">
+      <DependentUpon>EmployeeMainWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="WindowFolder\ManagerFolder\ManagerMainWindow.xaml.cs">
       <DependentUpon>ManagerMainWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="WindowFolder\MessageBoxCustom.xaml.cs">
       <DependentUpon>MessageBoxCustom.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WindowFolder\UtilsFolder\AddCountryWindow.xaml.cs">
+      <DependentUpon>AddCountryWindow.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -242,6 +266,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Components\Rating.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="PageFolder\AdminPageFolder\AddUsers.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -259,6 +287,22 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="PageFolder\DirectorPageFolder\AddShop.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PageFolder\DirectorPageFolder\AddStock.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PageFolder\DirectorPageFolder\ListStockDir.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PageFolder\EmployeePageFolder\ListCompositorsEmp.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PageFolder\EmployeePageFolder\ListPlateEmp.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -322,11 +366,23 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="WindowFolder\DirectorFolder\DirectorMainWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WindowFolder\EmployeeMainWindow\EmployeeMainWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="WindowFolder\ManagerFolder\ManagerMainWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="WindowFolder\MessageBoxCustom.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WindowFolder\UtilsFolder\AddCountryWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -337,9 +393,7 @@
   <ItemGroup>
     <Resource Include="ResourceFolder\background.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="PageFolder\EmployeePageFolder\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Resource Include="ResourceFolder\LogoImage.png" />
   </ItemGroup>
