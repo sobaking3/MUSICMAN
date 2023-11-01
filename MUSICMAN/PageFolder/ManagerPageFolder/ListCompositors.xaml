@@ -10,7 +10,7 @@
       Background="Transparent"
       d:DesignHeight="450"
       d:DesignWidth="800"
-      Title="Список авторов">
+      Title="Список музыкальных групп">
     <Grid>
         <Grid>
             <Grid.ColumnDefinitions>
@@ -80,7 +80,7 @@
                          Margin="10,10,10,0">
                     <ListBox.ContextMenu>
                         <ContextMenu>
-                            <MenuItem Header="Удалить композитора"
+                            <MenuItem Header="Удалить группу"
                                       x:Name="DeleteM1"
                                       Click="DeleteM1_Click" />
                         </ContextMenu>
@@ -159,9 +159,9 @@
                                 <TextBlock Grid.Row="1"
                                            Margin="0 3 0 0"
                                            Grid.Column="4">
-                            <Run Text="Дата рождения: "
+                            <Run Text="Дата создания: "
                                     FontWeight="Bold" />
-                            <Run Text="{Binding BitrhDate}" />
+                            <Run Text="{Binding CreationDate, StringFormat={}{0:dd.MM.yyyy}}" />
                                 </TextBlock>
 
                                 <TextBlock Grid.Column="2"
@@ -172,13 +172,6 @@
                             <Run Text="{Binding Rating}" />
                                 </TextBlock>
 
-                                <TextBlock Grid.Column="4"
-                                           Margin="0 3 0 0"
-                                           Grid.Row="2">
-                            <Run Text="Дата смерти: "
-                                    FontWeight="Bold" />
-                            <Run Text="{Binding DeathDate}" />
-                                </TextBlock>
                             </Grid>
                         </DataTemplate>
                     </ListBox.ItemTemplate>

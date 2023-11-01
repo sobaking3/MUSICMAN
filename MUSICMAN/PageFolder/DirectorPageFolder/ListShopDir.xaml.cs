@@ -71,7 +71,7 @@ namespace MUSICMAN.PageFolder.DirectorPageFolder
                     {
                         DBEntities.GetContext().Shop.Remove(ListShopLB.SelectedItem as Shop);
                         DBEntities.GetContext().SaveChanges();
-                        MBClass.InfoMB("Пользователь удален");
+                        MBClass.InfoMB("Магазин удален");
                         ListShopLB.ItemsSource = DBEntities.GetContext()
             .Shop.ToList().OrderBy(u => u.ShopName);
                     }

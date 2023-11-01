@@ -15,6 +15,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using ToastNotifications;
+using ToastNotifications.Messages;
 
 namespace MUSICMAN.PageFolder.ManagerPageFolder
 {
@@ -23,11 +25,14 @@ namespace MUSICMAN.PageFolder.ManagerPageFolder
     /// </summary>
     public partial class AddEmployee : Window
     {
+        Notifier notifier;
         Workers Workers = new Workers();
         User user = new User();
         Shop shop = new Shop();
         public AddEmployee()
         {
+
+            notifier = App.GetWindowNotifer(this);
             InitializeComponent();
             RoleCb.ItemsSource = DBEntities.GetContext()
            .Roles.Except(DBEntities.GetContext().Roles.Where(r => r.NameRole == "Администратор"
@@ -119,7 +124,7 @@ namespace MUSICMAN.PageFolder.ManagerPageFolder
                     AddUser();
                     WorkerInfoAdd();
 
-                    MBClass.InfoMB("Сотрудник добавлен");
+                    notifier.ShowSuccess("Сотрудник добавлен");
                     ElementsToolsClass.ClearAllControls(this);
                 }
                 catch (DbEntityValidationException ex)
@@ -129,7 +134,7 @@ namespace MUSICMAN.PageFolder.ManagerPageFolder
             }
             else
             {
-                MBClass.ErrorMB("Вы не ввели все нужные данные!");
+                notifier.ShowError("Вы не ввели все нужные данные!");
             }
 
         }

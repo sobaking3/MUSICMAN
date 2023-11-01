@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows;
+using MaterialDesignThemes.Wpf;
 
 namespace MUSICMAN.ClassFolder
 {
@@ -38,6 +39,7 @@ namespace MUSICMAN.ClassFolder
             {
                 if (child is TextBox textBox)
                 {
+                    // проверка заполненности TextBox
                     if (textBox.Tag != null && textBox.Tag.ToString() == "Optional")
                     {
                         continue;
@@ -49,11 +51,36 @@ namespace MUSICMAN.ClassFolder
                 }
                 else if (child is ComboBox comboBox)
                 {
+                    // проверка заполненности ComboBox
                     if (comboBox.Tag != null && comboBox.Tag.ToString() == "Optional")
                     {
                         continue;
                     }
                     if (comboBox.SelectedItem == null)
+                    {
+                        return false;
+                    }
+                }
+                else if (child is DatePicker datePicker)
+                {
+                    // проверка заполненности DatePicker
+                    if (datePicker.Tag != null && datePicker.Tag.ToString() == "Optional")
+                    {
+                        continue;
+                    }
+                    if (datePicker.SelectedDate == null)
+                    {
+                        return false;
+                    }
+                }
+                else if (child is TimePicker timePicker)
+                {
+                    // проверка заполненности TimePicker
+                    if (timePicker.Tag != null && timePicker.Tag.ToString() == "Optional")
+                    {
+                        continue;
+                    }
+                    if (timePicker.SelectedTime == null)
                     {
                         return false;
                     }

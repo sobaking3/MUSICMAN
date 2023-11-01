@@ -1,5 +1,6 @@
 ﻿using MUSICMAN.ClassFolder;
 using MUSICMAN.DataFolder;
+using MUSICMAN.PageFolder.ManagerPageFolder;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -52,6 +53,35 @@ namespace MUSICMAN.PageFolder.DirectorPageFolder
         {
             new AddProvider().ShowDialog();
             Updater();
+        }
+
+        private void DeleteM1_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                Provider Provider = ListProviderDG.SelectedItem as Provider;
+
+                if (ListProviderDG.SelectedItem == null)
+                {
+                    MBClass.ErrorMB("Поставщик не выбран");
+                }
+                else
+                {
+                    if (MBClass.QuestionMB($"Удалить поставщика " +
+                    $"с названием {Provider.ProviderName}?"))
+                    {
+                        DBEntities.GetContext().Provider.Remove(ListProviderDG.SelectedItem as Provider);
+                        DBEntities.GetContext().SaveChanges();
+                        MBClass.InfoMB("Поставщик удален");
+                        ListProviderDG.ItemsSource = DBEntities.GetContext()
+            .Provider.ToList().OrderBy(u => u.ProviderName);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MBClass.ErrorMB(ex);
+            }
         }
     }
 }

@@ -75,7 +75,7 @@
                          Margin="0,10,10,10">
                     <ListBox.ContextMenu>
                         <ContextMenu>
-                            <MenuItem Header="Удалить магазин?"
+                            <MenuItem Header="Удалить магазин"
                                       x:Name="DeleteM1"
                                       Click="DeleteM1_Click" />
                         </ContextMenu>
@@ -86,7 +86,7 @@
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="10" />
                                     <ColumnDefinition Width="5" />
-                                    <ColumnDefinition Width="250" />
+                                    <ColumnDefinition Width="290" />
                                     <ColumnDefinition Width="25" />
                                     <ColumnDefinition Width="290" />
                                 </Grid.ColumnDefinitions>

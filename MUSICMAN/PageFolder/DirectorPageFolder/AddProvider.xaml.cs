@@ -69,7 +69,7 @@ namespace MUSICMAN.PageFolder.DirectorPageFolder
             }
             else
             {
-                MBClass.ErrorMB("Вы не ввели все нужные данные!");
+                notifier.ShowError("Вы не ввели все нужные данные!");
             }
         }
     }

@@ -193,7 +193,7 @@
                              Width="200"
                              Click="LoginBtn_Click"
                              materialDesign:ButtonAssist.CornerRadius="10"
-                             FontSize="18"
+                             FontSize="18"      
                              Background="Gray"
                              Content="Войти"></Button>
 

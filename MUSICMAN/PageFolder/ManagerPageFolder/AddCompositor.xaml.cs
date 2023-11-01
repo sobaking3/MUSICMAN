@@ -70,7 +70,7 @@ namespace MUSICMAN.PageFolder.ManagerPageFolder
                 try
                 {
                     ComposerInfoAdd();
-                    MBClass.InfoMB("Автор добавлен");
+                    notifier.ShowSuccess("Группа добавлена");
                     ElementsToolsClass.ClearAllControls(this);
                 }
                 catch (DbEntityValidationException ex)
@@ -80,7 +80,7 @@ namespace MUSICMAN.PageFolder.ManagerPageFolder
             }
             else
             {
-                MBClass.ErrorMB("Вы не ввели все нужные данные!");
+                notifier.ShowError("Вы не ввели все нужные данные!");
             }
         }
 
@@ -93,8 +93,7 @@ namespace MUSICMAN.PageFolder.ManagerPageFolder
                 MusicCount = Convert.ToInt32(TracksCountTb.Text),
                 Rating = RateTb.Text,
                 IdCountry = Int32.Parse(CountryCb.SelectedValue.ToString()),
-                BitrhDate = DateBirthTb.SelectedDate.Value, 
-                DeathDate = DateDeathTb.SelectedDate.Value,
+                CreationDate = CreateDateTb.SelectedDate.Value,
                 PhotoStaff = !string.IsNullOrEmpty(selectedFileName) ? ImageClass.ConvertImageToByteArray(selectedFileName) : null
             };
             DBEntities.GetContext().Composer.Add(ComposerInfoAdd);
@@ -185,6 +184,24 @@ namespace MUSICMAN.PageFolder.ManagerPageFolder
             {
                 e.Handled = true;
             }
+        }
+
+        private void TracksCountTb_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+                // Проверяем, является ли вводимый символ цифрой
+                if (!char.IsDigit(e.Text, e.Text.Length - 1))
+                {
+                    // Если символ не является цифрой, отменяем его ввод
+                    e.Handled = true;
+                }
+
+                // Указываем максимальное количество символов в текстбоксе
+                int maxLength = 5; // Здесь можно указать нужное значение
+                TextBox textBox = (TextBox)sender;
+                if (textBox.Text.Length >= maxLength)
+                {
+                    e.Handled = true;
+                }
         }
     }
 }

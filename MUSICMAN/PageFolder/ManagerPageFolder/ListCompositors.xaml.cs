@@ -64,16 +64,16 @@ namespace MUSICMAN.PageFolder.ManagerPageFolder
 
                 if (ListCompositorsLB.SelectedItem == null)
                 {
-                    MBClass.ErrorMB("Пользователь не выбран");
+                    MBClass.ErrorMB("Группа не выбрана");
                 }
                 else
                 {
-                    if (MBClass.QuestionMB($"Удалить автора " +
+                    if (MBClass.QuestionMB($"Удалить группу " +
                     $"с именем {Composer.ComposerName}?"))
                     {
                         DBEntities.GetContext().Composer.Remove(ListCompositorsLB.SelectedItem as Composer);
                         DBEntities.GetContext().SaveChanges();
-                        MBClass.InfoMB("Автор удален");
+                        MBClass.InfoMB("Группа удалена");
                         ListCompositorsLB.ItemsSource = DBEntities.GetContext()
                     .Composer.ToList();
                     }

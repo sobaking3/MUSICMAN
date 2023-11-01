@@ -59,7 +59,7 @@ namespace MUSICMAN.PageFolder.DirectorPageFolder
                         .FirstOrDefault(
                 u => u.StockNumber == formattedStockNumber) != null)
             {
-
+                return formattedStockNumber;
             }
             return formattedStockNumber;
         }
@@ -87,7 +87,7 @@ namespace MUSICMAN.PageFolder.DirectorPageFolder
             }
             else
             {
-                MBClass.ErrorMB("Вы не ввели все нужные данные!");
+                notifier.ShowError("Вы не ввели все нужные данные!");
             }
         }
     }

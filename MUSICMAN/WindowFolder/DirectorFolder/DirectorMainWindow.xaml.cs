@@ -58,7 +58,7 @@ namespace MUSICMAN.WindowFolder.DirectorFolder
 
         private void ShopListBtn_Click(object sender, RoutedEventArgs e)
         {
-            MainFrame.Navigate(new ListShop());
+            MainFrame.Navigate(new ListShopDir());
         }
 
         private void Border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)

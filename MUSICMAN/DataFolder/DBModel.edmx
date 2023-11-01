@@ -33,8 +33,7 @@
           <Property Name="Rating" Type="nvarchar" MaxLength="10" Nullable="false" />
           <Property Name="PhotoStaff" Type="varbinary(max)" />
           <Property Name="IdCountry" Type="int" Nullable="false" />
-          <Property Name="BitrhDate" Type="date" Nullable="false" />
-          <Property Name="DeathDate" Type="date" />
+          <Property Name="CreationDate" Type="date" Nullable="false" />
         </EntityType>
         <EntityType Name="Country">
           <Key>
@@ -389,8 +388,7 @@
           <Property Name="Rating" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="PhotoStaff" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="IdCountry" Type="Int32" Nullable="false" />
-          <Property Name="BitrhDate" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="DeathDate" Type="DateTime" Precision="0" />
+          <Property Name="CreationDate" Type="DateTime" Nullable="false" Precision="0" />
           <NavigationProperty Name="Country" Relationship="Self.FK_Composer_Country" FromRole="Composer" ToRole="Country" />
           <NavigationProperty Name="Plates" Relationship="Self.FK_Plates_Composer" FromRole="Composer" ToRole="Plates" />
         </EntityType>
@@ -763,8 +761,7 @@
                 <ScalarProperty Name="Rating" ColumnName="Rating" />
                 <ScalarProperty Name="PhotoStaff" ColumnName="PhotoStaff" />
                 <ScalarProperty Name="IdCountry" ColumnName="IdCountry" />
-                <ScalarProperty Name="BitrhDate" ColumnName="BitrhDate" />
-                <ScalarProperty Name="DeathDate" ColumnName="DeathDate" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
