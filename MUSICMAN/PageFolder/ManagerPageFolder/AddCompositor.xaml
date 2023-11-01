@@ -159,7 +159,7 @@
 
             <TextBox x:Name="RateTb"
                      Style="{DynamicResource TBStyle}"
-                     Grid.Row="5"
+                     Grid.Row="5" PreviewTextInput="RateTb_PreviewTextInput"
                      Grid.Column="4"
                      Height="28" />
 
@@ -241,6 +241,7 @@
                         SelectedDate="{Binding DateOfBirth}"
                         Grid.Column="7" 
                         materialDesign:HintAssist.Hint="Опционально"
+                        
                         Text="Не обязательно"
                         FontSize="16"
                         Grid.Row="1" Tag="Optional"

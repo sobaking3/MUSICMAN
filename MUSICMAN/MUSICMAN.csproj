@@ -161,11 +161,26 @@
     <Compile Include="PageFolder\AdminPageFolder\ListUser.xaml.cs">
       <DependentUpon>ListUser.xaml</DependentUpon>
     </Compile>
+    <Compile Include="PageFolder\DirectorPageFolder\AddProvider.xaml.cs">
+      <DependentUpon>AddProvider.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PageFolder\DirectorPageFolder\AddPublisher.xaml.cs">
+      <DependentUpon>AddPublisher.xaml</DependentUpon>
+    </Compile>
     <Compile Include="PageFolder\DirectorPageFolder\AddShop.xaml.cs">
       <DependentUpon>AddShop.xaml</DependentUpon>
     </Compile>
     <Compile Include="PageFolder\DirectorPageFolder\AddStock.xaml.cs">
       <DependentUpon>AddStock.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PageFolder\DirectorPageFolder\ListProviderDir.xaml.cs">
+      <DependentUpon>ListProviderDir.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PageFolder\DirectorPageFolder\ListPublisherDir.xaml.cs">
+      <DependentUpon>ListPublisherDir.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PageFolder\DirectorPageFolder\ListShopDir.xaml.cs">
+      <DependentUpon>ListShopDir.xaml</DependentUpon>
     </Compile>
     <Compile Include="PageFolder\DirectorPageFolder\ListStockDir.xaml.cs">
       <DependentUpon>ListStockDir.xaml</DependentUpon>
@@ -184,12 +199,6 @@
     </Compile>
     <Compile Include="PageFolder\ManagerPageFolder\AddPlate.xaml.cs">
       <DependentUpon>AddPlate.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="PageFolder\ManagerPageFolder\AddProvider.xaml.cs">
-      <DependentUpon>AddProvider.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="PageFolder\ManagerPageFolder\AddPublisher.xaml.cs">
-      <DependentUpon>AddPublisher.xaml</DependentUpon>
     </Compile>
     <Compile Include="PageFolder\ManagerPageFolder\ListCompositors.xaml.cs">
       <DependentUpon>ListCompositors.xaml</DependentUpon>
@@ -286,11 +295,31 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="PageFolder\DirectorPageFolder\AddProvider.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PageFolder\DirectorPageFolder\AddPublisher.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="PageFolder\DirectorPageFolder\AddShop.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="PageFolder\DirectorPageFolder\AddStock.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PageFolder\DirectorPageFolder\ListProviderDir.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PageFolder\DirectorPageFolder\ListPublisherDir.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PageFolder\DirectorPageFolder\ListShopDir.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -315,14 +344,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="PageFolder\ManagerPageFolder\AddPlate.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="PageFolder\ManagerPageFolder\AddProvider.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="PageFolder\ManagerPageFolder\AddPublisher.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -393,13 +414,6 @@
   <ItemGroup>
     <Resource Include="ResourceFolder\background.png" />
   </ItemGroup>
-  <ItemGroup />
-  <ItemGroup>
-    <Resource Include="ResourceFolder\LogoImage.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
-  </ItemGroup>
   <ItemGroup>
     <Content Include="DataFolder\DBModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -411,6 +425,12 @@
       <DependentUpon>DBModel.edmx</DependentUpon>
       <LastGenOutput>DBModel.cs</LastGenOutput>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ResourceFolder\LogoImage.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.4.9.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.4.9.0\build\MaterialDesignThemes.targets')" />

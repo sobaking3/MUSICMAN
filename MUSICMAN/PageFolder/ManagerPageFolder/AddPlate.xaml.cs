@@ -49,6 +49,14 @@ namespace MUSICMAN.PageFolder.ManagerPageFolder
                 // Если символ не является цифрой, отменяем его ввод
                 e.Handled = true;
             }
+
+            // Указываем максимальное количество символов в текстбоксе
+            int maxLength = 5; // Здесь можно указать нужное значение
+            TextBox textBox = (TextBox)sender;
+            if (textBox.Text.Length >= maxLength)
+            {
+                e.Handled = true;
+            }
         }
 
         private void ComboShopCb_TextChanged(object sender, TextChangedEventArgs e)

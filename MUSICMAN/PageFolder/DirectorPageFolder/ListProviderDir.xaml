@@ -1,13 +1,14 @@
-﻿<Page x:Class="MUSICMAN.PageFolder.ManagerPageFolder.ListPublisher"
+﻿<Page x:Class="MUSICMAN.PageFolder.DirectorPageFolder.ListProviderDir"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:MUSICMAN.PageFolder.ManagerPageFolder"
+      xmlns:local="clr-namespace:MUSICMAN.PageFolder.DirectorPageFolder"
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-      mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
-      Title="Список издаталей">
+      mc:Ignorable="d"
+      d:DesignHeight="450"
+      d:DesignWidth="800"
+      Title="Список поставщиков">
 
     <Grid>
         <Grid Margin="0,-35,0,0">
@@ -19,6 +20,7 @@
                 <RowDefinition Height="120" />
                 <RowDefinition />
             </Grid.RowDefinitions>
+
 
 
             <TextBox x:Name="SearchTb"
@@ -33,7 +35,7 @@
                      BorderThickness="0, 0, 0, 1"
                      Height="28"
                      VerticalAlignment="Top"
-                     Margin="0,58,33,0">
+                     Margin="0,48,110,0">
                 <materialDesign:HintAssist.Hint>
                     <StackPanel Orientation="Horizontal">
                         <materialDesign:PackIcon Kind="Search" />
@@ -41,6 +43,26 @@
                     </StackPanel>
                 </materialDesign:HintAssist.Hint>
             </TextBox>
+            <Border Grid.Column="1">
+                <Button Background="#706F6F"
+                        Click="Button_Click"
+                        Margin="849,19,10,12"
+                        Content="+"
+                        Foreground="White"
+                        FontSize="20"
+                        Padding="0 0 0.5 6"
+                        RenderTransformOrigin="0.5,0.5">
+                    <Button.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform ScaleX="-1" />
+                            <SkewTransform />
+                            <RotateTransform />
+                            <TranslateTransform />
+                        </TransformGroup>
+                    </Button.RenderTransform>
+                </Button>
+            </Border>
+
             <materialDesign:Card   Grid.Column="1"
                                    UniformCornerRadius="10"
                                    Height="560"
@@ -48,14 +70,14 @@
                                    VerticalAlignment="Bottom"
                                    materialDesign:ShadowAssist.ShadowDepth="Depth5"
                                    Grid.RowSpan="2">
-                <DataGrid x:Name="ListPublisherDG"
+                <DataGrid x:Name="ListProviderDG"
                           AlternatingRowBackground="#D8D8D8"
                           AlternationCount="2"
                           AutoGenerateColumns="False"
                           ScrollViewer.VerticalScrollBarVisibility="Visible"
                           ScrollViewer.HorizontalScrollBarVisibility="Visible"
                           IsReadOnly="True"
-                          ItemsSource="{Binding Publisher}"
+                          ItemsSource="{Binding Provider}"
                           Margin="0,10,0,0"
                           FontSize="16"
                           BorderBrush="{x:Null}"
@@ -72,15 +94,15 @@
                     <DataGrid.Columns>
 
                         <DataGridTextColumn Header="Название"
-                                            Binding="{Binding PublisherName}"
+                                            Binding="{Binding ProviderName}"
+                                            Width="*" />
+                        <DataGridTextColumn Header="Инвидуальный адрес"
+                                            Binding="{Binding ProviderUrAdress}"
                                             Width="*" />
                         <DataGridTextColumn Header="Дата окончания контракта"
-                                            Binding="{Binding PublisherContractTil, StringFormat={}{0:dd.MM.yyyy}}"
+                                            Binding="{Binding ContractTil, StringFormat={}{0:dd.MM.yyyy}}"
                                             Width="*" />
-                        <DataGridTextColumn Header="Рейтинг"
-                                            Binding="{Binding Rating}"
-                                            Width="*" />
-                      
+                        
                     </DataGrid.Columns>
                 </DataGrid>
             </materialDesign:Card>

@@ -1,5 +1,6 @@
 ﻿using MUSICMAN.ClassFolder;
 using MUSICMAN.DataFolder;
+using MUSICMAN.PageFolder.DirectorPageFolder;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -45,9 +46,5 @@ namespace MUSICMAN.PageFolder.AdminPageFolder
             }
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
     }
 }

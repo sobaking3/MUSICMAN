@@ -160,5 +160,31 @@ namespace MUSICMAN.PageFolder.ManagerPageFolder
 
             CountryCbHelpText.Visibility = Visibility.Hidden;
         }
+
+        private void RateTb_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            // Проверяем, является ли вводимый символ цифрой
+            if (!char.IsDigit(e.Text, e.Text.Length - 1))
+            {
+                // Если символ не является цифрой, отменяем его ввод
+                e.Handled = true;
+            }
+
+            // Проверяем, чтобы вводимое число находилось в диапазоне от 1 до 100
+            TextBox textBox = (TextBox)sender;
+            string newText = textBox.Text + e.Text;
+            int number;
+            if (int.TryParse(newText, out number))
+            {
+                if (number < 1 || number > 100)
+                {
+                    e.Handled = true;
+                }
+            }
+            else
+            {
+                e.Handled = true;
+            }
+        }
     }
 }

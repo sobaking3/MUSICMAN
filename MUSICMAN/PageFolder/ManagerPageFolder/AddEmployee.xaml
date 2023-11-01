@@ -138,8 +138,9 @@
 
         <TextBox x:Name="MiddleNameTb"
                  Style="{DynamicResource TBStyle}"
-                 Grid.Row="5"
-                 Grid.Column="4"
+                     Grid.Row="5"
+                     materialDesign:HintAssist.Hint="Опционально"
+                     Grid.Column="4"
                  Margin="0,11"
                  Tag="Optional" />
 

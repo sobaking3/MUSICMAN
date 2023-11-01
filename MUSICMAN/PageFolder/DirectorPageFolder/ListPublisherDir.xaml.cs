@@ -15,33 +15,44 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace MUSICMAN.PageFolder.ManagerPageFolder
+namespace MUSICMAN.PageFolder.DirectorPageFolder
 {
     /// <summary>
-    /// Логика взаимодействия для ListPublisher.xaml
+    /// Логика взаимодействия для ListPublisherDir.xaml
     /// </summary>
-    public partial class ListPublisher : Page
+    public partial class ListPublisherDir : Page
     {
-        public ListPublisher()
+        public ListPublisherDir()
         {
             InitializeComponent();
             ListPublisherDG.ItemsSource = DBEntities.GetContext()
-              .Publisher.ToList().OrderBy(u => u.IdPublisher);
+                 .Publisher.ToList().OrderBy(u => u.IdPublisher);
         }
 
         private void SearchTb_TextChanged(object sender, TextChangedEventArgs e)
         {
             try
             {
-                ListPublisherDG.ItemsSource = DBEntities.GetContext()
-                    .Publisher.Where(s => s.PublisherName
-                    .StartsWith(SearchTb.Text))
-                    .ToList().OrderBy(s => s.PublisherName);
+                Updater();
             }
             catch (Exception ex)
             {
                 MBClass.ErrorMB(ex);
             }
+        }
+
+        private void Updater()
+        {
+            ListPublisherDG.ItemsSource = DBEntities.GetContext()
+                                .Publisher.Where(s => s.PublisherName
+                                .StartsWith(SearchTb.Text))
+                                .ToList().OrderBy(s => s.PublisherName);
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            new AddPublisher().ShowDialog();
+            Updater();
         }
     }
 }

@@ -34,7 +34,7 @@
                      BorderThickness="0, 0, 0, 1"
                      Height="28"
                      VerticalAlignment="Top"
-                     Margin="0,24,101,0"
+                     Margin="0,24,28,0"
                      TextChanged="SearchTb_TextChanged">
                 <materialDesign:HintAssist.Hint>
                     <StackPanel Orientation="Horizontal">
@@ -43,14 +43,7 @@
                     </StackPanel>
                 </materialDesign:HintAssist.Hint>
             </TextBox>
-            <Border Grid.Column="1">
-                <Button Background="#706F6F"
-                        Margin="925,19,22,19"
-                        Content="+" Click="Button_Click"
-                        Foreground="White"
-                        FontSize="20"
-                        Padding="0 0 0.5 6" />
-            </Border>
+
             <materialDesign:Card   Grid.Column="1"
                                    UniformCornerRadius="10"
                                    Height="550"
@@ -61,7 +54,7 @@
                 <ListBox x:Name="ListShopLB"
                          BorderThickness="0"
                          Foreground="Black"
-                         d:ItemsSource="{d:SampleData ItemCount=5}">
+                         Margin="0,10,10,10">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <Grid>

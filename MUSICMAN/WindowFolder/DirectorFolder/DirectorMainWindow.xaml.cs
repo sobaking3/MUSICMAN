@@ -86,12 +86,12 @@ namespace MUSICMAN.WindowFolder.DirectorFolder
 
         private void ListPublisher_Click(object sender, RoutedEventArgs e)
         {
-            MainFrame.Navigate(new ListPublisher());
+            MainFrame.Navigate(new ListPublisherDir());
         }
 
         private void ListProvider_Click(object sender, RoutedEventArgs e)
         {
-            MainFrame.Navigate(new ListProvider());
+            MainFrame.Navigate(new ListProviderDir());
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)

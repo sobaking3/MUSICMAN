@@ -75,7 +75,7 @@
                                 <Trigger Property="IsMouseDirectlyOver"
                                          Value="True">
                                     <Setter Property="Background"
-                                            Value="#278BEF" />
+                                            Value="#524D4D" />
                                 </Trigger>
                             </Style.Triggers>
                         </Style>
@@ -110,12 +110,12 @@
                     <Button.Style>
                         <Style TargetType="{x:Type Button}">
                             <Setter Property="Background"
-                                    Value="#28AEED" />
+                                    Value="#524D4D" />
                             <Style.Triggers>
                                 <Trigger Property="IsMouseDirectlyOver"
                                          Value="True">
                                     <Setter Property="Background"
-                                            Value="#278BEF" />
+                                            Value="#524D4D" />
                                 </Trigger>
                             </Style.Triggers>
                         </Style>

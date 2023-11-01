@@ -22,7 +22,7 @@ namespace MUSICMAN.DataFolder
         public int IdProvider { get; set; }
         public string ProviderName { get; set; }
         public string ProviderUrAdress { get; set; }
-        public string ContractTil { get; set; }
+        public System.DateTime ContractTil { get; set; }
     
         public virtual ICollection<Plates> Plates { get; set; }
     }
