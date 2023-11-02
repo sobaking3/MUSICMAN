@@ -110,7 +110,13 @@ namespace MUSICMAN.PageFolder.ManagerPageFolder
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Close();
+            Task.Delay(500).ContinueWith(_ => // Задержка в 1 секунду
+            {
+                Application.Current.Dispatcher.Invoke(() =>
+                {
+                    Close(); // Закрытие окна
+                });
+            });
         }
 
 
@@ -137,6 +143,11 @@ namespace MUSICMAN.PageFolder.ManagerPageFolder
                 notifier.ShowError("Вы не ввели все нужные данные!");
             }
 
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            WindowTransitionHelper.OpenWindow(this, this);
         }
     }
 }

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MUSICMAN.PageFolder.ManagerPageFolder"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        mc:Ignorable="d"
+        mc:Ignorable="d" Loaded="Window_Loaded"
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
@@ -176,7 +176,7 @@
             <DatePicker x:Name="CreateDateTb"
                         SelectedDate="{Binding DateOfBirth}"
                         Grid.Column="4"
-                        Grid.Row="9"
+                        Grid.Row="9" FontFamily="Montserrat"
                         FontSize="16"
                         BorderBrush="DarkGray"
                         Foreground="Black">
@@ -201,7 +201,7 @@
 
             <ComboBox x:Name="CountryCb"
                       Grid.Column="4"
-                      Grid.Row="7"
+                      Grid.Row="7"  FontSize="16"   FontFamily="Montserrat"
                       DropDownOpened="CountryCb_DropDownOpened"
                       Foreground="Black"
                       IsTextSearchEnabled="False"

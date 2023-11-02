@@ -79,7 +79,7 @@
                                             Binding="{Binding ProviderUrAdress}"
                                             Width="*" />
                         <DataGridTextColumn Header="Дата окончания контракта"
-                                            Binding="{Binding ContractTil}"
+                                            Binding="{Binding ContractTil, StringFormat={}{0:dd.MM.yyyy}}"
                                             Width="*" />
                     </DataGrid.Columns>
                 </DataGrid>

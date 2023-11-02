@@ -103,7 +103,13 @@ namespace MUSICMAN.PageFolder.ManagerPageFolder
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Close();
+            Task.Delay(500).ContinueWith(_ => // Задержка в 1 секунду
+            {
+                Application.Current.Dispatcher.Invoke(() =>
+                {
+                    Close(); // Закрытие окна
+                });
+            });
         }
 
         private void CountryCb_DropDownOpened(object sender, EventArgs e)
@@ -202,6 +208,11 @@ namespace MUSICMAN.PageFolder.ManagerPageFolder
                 {
                     e.Handled = true;
                 }
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            WindowTransitionHelper.OpenWindow(this, this);
         }
     }
 }

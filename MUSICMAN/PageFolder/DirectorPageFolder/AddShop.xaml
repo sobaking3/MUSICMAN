@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MUSICMAN.PageFolder.DirectorPageFolder"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        mc:Ignorable="d"
+        mc:Ignorable="d" Loaded="Window_Loaded"
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
@@ -114,7 +114,7 @@
             <materialDesign:TimePicker  x:Name="OpenTimeTP"
                                         Grid.Row="5"
                                         Grid.Column="6"
-                                        FontFamily="16"
+                                       FontSize="16"   FontFamily="Montserrat"
                                         Is24Hours="True"
                                         BorderBrush="DarkGray"
                                         Foreground="Black"
@@ -128,9 +128,9 @@
                    Height="30" />
 
             <materialDesign:TimePicker  x:Name="CloseTimeTP"
-                                        Grid.Row="7"
+                                        Grid.Row="7"  FontSize="16"   FontFamily="Montserrat"
                                         Grid.Column="6"
-                                        FontFamily="16"
+                                     
                                         Is24Hours="True"
                                         BorderBrush="DarkGray"
                                         Foreground="Black"

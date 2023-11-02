@@ -89,7 +89,7 @@
           </Key>
           <Property Name="IdShop" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ShopName" Type="nvarchar" MaxLength="30" Nullable="false" />
-          <Property Name="ShopPlace" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IdShopPlace" Type="int" Nullable="false" />
           <Property Name="OpeningTime" Type="nvarchar" MaxLength="30" Nullable="false" />
           <Property Name="ClosingTime" Type="nvarchar" MaxLength="30" Nullable="false" />
           <Property Name="PhoneOfDirector" Type="nvarchar" MaxLength="15" Nullable="false" />
@@ -251,6 +251,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Shop_Adress">
+          <End Role="Adress" Type="Self.Adress" Multiplicity="1" />
+          <End Role="Shop" Type="Self.Shop" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Adress">
+              <PropertyRef Name="IdShopPlace" />
+            </Principal>
+            <Dependent Role="Shop">
+              <PropertyRef Name="IdShopPlace" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_User_Roles1">
           <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
           <End Role="User" Type="Self.User" Multiplicity="*" />
@@ -338,6 +350,10 @@
             <End Role="Stocks" EntitySet="Stocks" />
             <End Role="Plates" EntitySet="Plates" />
           </AssociationSet>
+          <AssociationSet Name="FK_Shop_Adress" Association="Self.FK_Shop_Adress">
+            <End Role="Adress" EntitySet="Adress" />
+            <End Role="Shop" EntitySet="Shop" />
+          </AssociationSet>
           <AssociationSet Name="FK_User_Roles1" Association="Self.FK_User_Roles1">
             <End Role="Roles" EntitySet="Roles" />
             <End Role="User" EntitySet="User" />
@@ -369,6 +385,7 @@
           <NavigationProperty Name="City" Relationship="Self.FK_Adress_City" FromRole="Adress" ToRole="City" />
           <NavigationProperty Name="Country" Relationship="Self.FK_Adress_Country" FromRole="Adress" ToRole="Country" />
           <NavigationProperty Name="Streets" Relationship="Self.FK_Adress_Streets" FromRole="Adress" ToRole="Streets" />
+          <NavigationProperty Name="Shop" Relationship="Self.FK_Shop_Adress" FromRole="Adress" ToRole="Shop" />
         </EntityType>
         <EntityType Name="City">
           <Key>
@@ -456,10 +473,11 @@
           </Key>
           <Property Name="IdShop" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ShopName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="ShopPlace" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IdShopPlace" Type="Int32" Nullable="false" />
           <Property Name="OpeningTime" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="ClosingTime" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="PhoneOfDirector" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Adress" Relationship="Self.FK_Shop_Adress" FromRole="Shop" ToRole="Adress" />
           <NavigationProperty Name="Plates" Relationship="Self.FK_Plates_Shop" FromRole="Shop" ToRole="Plates" />
           <NavigationProperty Name="Workers" Relationship="Self.FK_Workers_Shop1" FromRole="Shop" ToRole="Workers" />
         </EntityType>
@@ -551,6 +569,18 @@
             </Principal>
             <Dependent Role="Adress">
               <PropertyRef Name="IdStreet" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Shop_Adress">
+          <End Role="Adress" Type="Self.Adress" Multiplicity="1" />
+          <End Role="Shop" Type="Self.Shop" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Adress">
+              <PropertyRef Name="IdShopPlace" />
+            </Principal>
+            <Dependent Role="Shop">
+              <PropertyRef Name="IdShopPlace" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -689,6 +719,10 @@
             <End Role="Streets" EntitySet="Streets" />
             <End Role="Adress" EntitySet="Adress" />
           </AssociationSet>
+          <AssociationSet Name="FK_Shop_Adress" Association="Self.FK_Shop_Adress">
+            <End Role="Adress" EntitySet="Adress" />
+            <End Role="Shop" EntitySet="Shop" />
+          </AssociationSet>
           <AssociationSet Name="FK_Composer_Country" Association="Self.FK_Composer_Country">
             <End Role="Country" EntitySet="Country" />
             <End Role="Composer" EntitySet="Composer" />
@@ -823,7 +857,7 @@
               <MappingFragment StoreEntitySet="Shop">
                 <ScalarProperty Name="IdShop" ColumnName="IdShop" />
                 <ScalarProperty Name="ShopName" ColumnName="ShopName" />
-                <ScalarProperty Name="ShopPlace" ColumnName="ShopPlace" />
+                <ScalarProperty Name="IdShopPlace" ColumnName="IdShopPlace" />
                 <ScalarProperty Name="OpeningTime" ColumnName="OpeningTime" />
                 <ScalarProperty Name="ClosingTime" ColumnName="ClosingTime" />
                 <ScalarProperty Name="PhoneOfDirector" ColumnName="PhoneOfDirector" />

@@ -109,7 +109,7 @@
                                             Binding="{Binding Duration}"
                                             Width="130" />
                         <DataGridTextColumn Header="Дата создания"
-                                            Binding="{Binding CreationDate}"
+                                            Binding="{Binding CreationDate, StringFormat={}{0:dd.MM.yyyy}}"
                                             Width="130" />
                         <DataGridTextColumn Header="Количество"
                                             Binding="{Binding Count}"

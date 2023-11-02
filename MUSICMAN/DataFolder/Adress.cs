@@ -14,6 +14,11 @@ namespace MUSICMAN.DataFolder
     
     public partial class Adress
     {
+        public Adress()
+        {
+            this.Shop = new HashSet<Shop>();
+        }
+    
         public int IdShopPlace { get; set; }
         public int IdStreet { get; set; }
         public string ShoppingCenter { get; set; }
@@ -24,5 +29,6 @@ namespace MUSICMAN.DataFolder
         public virtual City City { get; set; }
         public virtual Country Country { get; set; }
         public virtual Streets Streets { get; set; }
+        public virtual ICollection<Shop> Shop { get; set; }
     }
 }

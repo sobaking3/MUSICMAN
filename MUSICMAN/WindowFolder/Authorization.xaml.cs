@@ -13,12 +13,13 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Windows.Threading;
 using ToastNotifications;
 using ToastNotifications.Messages;
-
+using static MUSICMAN.ClassFolder.WindowTransitionHelper;
 namespace MUSICMAN.WindowFolder
 {
     /// <summary>
@@ -35,7 +36,14 @@ namespace MUSICMAN.WindowFolder
 
         private void ExitBtn_Click(object sender, RoutedEventArgs e)
         {
-            Application.Current.Shutdown();
+            WindowTransitionHelper.CloseWindow(this);
+            Task.Delay(500).ContinueWith(_ => // Задержка в 1 секунду
+            {
+                Application.Current.Dispatcher.Invoke(() =>
+                {
+                    Application.Current.Shutdown();
+                });
+            });
         }
 
         private DispatcherTimer timer = new DispatcherTimer();
@@ -93,8 +101,6 @@ namespace MUSICMAN.WindowFolder
                             //Application.Current.MainWindow = window;
                             window.Show();
                         }
-                        
-
                         Close();
                     }
                 }
@@ -116,6 +122,11 @@ namespace MUSICMAN.WindowFolder
             {
                 DragMove();
             }
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            WindowTransitionHelper.OpenWindow(this, this);
         }
     }
 }

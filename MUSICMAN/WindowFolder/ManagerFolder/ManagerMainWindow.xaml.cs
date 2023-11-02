@@ -28,6 +28,7 @@ namespace MUSICMAN.WindowFolder.ManagerFolder
         public ManagerMainWindow()
         {
             InitializeComponent();
+            
             notifier = App.GetWindowNotifer(this);
             EmpName.Text = App.GetCurrentWorkerInitials();
         }
@@ -43,7 +44,12 @@ namespace MUSICMAN.WindowFolder.ManagerFolder
                 DragMove();
             }
         }
-
+        private void MediaElement_MediaEnded(object sender, RoutedEventArgs e)
+        {
+            var mediaElement = (MediaElement)sender;
+            mediaElement.Position = TimeSpan.Zero;
+            mediaElement.Play();
+        }
         private void MinimizeBtn_Click(object sender, RoutedEventArgs e)
         {
             WindowState = WindowState.Minimized;
@@ -94,6 +100,7 @@ namespace MUSICMAN.WindowFolder.ManagerFolder
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            WindowTransitionHelper.OpenWindow(this, this);
             notifier.ShowInformation("Добро пожаловать!");
         }
     }

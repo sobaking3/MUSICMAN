@@ -76,6 +76,7 @@ namespace MUSICMAN.WindowFolder.EmployeeMainWindow
         }
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            WindowTransitionHelper.OpenWindow(this, this);
             notifier.ShowInformation("Добро пожаловать!");
         }
     }

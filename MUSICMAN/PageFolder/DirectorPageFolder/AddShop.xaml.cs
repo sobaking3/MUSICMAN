@@ -53,7 +53,13 @@ namespace MUSICMAN.PageFolder.DirectorPageFolder
 
         private void Back_Click(object sender, RoutedEventArgs e)
         {
-            Close();
+            Task.Delay(500).ContinueWith(_ => // Задержка в 1 секунду
+            {
+                Application.Current.Dispatcher.Invoke(() =>
+                {
+                    Close(); // Закрытие окна
+                });
+            });
         }
         private void ShopInfoAdd()
         {
@@ -72,6 +78,11 @@ namespace MUSICMAN.PageFolder.DirectorPageFolder
 
 
             }
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            WindowTransitionHelper.OpenWindow(this, this);
         }
     }
 }

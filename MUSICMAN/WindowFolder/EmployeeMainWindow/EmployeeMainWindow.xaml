@@ -50,7 +50,7 @@
 
 
                     <Border Grid.Row="0"
-                            Background="#524D4D"
+                            Background="#252525"
                             Margin="247,0,-946,0"
                             CornerRadius="0 20 0 0">
 
@@ -85,7 +85,7 @@
 
                     <Border Grid.Row="0"
                             Grid.RowSpan="2"
-                            Background="#524D4D"
+                            Background="#252525"
                             CornerRadius="20, 0, 0, 20">
                         <DockPanel>
                             <Border Width="160"
@@ -131,7 +131,6 @@
                                 <Button Style="{StaticResource menuButton}"
                                         HorizontalAlignment="Stretch"
                                         Margin="10 0 20 10"
-                                        Background="#534C4C"
                                         Height="50"
                                         x:Name="PlastList"
                                        Click="PlastList_Click">
@@ -152,7 +151,6 @@
                                         Click="ListAuthor_Click"
                                         HorizontalAlignment="Stretch"
                                         Margin="10 0 20 10"
-                                        Background="#534C4C"
                                         Height="50">
                                     <StackPanel Orientation="Horizontal">
                                         <Path Data="{DynamicResource ListAuthor}"
@@ -172,7 +170,7 @@
                                 <Button Style="{StaticResource menuLogOutButton}"
                                         VerticalAlignment="Bottom"
                                         Margin="0 0 0 0"
-                                        Background="#706F6F"
+                                        Background="#312F2F"
                                         Height="50"
                                         Cursor="Hand"
                                         x:Name="ExitBtn"
@@ -291,9 +289,12 @@
 
                 </Grid>
                 <Border Grid.Column="1"
-                        Background="White"
                         Margin="0,100,0,0"
                         CornerRadius="20 20 20 0">
+                    <Border.Background>
+                        <ImageBrush ImageSource="/MUSICMAN;component/ResourceFolder/background.png"
+     Stretch="None"/>
+                    </Border.Background>
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="90" />

@@ -88,6 +88,7 @@
     <Compile Include="ClassFolder\ImageClass.cs" />
     <Compile Include="ClassFolder\MBClass.cs" />
     <Compile Include="ClassFolder\WindowsPositionProviderCustom.cs" />
+    <Compile Include="ClassFolder\WindowTransitionHelper.cs" />
     <Compile Include="Components\Rating.xaml.cs">
       <DependentUpon>Rating.xaml</DependentUpon>
     </Compile>
@@ -412,13 +413,13 @@
     <Resource Include="ResourceFolder\Profile_Image.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="ResourceFolder\background.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="ResourceFolder\LogoImage.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ResourceFolder\AuthorizationBack.png" />
+    <Resource Include="ResourceFolder\LogoImage.png" />
+    <Resource Include="ResourceFolder\background.png" />
+    <Resource Include="ResourceFolder\johnny-cage-johnny-cage-dance.gif" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="DataFolder\DBModel.Context.tt">
@@ -431,6 +432,7 @@
       <DependentUpon>DBModel.edmx</DependentUpon>
       <LastGenOutput>DBModel.cs</LastGenOutput>
     </Content>
+    <Content Include="ResourceFolder\kj.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.4.9.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.4.9.0\build\MaterialDesignThemes.targets')" />

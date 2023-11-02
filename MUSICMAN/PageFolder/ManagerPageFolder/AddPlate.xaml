@@ -11,7 +11,7 @@
         WindowStyle="None"
         AllowsTransparency="True"
         Background="Transparent"
-        Title="Добавить автора"
+        Title="Добавить автора" Loaded="Window_Loaded"
         Height="540"
         Width="900">
 
@@ -85,7 +85,7 @@
 
             <ComboBox x:Name="ComboShop"
                       Grid.Column="4"
-                      Grid.Row="1"
+                      Grid.Row="1"  FontSize="16"   FontFamily="Montserrat"
                       Foreground="Black"
                       IsTextSearchEnabled="False"
                       TextBoxBase.TextChanged="ComboShopCb_TextChanged"
@@ -94,7 +94,7 @@
                       SelectedItem="{Binding Shop.ShopName}"
                       DisplayMemberPath="ShopName"
                       BorderBrush="DarkGray"
-                      Height="24">
+                      Height="28">
             </ComboBox>
 
 
@@ -104,13 +104,26 @@
                    Grid.Row="3"
                    Margin="10,0,10,0"
                    Height="30" />
-
-            <TextBox x:Name="NameTb"
-                     Style="{DynamicResource TBStyle}"
-                     Grid.Row="3"
-                     Grid.Column="4"
-                     Height="28" />
-
+            <Grid Grid.Row="3" Grid.Column="4">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <TextBox x:Name="NameTb"
+             Style="{DynamicResource TBStyle}"
+             Grid.Column="0"
+             Height="28"
+             MaxLength="30"
+             TextChanged="TextBox_TextChanged" Margin="0,0,9,0" Grid.ColumnSpan="2" />
+                <TextBlock Text="{Binding ElementName=NameTb, Path=Text.Length}"
+                           FontSize="16" Opacity="0.75"
+               Grid.Column="1"
+               HorizontalAlignment="Center" Margin="0,10,0,0" />
+                <TextBlock Text="/30" FontSize="16" Opacity="0.75"
+               Grid.Column="2"
+               HorizontalAlignment="Center" Margin="0,10,0,0" />
+            </Grid>
 
             <Label Content="Композитор"
                    Style="{DynamicResource NormalLabel}"
@@ -121,16 +134,15 @@
 
             <ComboBox x:Name="ComboComposer"
                       Grid.Column="4"
-                      Grid.Row="5"
+                      Grid.Row="5"  FontSize="16"   FontFamily="Montserrat"
                       Foreground="Black"
-                      FontFamily="16"
                       IsTextSearchEnabled="False"
                       Background="Transparent"
                       SelectedValuePath="IdComposer"
                       SelectedItem="{Binding Composer.ComposerName}"
                       DisplayMemberPath="ComposerName"
                       BorderBrush="DarkGray"
-                      Height="24">
+                      Height="28">
             </ComboBox>
 
 
@@ -141,11 +153,27 @@
                    Margin="10,0,10,0"
                    Height="30" />
 
-            <TextBox x:Name="CostTb"
-                     Style="{DynamicResource TBStyle}"
-                     Grid.Row="1"
-                     Grid.Column="7"
-                     Height="28" />
+            <Grid Grid.Row="1" Grid.Column="7">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <TextBox x:Name="CostTb"
+             Style="{DynamicResource TBStyle}"
+            Grid.Column="0"
+             Height="28"
+            MaxLength="30"
+                TextChanged="TextBox_TextChanged" Margin="0,0,9,0" Grid.ColumnSpan="2" />
+                <TextBlock Text="{Binding ElementName=NameTb, Path=Text.Length}"
+                FontSize="16" Opacity="0.75"
+                    Grid.Column="1"
+                    HorizontalAlignment="Center" Margin="0,10,0,0" />
+                                <TextBlock Text="/30" FontSize="16" Opacity="0.75"
+                    Grid.Column="2"
+                    HorizontalAlignment="Center" Margin="0,10,0,0" />
+            </Grid>
+
 
             <Label Content="Издатель"
                    Style="{DynamicResource NormalLabel}"
@@ -157,7 +185,7 @@
             <ComboBox x:Name="ComboPublisher"
                       Grid.Column="4"
                       Grid.Row="7"
-                      FontFamily="16"
+                       FontSize="16"   FontFamily="Montserrat"
                       Foreground="Black"
                       IsTextSearchEnabled="False"
                       Background="Transparent"
@@ -165,7 +193,7 @@
                       SelectedItem="{Binding Publisher.PublisherName}"
                       DisplayMemberPath="PublisherName"
                       BorderBrush="DarkGray"
-                      Height="24">
+                      Height="28">
             </ComboBox>
 
             <Label Content="Поставщик"
@@ -178,7 +206,7 @@
             <ComboBox x:Name="ComboProvider"
                       Grid.Column="4"
                       Grid.Row="9"
-                      FontFamily="16"
+                       FontSize="16"   FontFamily="Montserrat"
                       Foreground="Black"
                       IsTextSearchEnabled="False"
                       Background="Transparent"
@@ -186,7 +214,7 @@
                       SelectedItem="{Binding Provider.ProviderName}"
                       DisplayMemberPath="ProviderName"
                       BorderBrush="DarkGray"
-                      Height="24">
+                      Height="28">
             </ComboBox>
 
 
@@ -205,11 +233,11 @@
             <materialDesign:TimePicker  x:Name="DurationTP"
                                         Grid.Row="3"
                                         Grid.Column="7"
-                                        FontFamily="16"
+                                         FontSize="16"   FontFamily="Montserrat"
                                         Is24Hours="True"
                                         BorderBrush="DarkGray"
                                         Foreground="Black"
-                                        Height="24" />
+                                        Height="28" />
 
             <Label Content="Дата создания"
                    Style="{DynamicResource NormalLabel}"
@@ -221,11 +249,10 @@
             <DatePicker x:Name="DatePickerTb"
                         SelectedDate="{Binding DateOfBirth}"
                         Grid.Column="7"
-                        Grid.Row="5"
-                        FontFamily="16"
+                        Grid.Row="5"  FontSize="16"   FontFamily="Montserrat"
                         BorderBrush="DarkGray"
                         Foreground="Black"
-                        Height="24">
+                        Height="28">
                 <DatePicker.CalendarStyle>
                     <Style TargetType="Calendar"
                            BasedOn="{StaticResource MaterialDesignCalendarPortrait}">
@@ -244,13 +271,29 @@
                    Grid.Row="7"
                    Margin="10,0,10,0"
                    Height="30" />
-
-            <TextBox x:Name="CountTb"
+ 
+                      
+            <Grid  Grid.Row="7"
+                            Grid.Column="7">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <TextBox x:Name="CountTb"
                      Style="{DynamicResource TBStyle}"
-                     Grid.Row="7"
-                     Grid.Column="7"
+                     Grid.Column="0"
                      Height="28"
-                     PreviewTextInput="CountTb_PreviewTextInput" />
+                    MaxLength="4" PreviewTextInput="CountTb_PreviewTextInput"
+                     TextChanged="TextBox_TextChanged" Margin="0,0,9,0" Grid.ColumnSpan="2" />
+                                    <TextBlock Text="{Binding ElementName=NameTb, Path=Text.Length}"
+                                   FontSize="16" Opacity="0.75"
+                       Grid.Column="1"
+                       HorizontalAlignment="Center" Margin="0,10,0,0" />
+                                    <TextBlock Text="/4" FontSize="16" Opacity="0.75"
+                       Grid.Column="2"
+                       HorizontalAlignment="Center" Margin="0,10,0,0" />
+            </Grid>
 
             <Label Content="Склад"
                    Style="{DynamicResource NormalLabel}"
@@ -261,8 +304,7 @@
             <ComboBox x:Name="ComboStock"
                       Grid.Row="9"
                       Grid.Column="7"
-                      Height="28"
-                      FontFamily="16"
+                      Height="28"  FontSize="16"   FontFamily="Montserrat"
                       Foreground="Black"
                       IsTextSearchEnabled="False"
                       Background="Transparent"

@@ -1,6 +1,7 @@
 ﻿using MUSICMAN.ClassFolder;
 using MUSICMAN.DataFolder;
 using MUSICMAN.PageFolder.AdminPageFolder;
+using MUSICMAN.PageFolder.ManagerPageFolder;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -72,7 +73,7 @@ namespace MUSICMAN.WindowFolder.AdminFolder
 
         private void PlastList_Click(object sender, RoutedEventArgs e)
         {
-
+            MainFrame.Navigate(new ListPlate());
         }
 
         private void ListShopBtn_Click(object sender, RoutedEventArgs e)
@@ -81,7 +82,7 @@ namespace MUSICMAN.WindowFolder.AdminFolder
         }
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            //App.Notifier.ShowInformation("Добро пожаловать суикн сын, рутинной работы!");
+            WindowTransitionHelper.OpenWindow(this, this);
             notifier.ShowInformation("Добро пожаловать!");
         }
     }

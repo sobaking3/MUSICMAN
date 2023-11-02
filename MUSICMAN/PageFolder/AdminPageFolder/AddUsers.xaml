@@ -12,7 +12,7 @@
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
         d:DesignHeight="450"
-        d:DesignWidth="700"
+        d:DesignWidth="700" Loaded="Window_Loaded"
         xmlns:comp="clr-namespace:MUSICMAN.Components"
         SizeToContent="WidthAndHeight"
         Title="Добавление сотрудника">
@@ -112,7 +112,7 @@
 
             <ComboBox x:Name="RoleCb"
                       Grid.Row="5"
-                      FontSize="16"
+                      FontSize="16" FontFamily="Montserrat"
                       Foreground="Black"
                       Background="Transparent"
                       Grid.Column="2"

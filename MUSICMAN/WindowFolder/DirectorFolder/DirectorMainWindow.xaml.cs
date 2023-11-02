@@ -96,6 +96,7 @@ namespace MUSICMAN.WindowFolder.DirectorFolder
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            WindowTransitionHelper.OpenWindow(this, this);
             notifier.ShowInformation("Добро пожаловать!");
         }
 
