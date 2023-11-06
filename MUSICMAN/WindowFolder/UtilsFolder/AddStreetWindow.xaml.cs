@@ -3,6 +3,7 @@ using MUSICMAN.DataFolder;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity.Validation;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,38 +16,36 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using ToastNotifications;
-using ToastNotifications.Messages;
 
 namespace MUSICMAN.WindowFolder.UtilsFolder
 {
     /// <summary>
-    /// Логика взаимодействия для AddCountryWindow.xaml
+    /// Логика взаимодействия для AddStreetWindow.xaml
     /// </summary>
-    public partial class AddCountryWindow : Window
+    public partial class AddStreetWindow : Window
     {
         Notifier notifier;
-        private readonly Action<Country> setCountry;
-
-        public AddCountryWindow(Action<Country> setCountry, string country = null)
+        private readonly Action<Streets> setStreet;
+        public AddStreetWindow(Action<Streets> setStreet, string street = null)
         {
             notifier = App.GetWindowNotifer(this);
             InitializeComponent();
-            CountryTb.Text = country;
-            this.setCountry = setCountry;
+            StreetTb.Text = street;
+            this.setStreet = setStreet;
         }
 
-        private void AddCountryBtn_Click(object sender, RoutedEventArgs e)
+        private void AddStreetBtn_Click(object sender, RoutedEventArgs e)
         {
             if (ElementsToolsClass.AllFieldsFilled(this))
             {
                 try
                 {
-                    Country newCountry = DBEntities.GetContext().Country.Add(new Country
+                    Streets newStreet = DBEntities.GetContext().Streets.Add(new Streets
                     {
-                        Name = CountryTb.Text,
+                        Street = StreetTb.Text,
                     });
                     DBEntities.GetContext().SaveChanges();
-                    setCountry(newCountry);
+                    setStreet(newStreet);
                     Close();
                 }
                 catch (DbEntityValidationException ex)

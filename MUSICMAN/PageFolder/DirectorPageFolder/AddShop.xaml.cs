@@ -92,38 +92,42 @@ namespace MUSICMAN.PageFolder.DirectorPageFolder
         {
             var tb = (TextBox)e.OriginalSource; if (tb.SelectionStart != 0)
             {
-                CountryCb.SelectedItem = null;
+                CityCb.SelectedItem = null;
             }
-            if (tb.SelectionStart == 0 && CountryCb.SelectedItem == null)
+            if (tb.SelectionStart == 0 && CityCb.SelectedItem == null)
             {
-                CountryCb.IsDropDownOpen = false;
+                CityCb.IsDropDownOpen = false;
             }
-            CountryCb.IsDropDownOpen = true;
-            if (CountryCb.SelectedItem == null)
+            CityCb.IsDropDownOpen = true;
+            if (CityCb.SelectedItem == null)
             {
-                CollectionView cv = (CollectionView)CollectionViewSource.GetDefaultView(CountryCb.ItemsSource);
-                cv.Filter = s => (s as Country).Name.IndexOf(CountryCb.Text, StringComparison.CurrentCultureIgnoreCase) >= 0;
+                CollectionView cv = (CollectionView)CollectionViewSource.GetDefaultView(CityCb.ItemsSource);
+                cv.Filter = s => (s as City).Name.IndexOf(CityCb.Text, StringComparison.CurrentCultureIgnoreCase) >= 0;
                 if (cv.Count == 0)
                 {
                     //CountryCb.IsDropDownOpen = false;
-                    CountryCbHelpText.Visibility = Visibility.Visible;
-                    CountryCb.IsDropDownOpen = false;
+                    CityCbHelpText.Visibility = Visibility.Visible;
+                    CityCb.IsDropDownOpen = false;
                 }
                 else
                 {
-                    CountryCbHelpText.Visibility = Visibility.Hidden;
+                    CityCbHelpText.Visibility = Visibility.Hidden;
                 }
             }
         }
 
         private void CityCb_DropDownOpened(object sender, EventArgs e)
         {
-
+            TextBox textBox = (TextBox)((ComboBox)sender).Template.FindName("PART_EditableTextBox", (ComboBox)sender);
+            textBox.SelectionStart = ((ComboBox)sender).Text.Length;
+            textBox.SelectionLength = 0;
         }
 
         private void StreetCb_DropDownOpened(object sender, EventArgs e)
         {
-
+            TextBox textBox = (TextBox)((ComboBox)sender).Template.FindName("PART_EditableTextBox", (ComboBox)sender);
+            textBox.SelectionStart = ((ComboBox)sender).Text.Length;
+            textBox.SelectionLength = 0;
         }
 
         private void StreetCb_TextChanged(object sender, TextChangedEventArgs e)
@@ -140,7 +144,7 @@ namespace MUSICMAN.PageFolder.DirectorPageFolder
             if (StreetCb.SelectedItem == null)
             {
                 CollectionView cv = (CollectionView)CollectionViewSource.GetDefaultView(StreetCb.ItemsSource);
-                cv.Filter = s => (s as Country).Name.IndexOf(StreetCb.Text, StringComparison.CurrentCultureIgnoreCase) >= 0;
+                cv.Filter = s => (s as Streets).Street.IndexOf(StreetCb.Text, StringComparison.CurrentCultureIgnoreCase) >= 0;
                 if (cv.Count == 0)
                 {
                     //CountryCb.IsDropDownOpen = false;
@@ -193,7 +197,7 @@ namespace MUSICMAN.PageFolder.DirectorPageFolder
         {
             City newCity = null;
             // Открытик окна
-            new AddCountryWindow(cy => newCity = cy, CityCb.Text).ShowDialog();
+            new AddCityWindow(c => newCity = c, CityCb.Text).ShowDialog();
 
             if (newCity == null)
             {
@@ -212,7 +216,7 @@ namespace MUSICMAN.PageFolder.DirectorPageFolder
         {
             Streets newStreet = null;
             // Открытик окна
-            new AddCountryWindow(s => newStreet = s, StreetCb.Text).ShowDialog();
+            new AddStreetWindow(c => newStreet = c, StreetCb.Text).ShowDialog();
 
             if (newStreet == null)
             {
