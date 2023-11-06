@@ -23,6 +23,7 @@ namespace MUSICMAN.PageFolder.ManagerPageFolder
     /// </summary>
     public partial class ListEmployee : Page
     {
+
         public ListEmployee()
         {
             InitializeComponent();
@@ -80,8 +81,11 @@ namespace MUSICMAN.PageFolder.ManagerPageFolder
             }
         }
 
+
+
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            Dark.Background = new SolidColorBrush(Color.FromArgb(128, 0, 0, 0));
             new AddEmployee().ShowDialog();
             UpdateList();
         }

@@ -34,26 +34,57 @@
                 <ColumnDefinition Width="69" />
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition Height="100" />
-                <RowDefinition Height="50" />
+                <RowDefinition Height="79" />
+                <RowDefinition Height="40" />
+                <RowDefinition Height="39" />
                 <RowDefinition Height="10" />
-                <RowDefinition Height="50" />
+                <RowDefinition Height="39" />
                 <RowDefinition Height="10" />
-                <RowDefinition Height="50" />
+                <RowDefinition Height="39" />
                 <RowDefinition Height="10" />
-                <RowDefinition Height="50" />
+                <RowDefinition Height="40" />
+                <RowDefinition Height="39" />
                 <RowDefinition Height="10" />
-                <RowDefinition Height="50" />
-                <RowDefinition Height="10" />
+                <RowDefinition Height="39" />
 
+                <RowDefinition Height="10" />
                 <RowDefinition Height="70" />
-                <RowDefinition />
+                <RowDefinition Height="10" />
+                <RowDefinition Height="70" />
+                <RowDefinition Height="0*" />
             </Grid.RowDefinitions>
+
+            <Label Content="Добавить пластинку"
+   Style="{DynamicResource NormalLabel}" FontWeight="SemiBold"
+   Grid.Column="3" Grid.ColumnSpan="5" FontSize="30"
+       HorizontalAlignment="Left" Width="605" Margin="36,0,0,0" Height="46" />
+
+            <Label Content="Данные о пластинке"
+ Style="{DynamicResource NormalLabel}" FontWeight="SemiBold"
+ Grid.Column="3" Grid.ColumnSpan="5" FontSize="25" Grid.Row="1"
+     HorizontalAlignment="Center" Width="706" Height="46" />
+            <Label Content="Данные о снабжении и реализации"
+     Style="{DynamicResource NormalLabel}" FontWeight="SemiBold"
+     Grid.Column="3" Grid.ColumnSpan="5" FontSize="25" Grid.Row="8"
+         HorizontalAlignment="Left" Width="545" Height="42" Margin="9,0,0,0" />
+
+            <Separator Background="Black"  Grid.Column="2" Grid.ColumnSpan="7" Margin="1,71,35,3" RenderTransformOrigin="0.5,0.5">
+                <Separator.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleY="-1"/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Separator.RenderTransform>
+            </Separator>
+            <Separator Background="Black"  Grid.Column="2" Grid.ColumnSpan="7" Margin="1,11,34,68" Grid.Row="2" Grid.RowSpan="12"/>
+
             <Button Grid.Column="1"
                     x:Name="Back"
                     Grid.Row="0"
-                    Background="#706F6F"
-                    Margin="10,34,143,34"
+                    Background="#312F2F"
+                    Margin="10,19,143,13"
                     BorderThickness="0"
                     Click="Back_Click"
                     Grid.ColumnSpan="3">
@@ -62,7 +93,7 @@
                         <Border Background="{TemplateBinding Background}"
                                 BorderBrush="{TemplateBinding BorderBrush}"
                                 BorderThickness="{TemplateBinding BorderThickness}"
-                                CornerRadius="18">
+                                CornerRadius="10">
                             <ContentPresenter HorizontalAlignment="Center"
                                               VerticalAlignment="Center" />
                         </Border>
@@ -78,14 +109,14 @@
 
             <Label Content="Магазин"
                    Style="{DynamicResource NormalLabel}"
-                   Grid.Column="3"
-                   Grid.Row="1"
+                   Grid.Column="6"
+                   Grid.Row="11"
                    Margin="10,0,10,0"
                    Height="30" />
 
             <ComboBox x:Name="ComboShop"
-                      Grid.Column="4"
-                      Grid.Row="1"  FontSize="16"   FontFamily="Montserrat"
+                      Grid.Column="7"
+                      Grid.Row="11"  FontSize="16"   FontFamily="Montserrat"
                       Foreground="Black"
                       IsTextSearchEnabled="False"
                       TextBoxBase.TextChanged="ComboShopCb_TextChanged"
@@ -93,7 +124,7 @@
                       SelectedValuePath="IdShop"
                       SelectedItem="{Binding Shop.ShopName}"
                       DisplayMemberPath="ShopName"
-                      BorderBrush="DarkGray"
+                      BorderBrush="#312F2F"
                       Height="28">
             </ComboBox>
 
@@ -101,10 +132,10 @@
             <Label Content="Название"
                    Style="{DynamicResource NormalLabel}"
                    Grid.Column="3"
-                   Grid.Row="3"
+                   Grid.Row="4"
                    Margin="10,0,10,0"
                    Height="30" />
-            <Grid Grid.Row="3" Grid.Column="4">
+            <Grid Grid.Row="4" Grid.Column="4">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="Auto" />
@@ -112,8 +143,8 @@
                 </Grid.ColumnDefinitions>
                 <TextBox x:Name="NameTb"
              Style="{DynamicResource TBStyle}"
-             Grid.Column="0"
-             Height="28"
+             Grid.Column="0" Grid.Row="4"
+             Height="24"
              MaxLength="30"
              TextChanged="TextBox_TextChanged" Margin="0,0,9,0" Grid.ColumnSpan="2" />
                 <TextBlock Text="{Binding ElementName=NameTb, Path=Text.Length}"
@@ -128,20 +159,20 @@
             <Label Content="Композитор"
                    Style="{DynamicResource NormalLabel}"
                    Grid.Column="3"
-                   Grid.Row="5"
+                   Grid.Row="6"
                    Margin="10,0,10,0"
                    Height="30" />
 
             <ComboBox x:Name="ComboComposer"
                       Grid.Column="4"
-                      Grid.Row="5"  FontSize="16"   FontFamily="Montserrat"
+                      Grid.Row="6"  FontSize="16"   FontFamily="Montserrat"
                       Foreground="Black"
                       IsTextSearchEnabled="False"
                       Background="Transparent"
                       SelectedValuePath="IdComposer"
                       SelectedItem="{Binding Composer.ComposerName}"
                       DisplayMemberPath="ComposerName"
-                      BorderBrush="DarkGray"
+                      BorderBrush="#312F2F"
                       Height="28">
             </ComboBox>
 
@@ -149,11 +180,11 @@
             <Label Content="Цена"
                    Style="{DynamicResource NormalLabel}"
                    Grid.Column="6"
-                   Grid.Row="1"
+                   Grid.Row="2"
                    Margin="10,0,10,0"
                    Height="30" />
 
-            <Grid Grid.Row="1" Grid.Column="7">
+            <Grid Grid.Row="2" Grid.Column="7">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="Auto" />
@@ -162,14 +193,14 @@
                 <TextBox x:Name="CostTb"
              Style="{DynamicResource TBStyle}"
             Grid.Column="0"
-             Height="28"
+             Height="24"
             MaxLength="30"
                 TextChanged="TextBox_TextChanged" Margin="0,0,9,0" Grid.ColumnSpan="2" />
                 <TextBlock Text="{Binding ElementName=NameTb, Path=Text.Length}"
                 FontSize="16" Opacity="0.75"
                     Grid.Column="1"
                     HorizontalAlignment="Center" Margin="0,10,0,0" />
-                                <TextBlock Text="/30" FontSize="16" Opacity="0.75"
+                <TextBlock Text="/30" FontSize="16" Opacity="0.75"
                     Grid.Column="2"
                     HorizontalAlignment="Center" Margin="0,10,0,0" />
             </Grid>
@@ -178,13 +209,13 @@
             <Label Content="Издатель"
                    Style="{DynamicResource NormalLabel}"
                    Grid.Column="3"
-                   Grid.Row="7"
+                   Grid.Row="11"
                    Margin="10,0,10,0"
                    Height="30" />
 
             <ComboBox x:Name="ComboPublisher"
                       Grid.Column="4"
-                      Grid.Row="7"
+                      Grid.Row="11"
                        FontSize="16"   FontFamily="Montserrat"
                       Foreground="Black"
                       IsTextSearchEnabled="False"
@@ -192,7 +223,7 @@
                       SelectedValuePath="IdPublisher"
                       SelectedItem="{Binding Publisher.PublisherName}"
                       DisplayMemberPath="PublisherName"
-                      BorderBrush="DarkGray"
+                      BorderBrush="#312F2F"
                       Height="28">
             </ComboBox>
 
@@ -213,7 +244,7 @@
                       SelectedValuePath="IdProvider"
                       SelectedItem="{Binding Provider.ProviderName}"
                       DisplayMemberPath="ProviderName"
-                      BorderBrush="DarkGray"
+                      BorderBrush="#312F2F"
                       Height="28">
             </ComboBox>
 
@@ -221,7 +252,7 @@
 
             <Label Style="{DynamicResource NormalLabel}"
                    Grid.Column="6"
-                   Grid.Row="3"
+                   Grid.Row="4"
                    Grid.ColumnSpan="2"
                    Margin="10,0,10,0"
                    Height="30">
@@ -231,26 +262,26 @@
             </Label>
 
             <materialDesign:TimePicker  x:Name="DurationTP"
-                                        Grid.Row="3"
+                                        Grid.Row="4"
                                         Grid.Column="7"
                                          FontSize="16"   FontFamily="Montserrat"
                                         Is24Hours="True"
-                                        BorderBrush="DarkGray"
+                                        BorderBrush="#312F2F"
                                         Foreground="Black"
                                         Height="28" />
 
             <Label Content="Дата создания"
                    Style="{DynamicResource NormalLabel}"
                    Grid.Column="6"
-                   Grid.Row="5"
+                   Grid.Row="6"
                    Margin="10,0,10,0"
                    Height="30" />
 
             <DatePicker x:Name="DatePickerTb"
                         SelectedDate="{Binding DateOfBirth}"
                         Grid.Column="7"
-                        Grid.Row="5"  FontSize="16"   FontFamily="Montserrat"
-                        BorderBrush="DarkGray"
+                        Grid.Row="6"  FontSize="16"   FontFamily="Montserrat"
+                        BorderBrush="#312F2F"
                         Foreground="Black"
                         Height="28">
                 <DatePicker.CalendarStyle>
@@ -267,14 +298,14 @@
             </DatePicker>
             <Label Content="Количество"
                    Style="{DynamicResource NormalLabel}"
-                   Grid.Column="6"
-                   Grid.Row="7"
+                   Grid.Column="3"
+                   Grid.Row="2"
                    Margin="10,0,10,0"
                    Height="30" />
- 
-                      
-            <Grid  Grid.Row="7"
-                            Grid.Column="7">
+
+
+            <Grid  Grid.Row="2"
+                            Grid.Column="4">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="Auto" />
@@ -283,14 +314,14 @@
                 <TextBox x:Name="CountTb"
                      Style="{DynamicResource TBStyle}"
                      Grid.Column="0"
-                     Height="28"
+                     Height="24"
                     MaxLength="4" PreviewTextInput="CountTb_PreviewTextInput"
                      TextChanged="TextBox_TextChanged" Margin="0,0,9,0" Grid.ColumnSpan="2" />
-                                    <TextBlock Text="{Binding ElementName=NameTb, Path=Text.Length}"
+                <TextBlock Text="{Binding ElementName=NameTb, Path=Text.Length}"
                                    FontSize="16" Opacity="0.75"
                        Grid.Column="1"
                        HorizontalAlignment="Center" Margin="0,10,0,0" />
-                                    <TextBlock Text="/4" FontSize="16" Opacity="0.75"
+                <TextBlock Text="/4" FontSize="16" Opacity="0.75"
                        Grid.Column="2"
                        HorizontalAlignment="Center" Margin="0,10,0,0" />
             </Grid>
@@ -299,7 +330,7 @@
                    Style="{DynamicResource NormalLabel}"
                    Grid.Column="6"
                    Grid.Row="9"
-                   Height="30" />
+                   Height="30" Margin="10,0,10,0" />
 
             <ComboBox x:Name="ComboStock"
                       Grid.Row="9"
@@ -311,14 +342,14 @@
                       SelectedValuePath="IdStock"
                       SelectedItem="{Binding Stocks.StockNumber}"
                       DisplayMemberPath="StockNumber"
-                      BorderBrush="DarkGray">
+                      BorderBrush="#312F2F">
             </ComboBox>
 
 
 
 
             <Button x:Name="AddPlateBtn"
-                    Grid.Row="11"
+                    Grid.Row="13"
                     Content="Добавить"
                     Click="AddPlateBtn_Click"
                     Style="{DynamicResource ButtonsStyle}"
@@ -329,7 +360,7 @@
                     <ControlTemplate TargetType="Button">
                         <Border Width="150"
                                 Height="40"
-                                CornerRadius="20"
+                                CornerRadius="10"
                                 Background="{TemplateBinding Background}">
                             <ContentPresenter VerticalAlignment="Center"
                                               HorizontalAlignment="Center" />

@@ -159,7 +159,7 @@
                                               Fill="White"
                                               Stretch="Fill"
                                               Margin="10 0 10 0" />
-                                        <TextBlock Text="Список авторов" />
+                                        <TextBlock Text="Список исполнителей" />
                                     </StackPanel>
                                 </Button>
                                

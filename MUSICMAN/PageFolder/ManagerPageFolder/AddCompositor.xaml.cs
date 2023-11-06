@@ -70,7 +70,7 @@ namespace MUSICMAN.PageFolder.ManagerPageFolder
                 try
                 {
                     ComposerInfoAdd();
-                    notifier.ShowSuccess("Группа добавлена");
+                    notifier.ShowSuccess("Исполнитель добавлен");
                     ElementsToolsClass.ClearAllControls(this);
                 }
                 catch (DbEntityValidationException ex)

@@ -35,9 +35,16 @@
                 <RowDefinition Height="10" />
                 <RowDefinition />
             </Grid.RowDefinitions>
+            <Label Content="Добавить аккаунт"
+                   Style="{DynamicResource NormalLabel}"
+                   Grid.Column="1" HorizontalAlignment="Center"
+                   Grid.Row="0" Grid.ColumnSpan="2"
+                   FontWeight="SemiBold"
+                   Height="52" FontSize="30" />
+            <Separator Background="Black" Height="5"  Grid.Column="1" Grid.ColumnSpan="2" Margin="0,0,20,0" Grid.RowSpan="3"/>
             <Button Grid.Column="0"
                     Grid.Row="0"
-                    Background="#706F6F"
+                    Background="#312F2F"
                     Margin="28,28,28,40"
                     BorderThickness="0"
                     Click="Button_Click">
@@ -46,7 +53,7 @@
                         <Border Background="{TemplateBinding Background}"
                                 BorderBrush="{TemplateBinding BorderBrush}"
                                 BorderThickness="{TemplateBinding BorderThickness}"
-                                CornerRadius="18">
+                                CornerRadius="10">
                             <ContentPresenter HorizontalAlignment="Center"
                                               VerticalAlignment="Center" />
                         </Border>
@@ -151,5 +158,5 @@
             </Button>
         </Grid>
     </materialDesign:Card>
-    
+
 </Window>

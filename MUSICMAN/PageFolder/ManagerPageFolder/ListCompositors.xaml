@@ -10,7 +10,7 @@
       Background="Transparent"
       d:DesignHeight="450"
       d:DesignWidth="800"
-      Title="Список музыкальных групп">
+      Title="Список исполнителей">
     <Grid>
         <Grid>
             <Grid.ColumnDefinitions>

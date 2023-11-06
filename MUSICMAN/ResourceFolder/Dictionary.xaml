@@ -4,7 +4,7 @@
                     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes">
 
     <SolidColorBrush x:Key="FillFon"
-                     Color="#706F6F"/>
+                     Color="#312F2F"/>
     <SolidColorBrush x:Key="FillFont" Color="Black"/>
     <SolidColorBrush x:Key="FillBorder" Color="#252525"/>
 
@@ -70,7 +70,7 @@
             <Trigger Property="IsMouseOver"
                      Value="True">
                 <Setter Property="Background"
-                        Value="DarkGray" />
+                        Value="#312F2F" />
             </Trigger>
         </Style.Triggers>
     </Style>
@@ -104,6 +104,9 @@
                                           VerticalAlignment="Center" />
                     </Border>
                     <ControlTemplate.Triggers>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter TargetName="buttonBorder" Property="Background"  Value="#FF7A00" />
+                        </Trigger>
                         <Trigger Property="IsPressed"
                                  Value="True">
                             <Setter TargetName="buttonBorder"
@@ -273,7 +276,7 @@
         <Setter Property="FontSize" Value="16"/>
         <Setter Property="Foreground" Value="White"/>
         <Setter Property="Background"
-                Value="#706F6F"/>
+                Value="#312F2F"/>
         <Setter Property="Cursor" Value="Hand"/>
         <Setter Property="BorderThickness" Value="0"/>
         <Style.Triggers>
@@ -297,7 +300,7 @@
                     <Border x:Name="border" CornerRadius="20" Height="40"
                             Background="{TemplateBinding Background}"
                             SnapsToDevicePixels="True" BorderThickness="1"
-                            BorderBrush="#747474">
+                            BorderBrush="#312F2F">
                         <ScrollViewer x:Name="PART_ContentHost" Focusable="False"
                                       HorizontalScrollBarVisibility="Hidden"/>
                     </Border>
@@ -322,7 +325,7 @@
         <Setter Property="Foreground"     Value="Black" />
         <Setter Property="BorderThickness" Value="0, 0, 0, 1"/>
         <Setter Property="CaretBrush" Value="White"/>
-        <Setter Property="BorderBrush" Value="DarkGray"/>
+        <Setter Property="BorderBrush" Value="#312F2F"/>
         <Setter Property="Height" Value="28"/>
         <Setter Property="VerticalAlignment" Value="Center"/>
         <Setter Property="Background" Value="Transparent"/>

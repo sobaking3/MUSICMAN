@@ -29,7 +29,7 @@
                      FontFamily="Montserrat"
                      Foreground="Black"
                      CaretBrush="Black"
-                     BorderBrush="#747474"
+                     BorderBrush="#312F2F"
                      BorderThickness="0, 0, 0, 1"
                      Height="28"
                      VerticalAlignment="Top"

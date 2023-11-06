@@ -11,12 +11,12 @@
         Background="Transparent"
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
-        d:DesignHeight="350"
-        d:DesignWidth="700"
+        d:DesignHeight="310"
+        d:DesignWidth="710"
         SizeToContent="WidthAndHeight"
         Title="Добавление склада">
     <materialDesign:Card UniformCornerRadius="10"
-                         Margin="5"
+                         Margin="5" Height="300" Width="700"
                          materialDesign:ShadowAssist.ShadowDepth="Depth1">
         <Grid>
             <Grid.ColumnDefinitions>
@@ -36,9 +36,12 @@
                 <RowDefinition Height="10" />
                 <RowDefinition />
             </Grid.RowDefinitions>
+            <Label Content="Добавить склад"
+Style="{DynamicResource NormalLabel}" FontWeight="SemiBold" Grid.ColumnSpan="4" FontSize="30"
+    HorizontalAlignment="Left" Width="1102" Margin="110,0,0,0" Height="60" />
             <Button Grid.Column="0"
                     Grid.Row="0"
-                    Background="#706F6F"
+                    Background="#312F2F"
                     Margin="28,28,28,40"
                     BorderThickness="0"
                     Click="Button_Click">
@@ -47,7 +50,7 @@
                         <Border Background="{TemplateBinding Background}"
                                 BorderBrush="{TemplateBinding BorderBrush}"
                                 BorderThickness="{TemplateBinding BorderThickness}"
-                                CornerRadius="18">
+                                CornerRadius="10">
                             <ContentPresenter HorizontalAlignment="Center"
                                               VerticalAlignment="Center" />
                         </Border>
@@ -63,7 +66,7 @@
             <Label Content="Адрес"
                    Style="{DynamicResource NormalLabel}"
                    Grid.Column="1"
-                   Grid.Row="1"
+                   Grid.Row="1" FontSize="16"
                    Height="30"
                    Margin="10,0,10,0" />
 
@@ -76,7 +79,7 @@
                      FontFamily="Montserrat"
                      Foreground="Black"
                      CaretBrush="LightGray"
-                     BorderBrush="DarkGray"
+                     BorderBrush="#312F2F"
                      BorderThickness="0, 0, 0, 1"
                      Height="28"
                      VerticalAlignment="Top"
@@ -93,7 +96,7 @@
                     <ControlTemplate TargetType="Button">
                         <Border Width="250"
                                 Height="50"
-                                CornerRadius="20"
+                                CornerRadius="10"
                                 Background="{TemplateBinding Background}">
                             <ContentPresenter VerticalAlignment="Center"
                                               HorizontalAlignment="Center" />
