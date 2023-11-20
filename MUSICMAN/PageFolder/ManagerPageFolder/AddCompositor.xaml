@@ -57,7 +57,7 @@
 
             </Grid.RowDefinitions>
 
-            <Label Content="Добавить исполнителя или группу"
+            <Label Content="Добавить исполнителя"
     Style="{DynamicResource NormalLabel}" FontWeight="SemiBold"
     Grid.Column="3" Grid.ColumnSpan="5" FontSize="30"
         HorizontalAlignment="Left" Width="590" Margin="51,24,0,0" Height="50" VerticalAlignment="Top" />
@@ -148,12 +148,27 @@
                 </TextBlock.Inlines>
             </TextBlock>-->
 
-            <TextBox x:Name="NameTb"
-                     Style="{DynamicResource TBStyle}"
-                     Grid.Row="2"
-                     Grid.Column="4"
-                     Height="28"
-                     MaxLength="30" />
+            <Grid Grid.Row="2" Grid.Column="4">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <TextBox x:Name="NameTb"
+                 Style="{DynamicResource TBStyle}"
+                 Grid.Column="0" Grid.Row="4"
+                 Height="22"
+                 MaxLength="30"
+                 TextChanged="NameTb_TextChanged"  Margin="0,0,9,0" Grid.ColumnSpan="2" />
+                <TextBlock Text="{Binding ElementName=NameTb, Path=Text.Length}"
+                               FontSize="16" Opacity="0.75"
+                   Grid.Column="1"
+                   HorizontalAlignment="Center" Margin="0,10,0,0" />
+                <TextBlock Text="/30" FontSize="16" Opacity="0.75"
+                   Grid.Column="2"
+                   HorizontalAlignment="Center" Margin="0,10,0,0" />
+            </Grid>
+
 
             <Label Content="Кол-во альбомов"
                    Style="{DynamicResource NormalLabel}"
@@ -162,12 +177,27 @@
                    Margin="10,0,10,0"
                    Height="30" />
 
-            <TextBox x:Name="TracksCountTb"
+            <Grid Grid.Row="4" Grid.Column="4">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="131.513" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <TextBox x:Name="TracksCountTb"
                      Style="{DynamicResource TBStyle}"
-                     Grid.Row="4"
-                     PreviewTextInput="TracksCountTb_PreviewTextInput"
-                     Grid.Column="4"
-                     Height="28" />
+                     Grid.Column="0" Grid.Row="4"
+                     Height="22"
+                     MaxLength="4"  PreviewTextInput="TracksCountTb_PreviewTextInput"
+                     TextChanged="TracksCountTb_TextChanged" Margin="0,0,9,0" Grid.ColumnSpan="2" />
+                <TextBlock Text="{Binding ElementName=TracksCountTb, Path=Text.Length}"
+                                   FontSize="16" Opacity="0.75"
+                       Grid.Column="1"
+                       HorizontalAlignment="Center" Margin="0,10,0,0" />
+                <TextBlock Text="/4" FontSize="16" Opacity="0.75"
+                       Grid.Column="2"
+                       HorizontalAlignment="Center" Margin="0,10,0,0" />
+            </Grid>
+
 
 
             <Label Content="Рейтинг"
@@ -177,12 +207,21 @@
                    Margin="10,0,10,0"
                    Height="30" />
 
-            <TextBox x:Name="RateTb"
-                     Style="{DynamicResource TBStyle}"
-                     Grid.Row="4"
-                     PreviewTextInput="RateTb_PreviewTextInput"
-                     Grid.Column="7"
-                     Height="28" />
+
+            <Grid Grid.Row="4" Grid.Column="7">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <TextBox x:Name="RateTb"
+Style="{DynamicResource TBStyle}"
+Grid.Column="0" Grid.Row="11"             
+Height="22" PreviewTextInput="RateTb_PreviewTextInput"
+MaxLength="30" Margin="0,0,9,0" Grid.ColumnSpan="2" />
+                <TextBlock Text="/100" FontSize="16" Opacity="0.75" Margin="104,10,0,0" Grid.ColumnSpan="3" />
+            </Grid>
+
 
             <Label Content="Дата основания"
                    Style="{DynamicResource NormalLabel}"
@@ -197,7 +236,7 @@
                         Grid.Row="2" FontFamily="Montserrat"
                         FontSize="16"
                         BorderBrush="#312F2F"
-                        Foreground="Black" Height="29">
+                        Foreground="Black" Height="26">
                 <DatePicker.CalendarStyle>
                     <Style TargetType="Calendar"
                            BasedOn="{StaticResource MaterialDesignCalendarPortrait}">
@@ -230,7 +269,7 @@
                       SelectedItem="{Binding Country.Name}"
                       DisplayMemberPath="Name"
                       BorderBrush="#312F2F"
-                      Height="24">
+                      Height="28">
             </ComboBox>
 
             <TextBlock Text="Такая запись не найдена. Добавить?"

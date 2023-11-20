@@ -1,4 +1,4 @@
-﻿<Window x:Class="MUSICMAN.PageFolder.EmployeePageFolder.ListCompositorsEmp"
+﻿<Page x:Class="MUSICMAN.PageFolder.EmployeePageFolder.ListCompositorsEmp"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -35,7 +35,7 @@
                      BorderThickness="0, 0, 0, 1"
                      Height="28"
                      VerticalAlignment="Center"
-                     Margin="0,0,101,0"
+                     Margin="23,0,48,0"
                      TextChanged="SearchTb_TextChanged">
                 <materialDesign:HintAssist.Hint>
                     <StackPanel Orientation="Horizontal">
@@ -109,51 +109,43 @@
 
 
                                 <TextBlock Grid.Column="2"
-                                           Grid.Row="0"
-                                           Margin="0 3 0 0">
-                        <Run Text="Наименование: "
-                                    FontWeight="Bold" />
-                        <Run Text="{Binding ComposerName}" />
+                                   Grid.Row="0"
+                                   Margin="0 3 0 0">
+                    <Run Text="Наименование: "
+                            FontWeight="Bold" />
+                    <Run Text="{Binding ComposerName}" />
                                 </TextBlock>
 
                                 <TextBlock Grid.Row="1"
                                            Margin="0 3 0 0"
                                            Grid.Column="2">
-                        <Run Text="Количество треков: "
+                            <Run Text="Количество треков: "
                                     FontWeight="Bold" />
-                        <Run Text="{Binding MusicCount}" />
+                            <Run Text="{Binding MusicCount}" />
                                 </TextBlock>
 
                                 <TextBlock Grid.Row="0"
                                            Margin="0 3 0 0"
                                            Grid.Column="4">
-                        <Run Text="Страна: "
+                            <Run Text="Страна: "
                                     FontWeight="Bold" />
-                        <Run Text="{Binding Country.Name}" />
+                            <Run Text="{Binding Country.Name}" />
                                 </TextBlock>
 
                                 <TextBlock Grid.Row="1"
                                            Margin="0 3 0 0"
                                            Grid.Column="4">
-                        <Run Text="Дата рождения: "
+                            <Run Text="Дата создания: "
                                     FontWeight="Bold" />
-                        <Run Text="{Binding BitrhDate}" />
+                            <Run Text="{Binding CreationDate, StringFormat={}{0:dd.MM.yyyy}}" />
                                 </TextBlock>
 
                                 <TextBlock Grid.Column="2"
-                                           Margin="0 3 0 0"
-                                           Grid.Row="2">
-                        <Run Text="Рейтинг: "
-                                    FontWeight="Bold" />
-                        <Run Text="{Binding Rating}" />
-                                </TextBlock>
-
-                                <TextBlock Grid.Column="4"
-                                           Margin="0 3 0 0"
-                                           Grid.Row="2">
-                        <Run Text="Дата смерти: "
-                                    FontWeight="Bold" />
-                        <Run Text="{Binding DeathDate}" />
+                                               Margin="0 3 0 0"
+                                               Grid.Row="2">
+                                <Run Text="Рейтинг: "
+                                        FontWeight="Bold" />
+                                <Run Text="{Binding Rating}" />
                                 </TextBlock>
                             </Grid>
                         </DataTemplate>
@@ -162,4 +154,4 @@
             </materialDesign:Card>
         </Grid>
     </Grid>
-</Window>
+</Page>

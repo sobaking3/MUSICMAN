@@ -12,9 +12,9 @@ namespace MUSICMAN.DataFolder
     using System;
     using System.Collections.Generic;
     
-    public partial class Adress
+    public partial class Address
     {
-        public Adress()
+        public Address()
         {
             this.Shop = new HashSet<Shop>();
         }

@@ -4,14 +4,14 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="28d0b766a89140f8b414e624d0f9be71" Name="Diagram1">
-        <EntityTypeShape EntityType="DBModel.Adress" Width="1.5" PointX="3" PointY="5.75" IsExpanded="true" />
+      <Diagram DiagramId="d39587e2b5b84d958611fee5facbc3ad" Name="Diagram1">
+        <EntityTypeShape EntityType="DBModel.Adress" Width="1.5" PointX="3" PointY="5.875" IsExpanded="true" />
         <EntityTypeShape EntityType="DBModel.City" Width="1.5" PointX="0.75" PointY="3.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="DBModel.Composer" Width="1.5" PointX="3" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBModel.Composer" Width="1.5" PointX="3" PointY="9.375" IsExpanded="true" />
         <EntityTypeShape EntityType="DBModel.Country" Width="1.5" PointX="0.75" PointY="6.375" IsExpanded="true" />
         <EntityTypeShape EntityType="DBModel.Plates" Width="1.5" PointX="7.5" PointY="7" IsExpanded="true" />
-        <EntityTypeShape EntityType="DBModel.Provider" Width="1.5" PointX="5.25" PointY="9.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="DBModel.Publisher" Width="1.5" PointX="5.25" PointY="12.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBModel.Provider" Width="1.5" PointX="5.25" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBModel.Publisher" Width="1.5" PointX="5.25" PointY="12.125" IsExpanded="true" />
         <EntityTypeShape EntityType="DBModel.Roles" Width="1.5" PointX="3" PointY="2.5" IsExpanded="true" />
         <EntityTypeShape EntityType="DBModel.Shop" Width="1.5" PointX="5.25" PointY="5.875" IsExpanded="true" />
         <EntityTypeShape EntityType="DBModel.Stocks" Width="1.5" PointX="5.25" PointY="14.875" IsExpanded="true" />

@@ -11,6 +11,7 @@ using System.Windows.Controls;
 using ToastNotifications;
 using ToastNotifications.Lifetime;
 using ToastNotifications.Position;
+using WpfUtils;
 
 namespace MUSICMAN
 {
@@ -19,6 +20,7 @@ namespace MUSICMAN
     /// </summary>
     public partial class App : Application
     {
+        private IdleDetector idleDetector;
         public static User CurrentUser { get; set; }
         public byte[] PhotoStaff { get; set; }
 
@@ -57,13 +59,15 @@ namespace MUSICMAN
             cfg.Dispatcher = Application.Current.Dispatcher;
         });
 
+        public static Notifier GetLastNotifier { get; set; }
+
         public static Notifier GetWindowNotifer(Window window)
         {
-            return new Notifier(cfg =>
+            return GetLastNotifier = new Notifier(cfg =>
             {
                 cfg.PositionProvider = new WindowPositionProvider(
                     parentWindow: window,
-                    corner: Corner.TopRight,
+                    corner: Corner.BottomRight,
                     offsetX: 10,
                     offsetY: 10);
 
@@ -73,6 +77,24 @@ namespace MUSICMAN
 
                 cfg.Dispatcher = Application.Current.Dispatcher;
             });
+        }
+
+        public App()
+        {
+            this.InitializeComponent();
+            idleDetector = new IdleDetector(TimeSpan.FromSeconds(60), TimeSpan.FromMilliseconds(500));
+            idleDetector.IdleDetect += IdleDetector_IdleDetect;
+        }
+
+        private void IdleDetector_IdleDetect(IdleDetector sender, IdleTimeInfo idleTimeInfo)
+        {
+            MessageBox.Show($"Обнаруженно бездействие в течении минуты, вы живы?\n{idleTimeInfo.IdleTime}") ;
+        }
+
+        private void Application_Startup(object sender, StartupEventArgs e)
+        {
+            new WindowFolder.Authorization().Show();
+            idleDetector.Start();
         }
     }
 }

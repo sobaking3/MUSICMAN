@@ -18,25 +18,23 @@ using System.Windows.Shapes;
 using ToastNotifications;
 using ToastNotifications.Messages;
 
-namespace MUSICMAN.PageFolder.ManagerPageFolder
+namespace MUSICMAN.PageFolder.DirectorPageFolder
 {
     /// <summary>
-    /// Логика взаимодействия для AddEmployee.xaml
+    /// Логика взаимодействия для AddEmployeeDir.xaml
     /// </summary>
-    public partial class AddEmployee : Window
+    public partial class AddEmployeeDir : Window
     {
         Notifier notifier;
         Workers Workers = new Workers();
         User user = new User();
         Shop shop = new Shop();
-        public AddEmployee()
+        public AddEmployeeDir()
         {
-
             notifier = App.GetWindowNotifer(this);
             InitializeComponent();
             RoleCb.ItemsSource = DBEntities.GetContext()
-           .Roles.Except(DBEntities.GetContext().Roles.Where(r => r.NameRole == "Администратор"
-           || r.NameRole == "Директор" || r.NameRole == "Менеджер"))
+           .Roles.Except(DBEntities.GetContext().Roles.Where(r => r.NameRole == "Директор"))
            .ToList();
             ShopCb.ItemsSource = DBEntities.GetContext().Shop.ToList();
 
@@ -86,8 +84,8 @@ namespace MUSICMAN.PageFolder.ManagerPageFolder
                     IdUser = user.IdUser,
                     PhotoStaff = !string.IsNullOrEmpty(selectedFileName) ? ImageClass.ConvertImageToByteArray(selectedFileName) : null
                 };
-                    DBEntities.GetContext().Workers.Add(Workers);
-                    DBEntities.GetContext().SaveChanges();
+                DBEntities.GetContext().Workers.Add(Workers);
+                DBEntities.GetContext().SaveChanges();
 
 
             }
@@ -149,7 +147,6 @@ namespace MUSICMAN.PageFolder.ManagerPageFolder
         {
             WindowTransitionHelper.OpenWindow(this, this);
         }
-
         private void FirstNameTb_TextChanged(object sender, TextChangedEventArgs e)
         {
             var textBox = (TextBox)sender;

@@ -3,6 +3,7 @@ using MUSICMAN.DataFolder;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity.Validation;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,15 +21,19 @@ using ToastNotifications.Messages;
 namespace MUSICMAN.PageFolder.ManagerPageFolder
 {
     /// <summary>
-    /// Логика взаимодействия для AddPlate.xaml
+    /// Логика взаимодействия для EditPlate.xaml
     /// </summary>
-    public partial class AddPlate : Window
+    public partial class EditPlate : Window
     {
         Notifier notifier;
-        public AddPlate()
+        public Plates Plate { get; set; }
+        public EditPlate(Plates plate)
         {
             notifier = App.GetWindowNotifer(this);
+            Plate = plate;
+
             InitializeComponent();
+            
             ComboShop.ItemsSource = DBEntities.GetContext().Shop.ToList();
             ComboComposer.ItemsSource = DBEntities.GetContext().Composer.ToList();
             ComboPublisher.ItemsSource = DBEntities.GetContext().Publisher.ToList();
@@ -60,19 +65,7 @@ namespace MUSICMAN.PageFolder.ManagerPageFolder
             }
         }
 
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            var textBox = (TextBox)sender;
-            var grid = (Grid)textBox.Parent;
-            if (grid != null)
-            {
-                var textBlock = (TextBlock)VisualTreeHelper.GetChild(grid, 1);
-                if (textBlock != null)
-                {
-                    textBlock.Text = textBox.Text.Length.ToString();
-                }
-            }
-        }
+       
 
         private void ComboShopCb_TextChanged(object sender, TextChangedEventArgs e)
         {
@@ -92,39 +85,38 @@ namespace MUSICMAN.PageFolder.ManagerPageFolder
             }
         }
 
-        private void PlateInfoAdd()
+        private void PlateInfoEdit()
         {
             if (ElementsToolsClass.AllFieldsFilled(this))
             {
-                var Plates = new Plates()
+                    var plate = DBEntities.GetContext().Plates.FirstOrDefault(p => p.IdPlate == Plate.IdPlate);
+                if (plate != null)
                 {
-                    IdShop = Int32.Parse(ComboShop.SelectedValue.ToString()),
-                    PlateName = NameTb.Text,
-                    IdComposer = Int32.Parse(ComboComposer.SelectedValue.ToString()),
-                    IdPublisher = Int32.Parse(ComboPublisher.SelectedValue.ToString()),
-                    Cost = CostTb.Text,
-                    Duration = DurationTP.Text,
-                    CreationDate = DatePickerTb.SelectedDate.Value,
-                    Count = Convert.ToInt32(CountTb.Text),
-                    IdStock = Int32.Parse(ComboStock.SelectedValue.ToString()),
-                    IdProvider = Int32.Parse(ComboProvider.SelectedValue.ToString()),
-                };
-                DBEntities.GetContext().Plates.Add(Plates);
-                DBEntities.GetContext().SaveChanges();
+                    plate.IdShop = Int32.Parse(ComboShop.SelectedValue.ToString());
+                    plate.PlateName = NameTb.Text;
+                    plate.IdComposer = Int32.Parse(ComboComposer.SelectedValue.ToString());
+                    plate.IdPublisher = Int32.Parse(ComboPublisher.SelectedValue.ToString());
+                    plate.Cost = CostTb.Text;
+                    plate.Duration = DurationTP.Text;
+                    plate.CreationDate = DatePickerTb.SelectedDate.Value;
+                    plate.Count = Convert.ToInt32(CountTb.Text);
+                    plate.IdStock = Int32.Parse(ComboStock.SelectedValue.ToString());
+                    plate.IdProvider = Int32.Parse(ComboProvider.SelectedValue.ToString());
+                    DBEntities.GetContext().SaveChanges();
+                }
 
 
             }
         }
 
-        private void AddPlateBtn_Click(object sender, RoutedEventArgs e)
+        private void EditPlateBtn_Click(object sender, RoutedEventArgs e)
         {
             if (ElementsToolsClass.AllFieldsFilled(this))
             {
                 try
                 {
-                    PlateInfoAdd();
-                    notifier.ShowSuccess("Пластинка добавлена");
-                    ElementsToolsClass.ClearAllControls(this);
+                    PlateInfoEdit();
+                    notifier.ShowSuccess("Пластинка изменена");
                 }
                 catch (DbEntityValidationException ex)
                 {
@@ -140,6 +132,11 @@ namespace MUSICMAN.PageFolder.ManagerPageFolder
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             WindowTransitionHelper.OpenWindow(this, this);
+        }
+
+        private void EditPlateBtn_Click_1(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

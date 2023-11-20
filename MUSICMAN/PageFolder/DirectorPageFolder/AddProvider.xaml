@@ -37,6 +37,9 @@
                 <RowDefinition Height="10" />
                 <RowDefinition />
             </Grid.RowDefinitions>
+            <Label Content="Добавить поставщика"
+Style="{DynamicResource NormalLabel}" FontWeight="SemiBold" Grid.ColumnSpan="4" FontSize="30"
+    HorizontalAlignment="Left" Width="606" Margin="115,0,0,0" Height="63" />
             <Button Grid.Column="0"
                     Grid.Row="0"
                     Background="#312F2F"
@@ -68,21 +71,8 @@
                    Height="30"
                    Margin="10,0,10,0" />
 
-            <TextBox x:Name="NameTb"
-                     Grid.Row="1"
-                     Grid.Column="2"
-                     Text="{Binding ProviderName}"
-                     FontSize="16"
-                     FontWeight="Medium"
-                     FontFamily="Montserrat"
-                     Foreground="Black"
-                     CaretBrush="LightGray"
-                     BorderBrush="#312F2F"
-                     BorderThickness="0, 0, 0, 1"
-                     Height="28"
-                     VerticalAlignment="Top"
-                     Margin="0,14,0,0" />
-
+            
+            
             <Label Content="Адрес"
                    Style="{DynamicResource NormalLabel}"
                    Grid.Column="1"
@@ -90,26 +80,34 @@
                    Height="30"
                    Margin="10,0,10,0" />
 
-            <TextBox x:Name="AdressTb"
-                     Grid.Row="3"
-                     Grid.Column="2"
-                     FontSize="16"
-                     FontWeight="Medium"
-                     FontFamily="Montserrat"
-                     Foreground="Black"
-                     CaretBrush="LightGray"
-                     BorderBrush="#312F2F"
-                     BorderThickness="0, 0, 0, 1"
-                     Height="28"
-                     VerticalAlignment="Top"
-                     Margin="0,14,0,0"
-                     Text="{Binding ProviderUrAdress}" />
+            <Grid Grid.Row="3" Grid.Column="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <TextBox x:Name="AdressTb"
+Style="{DynamicResource TBStyle}"
+Grid.Column="0" Grid.Row="4"
+Height="22"
+MaxLength="30"
+TextChanged="AdressTb_TextChanged"   Margin="0,0,9,0" Grid.ColumnSpan="2" />
+                <TextBlock Text="{Binding ElementName=AdressTb, Path=Text.Length}"
+              FontSize="16" Opacity="0.75"
+  Grid.Column="1"
+  HorizontalAlignment="Center" Margin="0,10,0,0" />
+                <TextBlock Text="/50" FontSize="16" Opacity="0.75"
+  Grid.Column="2"
+  HorizontalAlignment="Center" Margin="0,10,0,0" />
+            </Grid>
+
+
 
             <Label Content="Контракт до"
                    Style="{DynamicResource NormalLabel}"
                    Grid.Column="1"
                    Grid.Row="5"
-                   Height="30"
+                   Height="26"
                    Margin="10,0,10,0" />
 
             <DatePicker x:Name="DateContractTb"
@@ -131,15 +129,28 @@
 
             </DatePicker>
 
+            <Grid Grid.Row="1" Grid.Column="2">
+                <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <TextBox x:Name="NameTb"
+Style="{DynamicResource TBStyle}"
+Grid.Column="0" Grid.Row="4"
+Height="22"
+MaxLength="30"
+TextChanged="NameTb_TextChanged"  Margin="0,0,9,0" Grid.ColumnSpan="2" />
+            <TextBlock Text="{Binding ElementName=NameTb, Path=Text.Length}"
+              FontSize="16" Opacity="0.75"
+  Grid.Column="1"
+  HorizontalAlignment="Center" Margin="0,10,0,0" />
+            <TextBlock Text="/30" FontSize="16" Opacity="0.75"
+  Grid.Column="2"
+  HorizontalAlignment="Center" Margin="0,10,0,0" />
+        </Grid>
 
-            <!--<comp:Rating CurrentRating="93"
-                     MaxRating="100"
-                     Height="20"
-                     VerticalAlignment="Top"
-                     Grid.Row="6"
-                     Grid.Column="1"/>-->
-
-            <Button x:Name="AddProviderBtn"
+        <Button x:Name="AddProviderBtn"
                     Content="Добавить поставщика"
                     Grid.Row="6"
                     Grid.ColumnSpan="4"

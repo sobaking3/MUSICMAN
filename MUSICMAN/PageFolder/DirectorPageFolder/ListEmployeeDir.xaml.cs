@@ -1,6 +1,6 @@
 ﻿using MUSICMAN.ClassFolder;
 using MUSICMAN.DataFolder;
-using MUSICMAN.PageFolder.AdminPageFolder;
+using MUSICMAN.PageFolder.ManagerPageFolder;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,22 +13,20 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace MUSICMAN.PageFolder.ManagerPageFolder
+namespace MUSICMAN.PageFolder.DirectorPageFolder
 {
     /// <summary>
-    /// Логика взаимодействия для ListEmployee.xaml
+    /// Логика взаимодействия для ListEmployeeDir.xaml
     /// </summary>
-    public partial class ListEmployee : Page
+    public partial class ListEmployeeDir : Page
     {
-
-        public ListEmployee()
+        public ListEmployeeDir()
         {
             InitializeComponent();
             ListEmployeeLB.ItemsSource = DBEntities.GetContext()
-            .Workers.Where(u => u.User.Roles.NameRole != "Директор" && u.User.Roles.NameRole != "Администратор" && u.User.Roles.NameRole != "Менеджер")
+            .Workers.Where(u => u.User.Roles.NameRole != "Директор")
             .ToList().OrderBy(u => u.LastName);
         }
 
@@ -47,8 +45,8 @@ namespace MUSICMAN.PageFolder.ManagerPageFolder
         private void UpdateList()
         {
             ListEmployeeLB.ItemsSource = DBEntities.GetContext()
-                    .Workers.Where(u => u.FirstName.StartsWith(SearchTb.Text) && u.User.Roles.NameRole != "Администратор" &&
-                    u.User.Roles.NameRole != "Директор" && u.User.Roles.NameRole != "Менеджер")
+                    .Workers.Where(u => u.FirstName.StartsWith(SearchTb.Text) && 
+                    u.User.Roles.NameRole != "Директор")
                     .OrderBy(u => u.FirstName)
                     .ToList();
         }
@@ -85,7 +83,7 @@ namespace MUSICMAN.PageFolder.ManagerPageFolder
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            new AddEmployee().ShowDialog();
+            new AddEmployeeDir().ShowDialog();
             UpdateList();
         }
     }

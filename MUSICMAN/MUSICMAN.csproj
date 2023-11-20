@@ -74,6 +74,21 @@
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="Xceed.Wpf.AvalonDock, Version=4.5.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.4.5.1\lib\net40\Xceed.Wpf.AvalonDock.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.Aero, Version=4.5.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.4.5.1\lib\net40\Xceed.Wpf.AvalonDock.Themes.Aero.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.Metro, Version=4.5.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.4.5.1\lib\net40\Xceed.Wpf.AvalonDock.Themes.Metro.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.VS2010, Version=4.5.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.4.5.1\lib\net40\Xceed.Wpf.AvalonDock.Themes.VS2010.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.Toolkit, Version=4.5.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.4.5.1\lib\net40\Xceed.Wpf.Toolkit.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -162,6 +177,9 @@
     <Compile Include="PageFolder\AdminPageFolder\ListUser.xaml.cs">
       <DependentUpon>ListUser.xaml</DependentUpon>
     </Compile>
+    <Compile Include="PageFolder\DirectorPageFolder\AddEmployeeDir.xaml.cs">
+      <DependentUpon>AddEmployeeDir.xaml</DependentUpon>
+    </Compile>
     <Compile Include="PageFolder\DirectorPageFolder\AddProvider.xaml.cs">
       <DependentUpon>AddProvider.xaml</DependentUpon>
     </Compile>
@@ -173,6 +191,12 @@
     </Compile>
     <Compile Include="PageFolder\DirectorPageFolder\AddStock.xaml.cs">
       <DependentUpon>AddStock.xaml</DependentUpon>
+    </Compile>
+    <None Include="PageFolder\DirectorPageFolder\EditEmployeeDir.xaml.cs">
+      <DependentUpon>EditEmployeeDir.xaml</DependentUpon>
+    </None>
+    <Compile Include="PageFolder\DirectorPageFolder\ListEmployeeDir.xaml.cs">
+      <DependentUpon>ListEmployeeDir.xaml</DependentUpon>
     </Compile>
     <Compile Include="PageFolder\DirectorPageFolder\ListProviderDir.xaml.cs">
       <DependentUpon>ListProviderDir.xaml</DependentUpon>
@@ -200,6 +224,9 @@
     </Compile>
     <Compile Include="PageFolder\ManagerPageFolder\AddPlate.xaml.cs">
       <DependentUpon>AddPlate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PageFolder\ManagerPageFolder\EditPlate.xaml.cs">
+      <DependentUpon>EditPlate.xaml</DependentUpon>
     </Compile>
     <Compile Include="PageFolder\ManagerPageFolder\ListCompositors.xaml.cs">
       <DependentUpon>ListCompositors.xaml</DependentUpon>
@@ -302,6 +329,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="PageFolder\DirectorPageFolder\AddEmployeeDir.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="PageFolder\DirectorPageFolder\AddProvider.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -315,6 +346,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="PageFolder\DirectorPageFolder\AddStock.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PageFolder\DirectorPageFolder\EditEmployeeDir.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PageFolder\DirectorPageFolder\ListEmployeeDir.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -351,6 +390,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="PageFolder\ManagerPageFolder\AddPlate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PageFolder\ManagerPageFolder\EditPlate.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -447,6 +490,12 @@
       <LastGenOutput>DBModel.cs</LastGenOutput>
     </Content>
     <Content Include="ResourceFolder\kj.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\Downloads\WpfUtils\WpfUtils.csproj">
+      <Project>{C289B1CB-CFD4-41EC-BB01-F182F403BE40}</Project>
+      <Name>WpfUtils</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.4.9.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.4.9.0\build\MaterialDesignThemes.targets')" />

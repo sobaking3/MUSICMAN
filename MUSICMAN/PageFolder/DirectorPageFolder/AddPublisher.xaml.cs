@@ -110,5 +110,19 @@ namespace MUSICMAN.PageFolder.DirectorPageFolder
         {
             WindowTransitionHelper.OpenWindow(this, this);
         }
+
+        private void NameTb_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            var textBox = (TextBox)sender;
+            var grid = (Grid)textBox.Parent;
+            if (grid != null)
+            {
+                var textBlock = (TextBlock)VisualTreeHelper.GetChild(grid, 1);
+                if (textBlock != null)
+                {
+                    textBlock.Text = textBox.Text.Length.ToString();
+                }
+            }
+        }
     }
 }

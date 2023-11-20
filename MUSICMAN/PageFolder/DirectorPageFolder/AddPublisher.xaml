@@ -37,6 +37,9 @@
                 <RowDefinition Height="10" />
                 <RowDefinition />
             </Grid.RowDefinitions>
+            <Label Content="Добавить издателя"
+Style="{DynamicResource NormalLabel}" FontWeight="SemiBold" Grid.ColumnSpan="4" FontSize="30"
+    HorizontalAlignment="Left" Width="606" Margin="115,0,0,0" Height="63" />
             <Button Grid.Column="0"
                     Grid.Row="0"
                     Background="#312F2F"
@@ -68,21 +71,26 @@
                    Height="30"
                    Margin="10,0,10,0" />
 
-            <TextBox x:Name="NameTb"
-                     Grid.Row="1"
-                     Grid.Column="2"
-                     Text="{Binding PublisherName}"
-                     FontSize="16"
-                     FontWeight="Medium"
-                     FontFamily="Montserrat"
-                     Foreground="Black"
-                     CaretBrush="LightGray"
-                     BorderBrush="#312F2F"
-                     BorderThickness="0, 0, 0, 1"
-                     Height="28"
-                     VerticalAlignment="Top"
-                     Margin="0,14,0,0" />
-
+            <Grid Grid.Row="1" Grid.Column="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <TextBox x:Name="NameTb"
+      Style="{DynamicResource TBStyle}"
+      Grid.Column="0" Grid.Row="4"
+      Height="22"
+      MaxLength="30"
+      TextChanged="NameTb_TextChanged"  Margin="0,0,9,0" Grid.ColumnSpan="2" />
+                <TextBlock Text="{Binding ElementName=NameTb, Path=Text.Length}"
+                    FontSize="16" Opacity="0.75"
+        Grid.Column="1"
+        HorizontalAlignment="Center" Margin="0,10,0,0" />
+                <TextBlock Text="/30" FontSize="16" Opacity="0.75"
+        Grid.Column="2"
+        HorizontalAlignment="Center" Margin="0,10,0,0" />
+            </Grid>
             <Label Content="Контракт до"
                    Style="{DynamicResource NormalLabel}"
                    Grid.Column="1"
@@ -92,7 +100,7 @@
 
             <DatePicker x:Name="DateContractTb"
                         SelectedDate="{Binding PublisherContractTil}"
-                        Grid.Column="2"
+                        Grid.Column="2" Height="26"
                         Grid.Row="3" FontFamily="Montserrat"
                         FontSize="16"
                         BorderBrush="#312F2F"
@@ -116,20 +124,19 @@
                    Height="30"
                    Margin="10,0,10,0" />
 
-            <TextBox x:Name="RatingTb"
-                     Grid.Row="5" PreviewTextInput="RatingTb_PreviewTextInput"
-                     Grid.Column="2"
-                     Text="{Binding Rating}"
-                     FontSize="16"
-                     FontWeight="Medium"
-                     FontFamily="Montserrat"
-                     Foreground="Black"
-                     CaretBrush="LightGray"
-                     BorderBrush="#312F2F"
-                     BorderThickness="0, 0, 0, 1"
-                     Height="36"
-                     VerticalAlignment="Top"
-                     Margin="0,0,0,0" />
+            <Grid Grid.Row="5" Grid.Column="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <TextBox x:Name="RatingTb"
+Style="{DynamicResource TBStyle}"
+Grid.Column="0" Grid.Row="11"             
+Height="22" PreviewTextInput="RatingTb_PreviewTextInput"
+MaxLength="30" Margin="0,0,9,0" Grid.ColumnSpan="2" />
+                <TextBlock Text="/100" FontSize="16" Opacity="0.75" Margin="252,10,0,0" Grid.ColumnSpan="3" />
+            </Grid>
 
             <!--<comp:Rating CurrentRating="93"
                      MaxRating="100"

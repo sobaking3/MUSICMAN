@@ -26,6 +26,7 @@ namespace MUSICMAN.PageFolder.DirectorPageFolder
     public partial class AddShop : Window
     {
         Notifier notifier;
+        Adress Adress = new Adress();
         public AddShop()
         {
             notifier = App.GetWindowNotifer(this);
@@ -40,13 +41,26 @@ namespace MUSICMAN.PageFolder.DirectorPageFolder
             {
                 try
                 {
+                    AddAdress();
                     ShopInfoAdd();
-                    notifier.ShowSuccess("Пластинка добавлена");
+                    notifier.ShowSuccess("Магазин добавлен");
                     ElementsToolsClass.ClearAllControls(this);
                 }
                 catch (DbEntityValidationException ex)
                 {
-                    MBClass.ErrorMB(ex);
+                    string errorMessage = "Ошибка валидации сущностей:" + Environment.NewLine;
+                    foreach (var entityValidationError in ex.EntityValidationErrors)
+                    {
+                        var entity = entityValidationError.Entry.Entity;
+                        var validationErrors = entityValidationError.ValidationErrors;
+                        foreach (var validationError in validationErrors)
+                        {
+                            var propertyName = validationError.PropertyName;
+                            var error = validationError.ErrorMessage;
+                            errorMessage += $"Сущность: {entity.GetType().Name}, Свойство: {propertyName}, Ошибка: {error}" + Environment.NewLine;
+                        }
+                    }
+                    MessageBox.Show(errorMessage, "Ошибка валидации сущностей", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
             else
@@ -57,13 +71,7 @@ namespace MUSICMAN.PageFolder.DirectorPageFolder
 
         private void Back_Click(object sender, RoutedEventArgs e)
         {
-            Task.Delay(500).ContinueWith(_ => // Задержка в 1 секунду
-            {
-                Application.Current.Dispatcher.Invoke(() =>
-                {
                     Close(); // Закрытие окна
-                });
-            });
         }
         private void ShopInfoAdd()
         {
@@ -71,9 +79,10 @@ namespace MUSICMAN.PageFolder.DirectorPageFolder
             {
                 var Shop = new Shop()
                 {
-                    ShopName = NameShop.Text,
+                    ShopName = NameShopTb.Text,
                     OpeningTime = OpenTimeTP.Text,
                     ClosingTime = CloseTimeTP.Text,
+                    IdShopPlace = Adress.IdShopPlace,
                     PhoneOfDirector = PhoneDirTb.Text,
                 };
                 DBEntities.GetContext().Shop.Add(Shop);
@@ -81,6 +90,19 @@ namespace MUSICMAN.PageFolder.DirectorPageFolder
 
 
             }
+        }
+        private void AddAdress()
+        {
+            var AdressAdd = new Adress()
+            {
+                IdCountry = Int32.Parse(CountryCb.SelectedValue.ToString()),
+                IdCity = Int32.Parse(CityCb.SelectedValue.ToString()),
+                IdStreet = Int32.Parse(StreetCb.SelectedValue.ToString()),
+                HouseNumber = HouseNumberTb.Text,
+            };
+            DBEntities.GetContext().Adress.Add(AdressAdd);
+            DBEntities.GetContext().SaveChanges();
+            Adress.IdShopPlace = AdressAdd.IdShopPlace;
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -248,6 +270,25 @@ namespace MUSICMAN.PageFolder.DirectorPageFolder
             notifier.ShowSuccess($"Страна {newCountry.Name} добавлена!");
 
             CountryCbHelpText.Visibility = Visibility.Hidden;
+        }
+
+        private void HouseNumberTb_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            var textBox = (TextBox)sender;
+            var grid = (Grid)textBox.Parent;
+            if (grid != null)
+            {
+                var textBlock = (TextBlock)VisualTreeHelper.GetChild(grid, 1);
+                if (textBlock != null)
+                {
+                    textBlock.Text = textBox.Text.Length.ToString();
+                }
+            }
+        }
+
+        private void AdressTb_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
         }
     }
 }

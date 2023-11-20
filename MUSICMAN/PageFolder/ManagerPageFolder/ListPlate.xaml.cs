@@ -1,5 +1,6 @@
 ﻿using MUSICMAN.ClassFolder;
 using MUSICMAN.DataFolder;
+using MUSICMAN.WindowFolder.ManagerFolder;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +15,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ToastNotifications;
+using ToastNotifications.Messages;
 
 namespace MUSICMAN.PageFolder.ManagerPageFolder
 {
@@ -82,6 +85,21 @@ namespace MUSICMAN.PageFolder.ManagerPageFolder
             catch (Exception ex)
             {
                 MBClass.ErrorMB(ex);
+            }
+        }
+
+        private void EditM1_Click(object sender, RoutedEventArgs e)
+        {
+            Plates selectedPlate = ListPlatesDG.SelectedItem as Plates;
+            if(selectedPlate != null)
+            {
+                new EditPlate(selectedPlate).ShowDialog();
+                ListPlatesDG.ItemsSource = DBEntities.GetContext()
+                .Plates.ToList().OrderBy(u => u.IdPlate);
+            }
+            else
+            {
+                ManagerMainWindow.notifier.ShowError("Вы не выюбрали пластинку");
             }
         }
     }

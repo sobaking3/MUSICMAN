@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:MUSICMAN.PageFolder.ManagerPageFolder"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
+        DataContext="{Binding RelativeSource={RelativeSource Self}}"
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
@@ -68,7 +69,7 @@
      Grid.Column="3" Grid.ColumnSpan="5" FontSize="25" Grid.Row="8"
          HorizontalAlignment="Left" Width="545" Height="42" Margin="9,0,0,0" />
 
-            <Separator Background="Black"  Grid.Column="2" Grid.ColumnSpan="7" Margin="1,71,35,3" RenderTransformOrigin="0.5,0.5">
+            <Separator Opacity="0.75"  Background="Black"  Grid.Column="2" Grid.ColumnSpan="7" Margin="1,71,35,3" RenderTransformOrigin="0.5,0.5">
                 <Separator.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform ScaleY="-1"/>
@@ -78,7 +79,7 @@
                     </TransformGroup>
                 </Separator.RenderTransform>
             </Separator>
-            <Separator Background="Black"  Grid.Column="2" Grid.ColumnSpan="7" Margin="1,11,34,68" Grid.Row="2" Grid.RowSpan="12"/>
+            <Separator Background="Black" Opacity="0.75"  Grid.Column="2" Grid.ColumnSpan="7" Margin="1,11,34,68" Grid.Row="2" Grid.RowSpan="12"/>
 
             <Button Grid.Column="1"
                     x:Name="Back"
@@ -144,7 +145,7 @@
                 <TextBox x:Name="NameTb"
              Style="{DynamicResource TBStyle}"
              Grid.Column="0" Grid.Row="4"
-             Height="24"
+             Height="22"
              MaxLength="30"
              TextChanged="TextBox_TextChanged" Margin="0,0,9,0" Grid.ColumnSpan="2" />
                 <TextBlock Text="{Binding ElementName=NameTb, Path=Text.Length}"
@@ -193,10 +194,10 @@
                 <TextBox x:Name="CostTb"
              Style="{DynamicResource TBStyle}"
             Grid.Column="0"
-             Height="24"
+             Height="22"
             MaxLength="30"
                 TextChanged="TextBox_TextChanged" Margin="0,0,9,0" Grid.ColumnSpan="2" />
-                <TextBlock Text="{Binding ElementName=NameTb, Path=Text.Length}"
+                <TextBlock Text="{Binding ElementName=CostTb, Path=Text.Length}"
                 FontSize="16" Opacity="0.75"
                     Grid.Column="1"
                     HorizontalAlignment="Center" Margin="0,10,0,0" />
@@ -268,7 +269,7 @@
                                         Is24Hours="True"
                                         BorderBrush="#312F2F"
                                         Foreground="Black"
-                                        Height="28" />
+                                        Height="26" />
 
             <Label Content="Дата создания"
                    Style="{DynamicResource NormalLabel}"
@@ -283,7 +284,7 @@
                         Grid.Row="6"  FontSize="16"   FontFamily="Montserrat"
                         BorderBrush="#312F2F"
                         Foreground="Black"
-                        Height="28">
+                        Height="26">
                 <DatePicker.CalendarStyle>
                     <Style TargetType="Calendar"
                            BasedOn="{StaticResource MaterialDesignCalendarPortrait}">
@@ -314,10 +315,10 @@
                 <TextBox x:Name="CountTb"
                      Style="{DynamicResource TBStyle}"
                      Grid.Column="0"
-                     Height="24"
+                     Height="22"
                     MaxLength="4" PreviewTextInput="CountTb_PreviewTextInput"
                      TextChanged="TextBox_TextChanged" Margin="0,0,9,0" Grid.ColumnSpan="2" />
-                <TextBlock Text="{Binding ElementName=NameTb, Path=Text.Length}"
+                <TextBlock Text="{Binding ElementName=CountTb, Path=Text.Length}"
                                    FontSize="16" Opacity="0.75"
                        Grid.Column="1"
                        HorizontalAlignment="Center" Margin="0,10,0,0" />

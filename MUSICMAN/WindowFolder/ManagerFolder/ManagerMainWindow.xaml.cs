@@ -24,7 +24,7 @@ namespace MUSICMAN.WindowFolder.ManagerFolder
     /// </summary>
     public partial class ManagerMainWindow : Window
     {
-        Notifier notifier;
+        public static Notifier notifier;
         public ManagerMainWindow()
         {
             InitializeComponent();

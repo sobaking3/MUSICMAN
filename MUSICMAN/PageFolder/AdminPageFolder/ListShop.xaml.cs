@@ -3,6 +3,7 @@ using MUSICMAN.DataFolder;
 using MUSICMAN.PageFolder.DirectorPageFolder;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -46,5 +47,24 @@ namespace MUSICMAN.PageFolder.AdminPageFolder
             }
         }
 
+        private void ListShopLB_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+    }
+    public class AdressConverter : IMultiValueConverter
+    {
+        public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
+        {
+            string country = (string)values[0];
+            string city = (string)values[1];
+            string street = (string)values[2];
+            string houseNumber = (string)values[3];
+            return $"{country}, {city}, {street}, {houseNumber}";
+        }
+        public object[] ConvertBack(object value, Type[] targetTypes, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -19,7 +19,7 @@ namespace MUSICMAN.PageFolder.EmployeePageFolder
     /// <summary>
     /// Логика взаимодействия для ListCompositorsEmp.xaml
     /// </summary>
-    public partial class ListCompositorsEmp : Window
+    public partial class ListCompositorsEmp : Page
     {
         public ListCompositorsEmp()
         {

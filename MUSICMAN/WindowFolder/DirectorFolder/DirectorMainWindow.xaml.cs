@@ -35,7 +35,7 @@ namespace MUSICMAN.WindowFolder.DirectorFolder
 
         private void ListUserBtn_Click(object sender, RoutedEventArgs e)
         {
-            MainFrame.Navigate(new ListEmployee());
+            MainFrame.Navigate(new ListEmployeeDir());
         }
 
         private void Border_MouseDown(object sender, MouseButtonEventArgs e)

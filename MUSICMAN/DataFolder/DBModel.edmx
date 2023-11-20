@@ -11,7 +11,6 @@
           </Key>
           <Property Name="IdShopPlace" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="IdStreet" Type="int" Nullable="false" />
-          <Property Name="ShoppingCenter" Type="nvarchar" MaxLength="30" Nullable="false" />
           <Property Name="IdCountry" Type="int" Nullable="false" />
           <Property Name="IdCity" Type="int" Nullable="false" />
           <Property Name="HouseNumber" Type="nvarchar" MaxLength="4" Nullable="false" />
@@ -63,7 +62,7 @@
             <PropertyRef Name="IdProvider" />
           </Key>
           <Property Name="IdProvider" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="ProviderName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ProviderName" Type="nvarchar" MaxLength="30" Nullable="false" />
           <Property Name="ProviderUrAdress" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="ContractTil" Type="date" Nullable="false" />
         </EntityType>
@@ -92,7 +91,7 @@
           <Property Name="IdShopPlace" Type="int" Nullable="false" />
           <Property Name="OpeningTime" Type="nvarchar" MaxLength="30" Nullable="false" />
           <Property Name="ClosingTime" Type="nvarchar" MaxLength="30" Nullable="false" />
-          <Property Name="PhoneOfDirector" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="PhoneOfDirector" Type="nvarchar" MaxLength="20" Nullable="false" />
         </EntityType>
         <EntityType Name="Stocks">
           <Key>
@@ -100,7 +99,7 @@
           </Key>
           <Property Name="IdStock" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="StockNumber" Type="nvarchar" MaxLength="30" Nullable="false" />
-          <Property Name="IndividualAdress" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="IndividualAdress" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="Streets">
           <Key>
@@ -378,7 +377,6 @@
           </Key>
           <Property Name="IdShopPlace" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="IdStreet" Type="Int32" Nullable="false" />
-          <Property Name="ShoppingCenter" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="IdCountry" Type="Int32" Nullable="false" />
           <Property Name="IdCity" Type="Int32" Nullable="false" />
           <Property Name="HouseNumber" Type="String" MaxLength="4" FixedLength="false" Unicode="true" Nullable="false" />
@@ -444,7 +442,7 @@
             <PropertyRef Name="IdProvider" />
           </Key>
           <Property Name="IdProvider" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ProviderName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ProviderName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="ProviderUrAdress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="ContractTil" Type="DateTime" Nullable="false" Precision="0" />
           <NavigationProperty Name="Plates" Relationship="Self.FK_Plates_Provider" FromRole="Provider" ToRole="Plates" />
@@ -476,7 +474,7 @@
           <Property Name="IdShopPlace" Type="Int32" Nullable="false" />
           <Property Name="OpeningTime" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="ClosingTime" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="PhoneOfDirector" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PhoneOfDirector" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Adress" Relationship="Self.FK_Shop_Adress" FromRole="Shop" ToRole="Adress" />
           <NavigationProperty Name="Plates" Relationship="Self.FK_Plates_Shop" FromRole="Shop" ToRole="Plates" />
           <NavigationProperty Name="Workers" Relationship="Self.FK_Workers_Shop1" FromRole="Shop" ToRole="Workers" />
@@ -487,7 +485,7 @@
           </Key>
           <Property Name="IdStock" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="StockNumber" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="IndividualAdress" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IndividualAdress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Plates" Relationship="Self.FK_Plates_Stocks" FromRole="Stocks" ToRole="Plates" />
         </EntityType>
         <EntityType Name="Streets">
@@ -771,7 +769,6 @@
               <MappingFragment StoreEntitySet="Adress">
                 <ScalarProperty Name="IdShopPlace" ColumnName="IdShopPlace" />
                 <ScalarProperty Name="IdStreet" ColumnName="IdStreet" />
-                <ScalarProperty Name="ShoppingCenter" ColumnName="ShoppingCenter" />
                 <ScalarProperty Name="IdCountry" ColumnName="IdCountry" />
                 <ScalarProperty Name="IdCity" ColumnName="IdCity" />
                 <ScalarProperty Name="HouseNumber" ColumnName="HouseNumber" />

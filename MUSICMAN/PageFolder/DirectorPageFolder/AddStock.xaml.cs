@@ -101,5 +101,10 @@ namespace MUSICMAN.PageFolder.DirectorPageFolder
         {
             WindowTransitionHelper.OpenWindow(this, this);
         }
+
+        private void AdressTb_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
     }
 }
