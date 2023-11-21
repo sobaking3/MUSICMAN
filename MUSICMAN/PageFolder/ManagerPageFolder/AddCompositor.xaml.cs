@@ -3,19 +3,14 @@ using MUSICMAN.ClassFolder;
 using MUSICMAN.DataFolder;
 using MUSICMAN.WindowFolder.UtilsFolder;
 using System;
-using System.Collections.Generic;
 using System.Data.Entity.Validation;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using ToastNotifications;
 using ToastNotifications.Messages;
 
@@ -26,8 +21,9 @@ namespace MUSICMAN.PageFolder.ManagerPageFolder
     /// </summary>
     public partial class AddCompositor : Window
     {
-        Composer Composer = new Composer();
-        Notifier notifier;
+        private Composer Composer = new Composer();
+        private Notifier notifier;
+
         public AddCompositor()
         {
             InitializeComponent();
@@ -57,11 +53,11 @@ namespace MUSICMAN.PageFolder.ManagerPageFolder
                 MBClass.ErrorMB(ex);
             }
         }
+
         private void AddPhoto_Click(object sender, RoutedEventArgs e)
         {
             AddPhoto();
         }
-
 
         private void AddCompositorBtn_Click(object sender, RoutedEventArgs e)
         {
@@ -86,7 +82,6 @@ namespace MUSICMAN.PageFolder.ManagerPageFolder
 
         private void ComposerInfoAdd()
         {
-
             var ComposerInfoAdd = new Composer()
             {
                 ComposerName = NameTb.Text,
@@ -99,7 +94,8 @@ namespace MUSICMAN.PageFolder.ManagerPageFolder
             DBEntities.GetContext().Composer.Add(ComposerInfoAdd);
             DBEntities.GetContext().SaveChanges();
         }
-        string selectedFileName = "";
+
+        private string selectedFileName = "";
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
@@ -134,7 +130,7 @@ namespace MUSICMAN.PageFolder.ManagerPageFolder
             {
                 CollectionView cv = (CollectionView)CollectionViewSource.GetDefaultView(CountryCb.ItemsSource);
                 cv.Filter = s => (s as Country).Name.IndexOf(CountryCb.Text, StringComparison.CurrentCultureIgnoreCase) >= 0;
-                if(cv.Count == 0)
+                if (cv.Count == 0)
                 {
                     //CountryCb.IsDropDownOpen = false;
                     CountryCbHelpText.Visibility = Visibility.Visible;
@@ -153,7 +149,7 @@ namespace MUSICMAN.PageFolder.ManagerPageFolder
             // Открытик окна
             new AddCountryWindow(c => newCountry = c, CountryCb.Text).ShowDialog();
 
-            if(newCountry == null)
+            if (newCountry == null)
             {
                 return;
             }
@@ -194,20 +190,20 @@ namespace MUSICMAN.PageFolder.ManagerPageFolder
 
         private void TracksCountTb_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
-                // Проверяем, является ли вводимый символ цифрой
-                if (!char.IsDigit(e.Text, e.Text.Length - 1))
-                {
-                    // Если символ не является цифрой, отменяем его ввод
-                    e.Handled = true;
-                }
+            // Проверяем, является ли вводимый символ цифрой
+            if (!char.IsDigit(e.Text, e.Text.Length - 1))
+            {
+                // Если символ не является цифрой, отменяем его ввод
+                e.Handled = true;
+            }
 
-                // Указываем максимальное количество символов в текстбоксе
-                int maxLength = 5; // Здесь можно указать нужное значение
-                TextBox textBox = (TextBox)sender;
-                if (textBox.Text.Length >= maxLength)
-                {
-                    e.Handled = true;
-                }
+            // Указываем максимальное количество символов в текстбоксе
+            int maxLength = 5; // Здесь можно указать нужное значение
+            TextBox textBox = (TextBox)sender;
+            if (textBox.Text.Length >= maxLength)
+            {
+                e.Handled = true;
+            }
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)

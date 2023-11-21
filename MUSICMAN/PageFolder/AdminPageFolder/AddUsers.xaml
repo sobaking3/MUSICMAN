@@ -25,7 +25,7 @@
                 <ColumnDefinition  Width="169" />
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition Height="100"/>
+                <RowDefinition Height="100" />
                 <RowDefinition Height="50" />
                 <RowDefinition Height="10" />
                 <RowDefinition Height="50" />
@@ -41,7 +41,7 @@
                    Grid.Row="0" Grid.ColumnSpan="2"
                    FontWeight="SemiBold"
                    Height="52" FontSize="30" />
-            <Separator Background="Black" Height="5"  Grid.Column="1" Grid.ColumnSpan="2" Margin="0,0,20,0" Grid.RowSpan="3"/>
+            <Separator Background="Black" Height="5"  Grid.Column="1" Grid.ColumnSpan="2" Margin="0,0,20,0" Grid.RowSpan="3" />
             <Button Grid.Column="0"
                     Grid.Row="0"
                     Background="#312F2F"
@@ -135,7 +135,7 @@
                          Height="20"
                          VerticalAlignment="Top"
                          Grid.Row="6"
-                         Grid.Column="1"/>-->
+                         Grid.Column="1" />-->
 
             <Button x:Name="AddUserBtn"
                     Content="Добавить пользователя"
@@ -158,5 +158,4 @@
             </Button>
         </Grid>
     </materialDesign:Card>
-
 </Window>

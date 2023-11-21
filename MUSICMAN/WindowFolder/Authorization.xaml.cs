@@ -2,24 +2,14 @@
 using MUSICMAN.DataFolder;
 using MUSICMAN.WindowFolder.DirectorFolder;
 using System;
-using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Animation;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using System.Windows.Threading;
 using ToastNotifications;
 using ToastNotifications.Messages;
-using static MUSICMAN.ClassFolder.WindowTransitionHelper;
+
 namespace MUSICMAN.WindowFolder
 {
     /// <summary>
@@ -27,7 +17,8 @@ namespace MUSICMAN.WindowFolder
     /// </summary>
     public partial class Authorization : Window
     {
-        Notifier notifier;
+        private Notifier notifier;
+
         public Authorization()
         {
             notifier = App.GetWindowNotifer(this);
@@ -47,7 +38,6 @@ namespace MUSICMAN.WindowFolder
         }
 
         private DispatcherTimer timer = new DispatcherTimer();
-
 
         private void LoginBtn_Click(object sender, RoutedEventArgs e)
         {
@@ -73,7 +63,7 @@ namespace MUSICMAN.WindowFolder
                     }
                     else if (user.Password != PasswordPb.Password)
                     {
-                        notifier.ShowError("Пароль или логин введен неверно");                    
+                        notifier.ShowError("Пароль или логин введен неверно");
                     }
                     else
                     {
@@ -85,18 +75,21 @@ namespace MUSICMAN.WindowFolder
                             case 1:
                                 window = new AdminFolder.AdminMainWindow();
                                 break;
-                            case 2:      
+
+                            case 2:
                                 window = new ManagerFolder.ManagerMainWindow();
-                                   break;
+                                break;
+
                             case 3:
                                 window = new DirectorMainWindow();
                                 break;
+
                             case 4:
                                 window = new EmployeeMainWindow.EmployeeMainWindow();
                                 break;
                         }
 
-                        if(window != null)
+                        if (window != null)
                         {
                             //Application.Current.MainWindow = window;
                             window.Show();

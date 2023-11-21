@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Media.Animation;
 
@@ -24,6 +20,7 @@ namespace MUSICMAN.ClassFolder
             // Открываем окно
             childWindow.Show();
         }
+
         public static void CloseWindow(Window window)
         {
             // Создаем анимацию для закрытия окна

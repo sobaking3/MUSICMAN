@@ -1,16 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MaterialDesignThemes.Wpf;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
-using System.Windows;
-using MaterialDesignThemes.Wpf;
 
 namespace MUSICMAN.ClassFolder
 {
-    class ElementsToolsClass
+    internal class ElementsToolsClass
     {
         public static void ClearAllControls(DependencyObject parent)
         {
@@ -33,6 +28,7 @@ namespace MUSICMAN.ClassFolder
                 ClearAllControls(child); //рекурсивный вызов для очистки дочерних элементов
             }
         }
+
         public static bool AllFieldsFilled(DependencyObject parent)
         {
             foreach (object child in LogicalTreeHelper.GetChildren(parent))

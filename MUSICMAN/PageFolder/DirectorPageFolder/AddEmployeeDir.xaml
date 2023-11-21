@@ -4,34 +4,34 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MUSICMAN.PageFolder.DirectorPageFolder"
-           xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
-    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-    mc:Ignorable="d" Loaded="Window_Loaded"
-    AllowsTransparency="True"
-    Background="Transparent"
-    ResizeMode="NoResize"
-    WindowStartupLocation="CenterScreen"
-    WindowStyle="None"
-    d:DesignHeight="560"
-    Title="Добавление сотрудника"
-    Width="917">
+                   xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+mc:Ignorable="d" Loaded="Window_Loaded"
+AllowsTransparency="True"
+Background="Transparent"
+ResizeMode="NoResize"
+WindowStartupLocation="CenterScreen"
+WindowStyle="None"
+d:DesignHeight="560"
+Title="Добавление сотрудника"
+Width="1020" >
 
     <materialDesign:Card UniformCornerRadius="15"
-                     Margin="5" Height="560"
-                     materialDesign:ShadowAssist.ShadowDepth="Depth1">
+                 Margin="5" Height="560" Width="1000"
+                 materialDesign:ShadowAssist.ShadowDepth="Depth1">
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="20" />
                 <ColumnDefinition Width="12" />
                 <ColumnDefinition Width="30" />
                 <ColumnDefinition Width="150" />
-                <ColumnDefinition Width="180" />
-                <ColumnDefinition Width="20" />
-                <ColumnDefinition Width="157" />
-                <ColumnDefinition Width="143" />
-                <ColumnDefinition Width="20" />
-                <ColumnDefinition Width="150" />
-                <ColumnDefinition Width="100" />
+                <ColumnDefinition Width="192" />
+                <ColumnDefinition Width="17" />
+                <ColumnDefinition Width="148" />
+                <ColumnDefinition Width="207" />
+                <ColumnDefinition Width="11" />
+                <ColumnDefinition Width="147" />
+                <ColumnDefinition Width="48" />
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="93" />
@@ -53,44 +53,43 @@
                 <RowDefinition Height="10" />
                 <RowDefinition Height="70" />
                 <RowDefinition Height="10" />
-
             </Grid.RowDefinitions>
 
             <Button Grid.Column="1"
-            Grid.Row="0"
-            Background="#312F2F"
-            Margin="6,32,115,29"
-            BorderThickness="0"
-            Click="Button_Click"
-            Grid.ColumnSpan="3">
+        Grid.Row="0"
+        Background="#312F2F"
+        Margin="6,32,115,29"
+        BorderThickness="0"
+        Click="Button_Click"
+        Grid.ColumnSpan="3">
                 <Button.Template>
                     <ControlTemplate TargetType="Button">
                         <Border Background="{TemplateBinding Background}"
-                        BorderBrush="{TemplateBinding BorderBrush}"
-                        BorderThickness="{TemplateBinding BorderThickness}"
-                        CornerRadius="10">
+                    BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="{TemplateBinding BorderThickness}"
+                    CornerRadius="10">
                             <ContentPresenter HorizontalAlignment="Center"
-                                      VerticalAlignment="Center" />
+                                  VerticalAlignment="Center" />
                         </Border>
                     </ControlTemplate>
                 </Button.Template>
                 <materialDesign:PackIcon Kind="KeyboardBackspace"
-                                 Foreground="White"
-                                 Height="36"
-                                 Width="30" 
-                                 HorizontalAlignment="Center"
-                                 VerticalAlignment="Center" />
+                             Foreground="White"
+                             Height="36"
+                             Width="30"
+                             HorizontalAlignment="Center"
+                             VerticalAlignment="Center" />
             </Button>
             <Border>
                 <Button x:Name="AddPhoto"
-                Content="+"
-                FontSize="30"
-                Click="AddPhoto_Click"
-                Style="{DynamicResource ButtonsStyle}"
-                Margin="745,201,-850,-474"
-                Grid.Column="1"
-                Grid.RowSpan="3"
-                RenderTransformOrigin="0.5,0.5">
+            Content="+"
+            FontSize="30"
+            Click="AddPhoto_Click"
+            Style="{DynamicResource ButtonsStyle}"
+            Margin="745,201,-954,-474"
+            Grid.Column="1"
+            Grid.RowSpan="3"
+            RenderTransformOrigin="0.5,0.5">
                     <Button.RenderTransform>
                         <TransformGroup>
                             <ScaleTransform ScaleY="1" />
@@ -103,40 +102,39 @@
 
                         <ControlTemplate TargetType="Button">
                             <Border Width="125"
-                            Height="40"
-                            CornerRadius="10"
-                            Background="{TemplateBinding Background}" Margin="0,133,0,148">
+                        Height="40"
+                        CornerRadius="10"
+                        Background="{TemplateBinding Background}" Margin="0,133,0,148">
                                 <ContentPresenter VerticalAlignment="Center"
-                                          HorizontalAlignment="Center" />
+                                      HorizontalAlignment="Center" />
                             </Border>
                         </ControlTemplate>
                     </Button.Template>
                 </Button>
-
             </Border>
 
             <Label Content="Добавить сотрудника"
-           Style="{DynamicResource NormalLabel}" FontWeight="SemiBold"
-           Grid.Column="3" Grid.ColumnSpan="5" FontSize="30"
-               HorizontalAlignment="Left" Width="597" Margin="44,0,0,0" Height="46" />
+       Style="{DynamicResource NormalLabel}" FontWeight="SemiBold"
+       Grid.Column="3" Grid.ColumnSpan="5" FontSize="30"
+           HorizontalAlignment="Left" Width="597" Margin="44,0,0,0" Height="46" />
 
-            <Separator Background="Black"  Grid.Column="1" Grid.ColumnSpan="9" Margin="7,76,15,7"/>
-            <Separator Background="Black"  Grid.Column="2" Grid.ColumnSpan="7" Margin="1,2,1,32" Grid.Row="2" Grid.RowSpan="12"/>
+            <Separator Background="Black"  Grid.Column="1" Grid.ColumnSpan="9" Margin="7,76,15,7" />
+            <Separator Background="Black"  Grid.Column="2" Grid.ColumnSpan="7" Margin="1,2,1,32" Grid.Row="2" Grid.RowSpan="12" />
 
             <Label Content="Личная информация"
-        Style="{DynamicResource NormalLabel}" FontWeight="SemiBold"
-        Grid.Column="3" Grid.ColumnSpan="5" FontSize="25" Grid.Row="1"
-            HorizontalAlignment="Center" Width="634" Height="45" />
+    Style="{DynamicResource NormalLabel}" FontWeight="SemiBold"
+    Grid.Column="3" Grid.ColumnSpan="5" FontSize="25" Grid.Row="1"
+        HorizontalAlignment="Center" Width="634" Height="45" />
 
             <Label Content="Данные"
-            Style="{DynamicResource NormalLabel}" FontWeight="SemiBold"
-            Grid.Column="3" Grid.ColumnSpan="4" FontSize="25" Grid.Row="8"
-                HorizontalAlignment="Left" Width="352" Height="42" Margin="9,0,0,0" />
+        Style="{DynamicResource NormalLabel}" FontWeight="SemiBold"
+        Grid.Column="3" Grid.ColumnSpan="4" FontSize="25" Grid.Row="8"
+            HorizontalAlignment="Left" Width="352" Height="42" Margin="9,0,0,0" />
 
             <Label Content="Фамилия"
-           Style="{DynamicResource NormalLabel}"
-           Grid.Column="3"
-           Grid.Row="2" Height="28" Margin="10,0,10,0" />
+       Style="{DynamicResource NormalLabel}"
+       Grid.Column="3"
+       Grid.Row="2" Height="28" Margin="10,0,10,0" />
 
             <Grid Grid.Row="4" Grid.Column="4">
                 <Grid.ColumnDefinitions>
@@ -145,18 +143,18 @@
                     <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
                 <TextBox x:Name="FirstNameTb"
-                  Style="{DynamicResource TBStyle}"
-                  Grid.Column="0" Grid.Row="4"
-                  Height="22"
-                  MaxLength="30"
-                  TextChanged="FirstNameTb_TextChanged" Margin="0,0,9,0" Grid.ColumnSpan="2" />
-                <TextBlock Text="{Binding ElementName=NameTb, Path=Text.Length}"
-                                FontSize="16" Opacity="0.75"
-                    Grid.Column="1"
-                    HorizontalAlignment="Center" Margin="0,10,0,0" />
+              Style="{DynamicResource TBStyle}"
+              Grid.Column="0"
+              Height="22"
+              MaxLength="30"
+              TextChanged="FirstNameTb_TextChanged" Margin="0,0,9,0" />
+                <TextBlock Text="{Binding ElementName=FirstNameTb, Path=Text.Length}"
+                            FontSize="16" Opacity="0.75"
+                Grid.Column="1"
+                HorizontalAlignment="Center" Margin="0,10,0,0" />
                 <TextBlock Text="/30" FontSize="16" Opacity="0.75"
-                    Grid.Column="2"
-                    HorizontalAlignment="Center" Margin="0,10,0,0" />
+                Grid.Column="2"
+                HorizontalAlignment="Center" Margin="0,10,0,0" />
             </Grid>
 
             <Grid Grid.Row="2" Grid.Column="4">
@@ -166,44 +164,12 @@
                     <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
                 <TextBox x:Name="LastNameTb"
-              Style="{DynamicResource TBStyle}"
-              Grid.Column="0" Grid.Row="4"
-              Height="22"
-              MaxLength="30"
-              TextChanged="LastNameTb_TextChanged" Margin="0,0,9,0" Grid.ColumnSpan="2" />
-                <TextBlock Text="{Binding ElementName=NameTb, Path=Text.Length}"
-                            FontSize="16" Opacity="0.75"
-                Grid.Column="1"
-                HorizontalAlignment="Center" Margin="0,10,0,0" />
-                <TextBlock Text="/30" FontSize="16" Opacity="0.75"
-                Grid.Column="2"
-                HorizontalAlignment="Center" Margin="0,10,0,0" />
-            </Grid>
-
-            <Label Content="Имя"
-           Style="{DynamicResource NormalLabel}"
-           Grid.Column="3"
-           Grid.Row="4" Height="30" Margin="10,0,10,0" />
-
-            <Label Content="Отчество"
-           Style="{DynamicResource NormalLabel}"
-           Grid.Column="3"
-           Grid.Row="6" Height="30" Margin="10,0,10,0" />
-
-            <Grid Grid.Row="6" Grid.Column="4">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="Auto" />
-                </Grid.ColumnDefinitions>
-                <TextBox x:Name="MiddleNameTb"
           Style="{DynamicResource TBStyle}"
-          Grid.Column="0" Grid.Row="4"
-                      Tag="Optional"
-          Height="22" materialDesign:HintAssist.Hint="Опционально"
+          Grid.Column="0"
+          Height="22"
           MaxLength="30"
-          TextChanged="MiddleNameTb_TextChanged" Margin="0,0,9,0" Grid.ColumnSpan="2" />
-                <TextBlock Text="{Binding ElementName=NameTb, Path=Text.Length}"
+          TextChanged="LastNameTb_TextChanged" Margin="0,0,9,0" Cursor="" />
+                <TextBlock Text="{Binding ElementName=LastNameTb, Path=Text.Length}"
                         FontSize="16" Opacity="0.75"
             Grid.Column="1"
             HorizontalAlignment="Center" Margin="0,10,0,0" />
@@ -212,11 +178,42 @@
             HorizontalAlignment="Center" Margin="0,10,0,0" />
             </Grid>
 
-            <Label Content="Логин"
-           Style="{DynamicResource NormalLabel}"
-           Grid.Column="3"
-           Grid.Row="9" Height="30" Margin="10,0,10,0" />
+            <Label Content="Имя"
+       Style="{DynamicResource NormalLabel}"
+       Grid.Column="3"
+       Grid.Row="4" Height="30" Margin="10,0,10,0" />
 
+            <Label Content="Отчество"
+       Style="{DynamicResource NormalLabel}"
+       Grid.Column="3"
+       Grid.Row="6" Height="30" Margin="10,0,10,0" />
+
+            <Grid Grid.Row="6" Grid.Column="4">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <TextBox x:Name="MiddleNameTb"
+      Style="{DynamicResource TBStyle}"
+      Grid.Column="0"
+                  Tag="Optional"
+      Height="22" materialDesign:HintAssist.Hint="Опционально"
+      MaxLength="30"
+      TextChanged="MiddleNameTb_TextChanged" Margin="0,0,9,0" />
+                <TextBlock Text="{Binding ElementName=MiddleNameTb, Path=Text.Length}"
+                    FontSize="16" Opacity="0.75"
+        Grid.Column="1"
+        HorizontalAlignment="Center" Margin="0,10,0,0" />
+                <TextBlock Text="/30" FontSize="16" Opacity="0.75"
+        Grid.Column="2"
+        HorizontalAlignment="Center" Margin="0,10,0,0" />
+            </Grid>
+
+            <Label Content="Логин"
+       Style="{DynamicResource NormalLabel}"
+       Grid.Column="3"
+       Grid.Row="9" Height="30" Margin="10,0,10,0" />
 
             <Grid Grid.Row="9" Grid.Column="4">
                 <Grid.ColumnDefinitions>
@@ -225,53 +222,47 @@
                     <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
                 <TextBox x:Name="LoginTb"
-                Style="{DynamicResource TBStyle}"
-                Grid.Column="0" Grid.Row="4"
-                Height="22" 
-                MaxLength="30"
-                TextChanged="LoginTb_TextChanged" Margin="0,0,9,0" Grid.ColumnSpan="2" />
-                <TextBlock Text="{Binding ElementName=NameTb, Path=Text.Length}"
-                              FontSize="16" Opacity="0.75"
-                  Grid.Column="1"
-                  HorizontalAlignment="Center" Margin="0,10,0,0" />
+            Style="{DynamicResource TBStyle}"
+            Grid.Column="0"
+            Height="22"
+            MaxLength="30"
+            TextChanged="LoginTb_TextChanged" Margin="0,0,9,0" />
+                <TextBlock Text="{Binding ElementName=LoginTb, Path=Text.Length}"
+                          FontSize="16" Opacity="0.75"
+              Grid.Column="1"
+              HorizontalAlignment="Center" Margin="0,10,0,0" />
                 <TextBlock Text="/30" FontSize="16" Opacity="0.75"
-                  Grid.Column="2"
-                  HorizontalAlignment="Center" Margin="0,10,0,0" />
+              Grid.Column="2"
+              HorizontalAlignment="Center" Margin="0,10,0,0" />
             </Grid>
 
-
-
-
             <Label Content="Дата рождения"
-           Style="{DynamicResource NormalLabel}"
-            Grid.Column="6"
-            Grid.Row="2"
-           Margin="10,0,0,0" Height="30" />
-
+       Style="{DynamicResource NormalLabel}"
+        Grid.Column="6"
+        Grid.Row="2"
+       Margin="10,0,0,0" Height="30" />
 
             <DatePicker x:Name="DatePickerDP"
-        SelectedDate="{Binding DateOfBirth}"
-        Grid.Column="7"  FontFamily="Montserrat"
-        Grid.Row="2" Padding="0 0 0 0"
-        FontSize="16"
-        BorderBrush="#312F2F"
-        Foreground="Black" Height="22">
+    SelectedDate="{Binding DateOfBirth}"
+    Grid.Column="7"  FontFamily="Montserrat"
+    Grid.Row="2" Padding="0 0 0 0"
+    FontSize="16"
+    BorderBrush="#312F2F"
+    Foreground="Black" Height="22">
                 <DatePicker.CalendarStyle>
                     <Style TargetType="Calendar">
                         <Style.Resources>
                             <SolidColorBrush x:Key="PrimaryHueMidBrush"
-                             Color="#373A6B" />
+                         Color="#373A6B" />
                         </Style.Resources>
                     </Style>
                 </DatePicker.CalendarStyle>
-
             </DatePicker>
 
-
             <Label Content="Пароль"
-           Style="{DynamicResource NormalLabel}"
-           Grid.Column="3"
-           Grid.Row="11" Height="28" Margin="10,0,10,0" />
+       Style="{DynamicResource NormalLabel}"
+       Grid.Column="3"
+       Grid.Row="11" Height="28" Margin="10,0,10,0" />
 
             <Grid Grid.Row="11" Grid.Column="4">
                 <Grid.ColumnDefinitions>
@@ -280,39 +271,37 @@
                     <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
                 <TextBox x:Name="PasswordPb"
-                Style="{DynamicResource TBStyle}"
-                Grid.Column="0" Grid.Row="11"             
-                Height="22"
-                MaxLength="30"
-                TextChanged="PasswordPb_TextChanged" Margin="0,0,9,0" Grid.ColumnSpan="2" />
-                <TextBlock Text="{Binding ElementName=NameTb, Path=Text.Length}"
-                              FontSize="16" Opacity="0.75"
-                  Grid.Column="1"
-                  HorizontalAlignment="Center" Margin="0,10,0,0" />
+            Style="{DynamicResource TBStyle}"
+            Grid.Column="0" Grid.Row="11"
+            Height="22"
+            MaxLength="30"
+            TextChanged="PasswordPb_TextChanged" Margin="0,0,9,0" />
+                <TextBlock Text="{Binding ElementName=PasswordPb, Path=Text.Length}"
+                          FontSize="16" Opacity="0.75"
+              Grid.Column="1"
+              HorizontalAlignment="Center" Margin="0,10,0,0" />
                 <TextBlock Text="/30" FontSize="16" Opacity="0.75"
-                  Grid.Column="2"
-                  HorizontalAlignment="Center" Margin="0,10,0,0" />
+              Grid.Column="2"
+              HorizontalAlignment="Center" Margin="0,10,0,0" />
             </Grid>
 
-
             <Label Content="Телефон"
-           Style="{DynamicResource NormalLabel}"
-           Grid.Column="6"
-           Grid.Row="13" Height="30" Margin="10,0,10,0" />
-
+       Style="{DynamicResource NormalLabel}"
+       Grid.Column="6"
+       Grid.Row="13" Height="30" Margin="10,0,10,0" />
 
             <xctk:MaskedTextBox x:Name="NumberTb"
-                Style="{DynamicResource TBStyle}"
-                Grid.Row="13"
-                Grid.Column="7"
-                Height="22"
-                Mask="+7(000)-000-00-00"
-                Text="{Binding PhoneNumber}" Grid.ColumnSpan="2" Margin="0,0,10,0" />
+            Style="{DynamicResource TBStyle}"
+            Grid.Row="13"
+            Grid.Column="7"
+            Height="22"
+            Mask="+7(000)-000-00-00"
+            Text="{Binding Workers.Number, Mode=OneTime}" Grid.ColumnSpan="2" Margin="0,0,10,0" />
 
             <Label Content="Email"
-           Style="{DynamicResource NormalLabel}"
-           Grid.Column="6"
-           Grid.Row="9" Height="30" Margin="10,0,10,0" />
+       Style="{DynamicResource NormalLabel}"
+       Grid.Column="6"
+       Grid.Row="9" Height="30" Margin="10,0,10,0" />
 
             <Grid Grid.Row="9" Grid.Column="7">
                 <Grid.ColumnDefinitions>
@@ -321,86 +310,82 @@
                     <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
                 <TextBox x:Name="EmailTb"
-     Style="{DynamicResource TBStyle}"
-     Grid.Column="0" Grid.Row="11"             
-     Height="22"
-     MaxLength="30"
-     TextChanged="EmailTb_TextChanged" Margin="0,0,9,0" Grid.ColumnSpan="2" />
-                <TextBlock Text="{Binding ElementName=NameTb, Path=Text.Length}"
-                   FontSize="16" Opacity="0.75"
-       Grid.Column="1"
-       HorizontalAlignment="Center" Margin="0,10,0,0" />
+ Style="{DynamicResource TBStyle}"
+ Grid.Column="0" Grid.Row="11"
+ Height="22"
+ MaxLength="30"
+ TextChanged="EmailTb_TextChanged" Margin="0,0,9,0" />
+                <TextBlock Text="{Binding ElementName=EmailTb, Path=Text.Length}"
+               FontSize="16" Opacity="0.75"
+   Grid.Column="1"
+   HorizontalAlignment="Center" Margin="0,10,0,0" />
                 <TextBlock Text="/30" FontSize="16" Opacity="0.75"
-       Grid.Column="2"
-       HorizontalAlignment="Center" Margin="0,10,0,0" />
+   Grid.Column="2"
+   HorizontalAlignment="Center" Margin="0,10,0,0" />
             </Grid>
 
-
             <Label Content="Магазин"
-           Style="{DynamicResource NormalLabel}"
-           Grid.Column="6"
-           Grid.Row="11" Height="30" Margin="10,0,10,0" />
+       Style="{DynamicResource NormalLabel}"
+       Grid.Column="6"
+       Grid.Row="11" Height="30" Margin="10,0,10,0" />
 
             <ComboBox x:Name="ShopCb" Padding="0 0 0 0"
-              Grid.Row="11" FontSize="16"
-              Foreground="Black"  FontFamily="Montserrat"
-              Background="Transparent"
-              Grid.Column="7"
-              SelectedValuePath="IdShop"
-              DisplayMemberPath="ShopName"
-              BorderBrush="#312F2F" Height="22"/>
+          Grid.Row="11" FontSize="16"
+          Foreground="Black"  FontFamily="Montserrat"
+          Background="Transparent"
+          Grid.Column="7" SelectedItem="{Binding Workers.Shop}"
+          SelectedValuePath="IdShop"
+          DisplayMemberPath="ShopName"
+          BorderBrush="#312F2F" Height="22" />
 
             <Label Content="Роль"
-           Style="{DynamicResource NormalLabel}"
-           Grid.Column="3"
-           Grid.Row="13" Height="30" Margin="10,0,10,0" />
+       Style="{DynamicResource NormalLabel}"
+       Grid.Column="3"
+       Grid.Row="13" Height="30" Margin="10,0,10,0" />
 
             <ComboBox x:Name="RoleCb"
-                  Grid.Row="13"  FontFamily="Montserrat"
-                  FontSize="16"
-                  Padding="0 0 0 0"
-                  Foreground="Black"
-              Background="Transparent"
-              Grid.Column="4"
-              SelectedValuePath="IdRole"
-              DisplayMemberPath="NameRole"
-              BorderBrush="#312F2F" Height="22"/>
-
-
+              Grid.Row="13"  FontFamily="Montserrat"
+              FontSize="16" SelectedItem="{Binding Workers.Roles}"
+              Padding="0 0 0 0"
+              Foreground="Black"
+          Background="Transparent"
+          Grid.Column="4"
+          SelectedValuePath="IdRole"
+          DisplayMemberPath="NameRole"
+          BorderBrush="#312F2F" Height="22" />
 
             <Button x:Name="AddBtn"
-            Grid.Row="15"
-            Content="Добавить"
-            Click="AddBtn_Click"
-            Style="{DynamicResource ButtonsStyle}"
-            Margin="0,10,71,10"
-            Grid.ColumnSpan="11">
+        Grid.Row="15"
+        Content="Добавить"
+        Click="AddBtn_Click"
+        Style="{DynamicResource ButtonsStyle}"
+        Margin="0,10,71,10"
+        Grid.ColumnSpan="11">
                 <Button.Template>
 
                     <ControlTemplate TargetType="Button">
                         <Border Width="150"
-                        Height="40"
-                        CornerRadius="10"
-                        Background="{TemplateBinding Background}">
+                    Height="40"
+                    CornerRadius="10"
+                    Background="{TemplateBinding Background}">
                             <ContentPresenter VerticalAlignment="Center"
-                                      HorizontalAlignment="Center" />
+                                  HorizontalAlignment="Center" />
                         </Border>
                     </ControlTemplate>
                 </Button.Template>
             </Button>
 
             <Border Grid.Row="3"
-            Grid.Column="9"
-            Grid.RowSpan="7"
-            BorderThickness="2"
-            Margin="10,5,10,17">
+        Grid.Column="9"
+        Grid.RowSpan="7"
+        BorderThickness="2"
+        Margin="10,5,10,17">
                 <Border BorderBrush="#312F2F"
-                BorderThickness="2"
-                Margin="0,0,0,0"
-            ClipToBounds="True">
-                    <Image x:Name="ImPhoto" Stretch="UniformToFill"/>
+            BorderThickness="2"
+            Margin="0,0,0,0"
+        ClipToBounds="True">
+                    <Image x:Name="ImPhoto" Stretch="UniformToFill" Source="{Binding Workers.PhotoStaff, Mode=OneTime}" />
                 </Border>
-
             </Border>
         </Grid>
     </materialDesign:Card>

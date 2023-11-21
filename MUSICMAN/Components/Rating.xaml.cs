@@ -1,17 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace MUSICMAN.Components
 {
@@ -25,8 +13,6 @@ namespace MUSICMAN.Components
             InitializeComponent();
         }
 
-        
-
         public Style RatingStyle
         {
             get { return (Style)GetValue(RatingStyleProperty); }
@@ -38,8 +24,6 @@ namespace MUSICMAN.Components
             DependencyProperty.Register("RatingStyle", typeof(Style), typeof(Rating),
                 new PropertyMetadata(default(Style)));
 
-
-
         public int CurrentRating
         {
             get { return (int)GetValue(CurrentRatingProperty); }
@@ -48,7 +32,7 @@ namespace MUSICMAN.Components
 
         // Using a DependencyProperty as the backing store for CurrentRating.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty CurrentRatingProperty =
-            DependencyProperty.Register("CurrentRating", typeof(int), typeof(Rating), 
+            DependencyProperty.Register("CurrentRating", typeof(int), typeof(Rating),
                 new FrameworkPropertyMetadata(default(int), CurrentRatingPropertChanged));
 
         public int MaxRating
@@ -62,17 +46,11 @@ namespace MUSICMAN.Components
             DependencyProperty.Register("MaxRating", typeof(int), typeof(Rating),
                 new FrameworkPropertyMetadata(100, MaxRatingPropertChanged));
 
-
-
-
-
-
         private static void CurrentRatingPropertChanged(DependencyObject source, DependencyPropertyChangedEventArgs e)
         {
             if (source is Rating rating)
             {
                 //rating.CurrentRating = (int)e.NewValue + 1;
-                
             }
         }
 
@@ -83,6 +61,5 @@ namespace MUSICMAN.Components
                 //rating.MaxRating = (int)e.NewValue;
             }
         }
-
     }
 }

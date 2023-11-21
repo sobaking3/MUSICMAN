@@ -2,19 +2,12 @@
 using MUSICMAN.ClassFolder;
 using MUSICMAN.DataFolder;
 using System;
-using System.Collections.Generic;
 using System.Data.Entity.Validation;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using ToastNotifications;
 using ToastNotifications.Messages;
 
@@ -25,13 +18,13 @@ namespace MUSICMAN.PageFolder.ManagerPageFolder
     /// </summary>
     public partial class AddEmployee : Window
     {
-        Notifier notifier;
-        Workers Workers = new Workers();
-        User user = new User();
-        Shop shop = new Shop();
+        private Notifier notifier;
+        private Workers Workers = new Workers();
+        private User user = new User();
+        private Shop shop = new Shop();
+
         public AddEmployee()
         {
-
             notifier = App.GetWindowNotifer(this);
             InitializeComponent();
             RoleCb.ItemsSource = DBEntities.GetContext()
@@ -39,7 +32,6 @@ namespace MUSICMAN.PageFolder.ManagerPageFolder
            || r.NameRole == "Директор" || r.NameRole == "Менеджер"))
            .ToList();
             ShopCb.ItemsSource = DBEntities.GetContext().Shop.ToList();
-
         }
 
         private void AddPhoto_Click(object sender, RoutedEventArgs e)
@@ -86,14 +78,12 @@ namespace MUSICMAN.PageFolder.ManagerPageFolder
                     IdUser = user.IdUser,
                     PhotoStaff = !string.IsNullOrEmpty(selectedFileName) ? ImageClass.ConvertImageToByteArray(selectedFileName) : null
                 };
-                    DBEntities.GetContext().Workers.Add(Workers);
-                    DBEntities.GetContext().SaveChanges();
-
-
+                DBEntities.GetContext().Workers.Add(Workers);
+                DBEntities.GetContext().SaveChanges();
             }
         }
 
-        string selectedFileName = "";
+        private string selectedFileName = "";
 
         private void AddUser()
         {
@@ -119,10 +109,8 @@ namespace MUSICMAN.PageFolder.ManagerPageFolder
             });
         }
 
-
         private void AddBtn_Click(object sender, RoutedEventArgs e)
         {
-
             if (ElementsToolsClass.AllFieldsFilled(this))
             {
                 try
@@ -142,7 +130,6 @@ namespace MUSICMAN.PageFolder.ManagerPageFolder
             {
                 notifier.ShowError("Вы не ввели все нужные данные!");
             }
-
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)

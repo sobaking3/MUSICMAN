@@ -30,8 +30,6 @@
                 <RowDefinition Height="117" />
 
                 <RowDefinition Height="120" />
-
-
             </Grid.RowDefinitions>
             <Label Content="Добавить улицу"
 Style="{DynamicResource NormalLabel}" FontWeight="SemiBold"

@@ -1,19 +1,11 @@
 ﻿using MUSICMAN.ClassFolder;
 using MUSICMAN.DataFolder;
-using System;
-using System.Collections.Generic;
 using System.Data.Entity.Validation;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using ToastNotifications;
 using ToastNotifications.Messages;
 
@@ -24,7 +16,8 @@ namespace MUSICMAN.PageFolder.DirectorPageFolder
     /// </summary>
     public partial class AddPublisher : Window
     {
-        Notifier notifier;
+        private Notifier notifier;
+
         public AddPublisher()
         {
             InitializeComponent();
@@ -51,14 +44,12 @@ namespace MUSICMAN.PageFolder.DirectorPageFolder
                     Rating = RatingTb.Text,
                     PublisherName = NameTb.Text,
                     PublisherContractTil = DateContractTb.SelectedDate.Value,
-
                 };
                 DBEntities.GetContext().Publisher.Add(Publisher);
                 DBEntities.GetContext().SaveChanges();
-
-
             }
         }
+
         private void AddPublisherBtn_Click(object sender, RoutedEventArgs e)
         {
             if (ElementsToolsClass.AllFieldsFilled(this))

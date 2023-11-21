@@ -1,19 +1,11 @@
 ﻿using MUSICMAN.ClassFolder;
 using MUSICMAN.DataFolder;
-using MUSICMAN.PageFolder.ManagerPageFolder;
+using MUSICMAN.WindowFolder.ManagerFolder;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+using ToastNotifications.Messages;
 
 namespace MUSICMAN.PageFolder.DirectorPageFolder
 {
@@ -45,7 +37,7 @@ namespace MUSICMAN.PageFolder.DirectorPageFolder
         private void UpdateList()
         {
             ListEmployeeLB.ItemsSource = DBEntities.GetContext()
-                    .Workers.Where(u => u.FirstName.StartsWith(SearchTb.Text) && 
+                    .Workers.Where(u => u.FirstName.StartsWith(SearchTb.Text) &&
                     u.User.Roles.NameRole != "Директор")
                     .OrderBy(u => u.FirstName)
                     .ToList();
@@ -79,12 +71,24 @@ namespace MUSICMAN.PageFolder.DirectorPageFolder
             }
         }
 
-
-
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             new AddEmployeeDir().ShowDialog();
             UpdateList();
+        }
+
+        private void EditM1_Click(object sender, RoutedEventArgs e)
+        {
+            Workers selectedPlate = ListEmployeeLB.SelectedItem as Workers;
+            if (selectedPlate != null)
+            {
+                new EditEmployeeDir(selectedPlate).ShowDialog();
+                UpdateList();
+            }
+            else
+            {
+                ManagerMainWindow.notifier.ShowError("Вы не выюбрали сотрудника");
+            }
         }
     }
 }

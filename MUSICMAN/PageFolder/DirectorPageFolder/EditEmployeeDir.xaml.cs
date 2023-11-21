@@ -1,20 +1,14 @@
 ﻿using Microsoft.Win32;
 using MUSICMAN.ClassFolder;
 using MUSICMAN.DataFolder;
+using MUSICMAN.WindowFolder.DirectorFolder;
 using System;
-using System.Collections.Generic;
 using System.Data.Entity.Validation;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using ToastNotifications;
 using ToastNotifications.Messages;
 
@@ -26,24 +20,51 @@ namespace MUSICMAN.PageFolder.DirectorPageFolder
     /// ----------------Не забыть поставить свойство вместо Нет на Page ---------------------
     public partial class EditEmployeeDir : Window
     {
-        Notifier notifier;
-        Workers Workers = new Workers();
-        User user = new User();
-        Shop shop = new Shop();
-        public AddEmployeeDir()
+        private Notifier notifier;
+        private string selectedFileName = "";
+
+        public EditEmployeeDir(Workers worker)
         {
             notifier = App.GetWindowNotifer(this);
+            Worker = worker;
             InitializeComponent();
+
             RoleCb.ItemsSource = DBEntities.GetContext()
            .Roles.Except(DBEntities.GetContext().Roles.Where(r => r.NameRole == "Директор"))
            .ToList();
             ShopCb.ItemsSource = DBEntities.GetContext().Shop.ToList();
-
         }
 
-        private void AddPhoto_Click(object sender, RoutedEventArgs e)
+        public Workers Worker { get; set; }
+
+        private void AddBtn_Click(object sender, RoutedEventArgs e)
         {
-            AddImage();
+            if (ElementsToolsClass.AllFieldsFilled(this))
+            {
+                try
+                {
+                    //AddUser();
+                    WorkerInfoAdd();
+
+                    notifier.ShowSuccess("Сотрудник добавлен");
+                    //ElementsToolsClass.ClearAllControls(this);
+                }
+                catch (DbEntityValidationException ex)
+                {
+                    MBClass.ErrorMB(ex);
+                    if (ex.EntityValidationErrors != null)
+                    {
+                        foreach (var exdb in ex.EntityValidationErrors)
+                        {
+                            MBClass.ErrorMB(string.Join("\n\n", exdb.ValidationErrors.Select(x => x.ErrorMessage)));
+                        }
+                    }
+                }
+            }
+            else
+            {
+                notifier.ShowError("Вы не ввели все нужные данные!");
+            }
         }
 
         private void AddImage()
@@ -59,8 +80,8 @@ namespace MUSICMAN.PageFolder.DirectorPageFolder
                 if (op.ShowDialog() == true)
                 {
                     selectedFileName = op.FileName;
-                    Workers.PhotoStaff = ImageClass.ConvertImageToByteArray(selectedFileName);
-                    ImPhoto.Source = ImageClass.ConvertByteArrayToImage(Workers.PhotoStaff);
+                    Worker.PhotoStaff = ImageClass.ConvertImageToByteArray(selectedFileName);
+                    ImPhoto.Source = ImageClass.ConvertByteArrayToImage(Worker.PhotoStaff);
                 }
             }
             catch (Exception ex)
@@ -69,42 +90,9 @@ namespace MUSICMAN.PageFolder.DirectorPageFolder
             }
         }
 
-        private void WorkerInfoAdd()
+        private void AddPhoto_Click(object sender, RoutedEventArgs e)
         {
-            if (ElementsToolsClass.AllFieldsFilled(this))
-            {
-                var Workers = new Workers()
-                {
-                    LastName = LastNameTb.Text,
-                    FirstName = FirstNameTb.Text,
-                    MiddleName = MiddleNameTb.Text,
-                    DateOfBirth = DatePickerDP.SelectedDate.Value,
-                    Number = NumberTb.Text,
-                    Email = EmailTb.Text,
-                    IdShop = Int32.Parse(ShopCb.SelectedValue.ToString()),
-                    IdUser = user.IdUser,
-                    PhotoStaff = !string.IsNullOrEmpty(selectedFileName) ? ImageClass.ConvertImageToByteArray(selectedFileName) : null
-                };
-                DBEntities.GetContext().Workers.Add(Workers);
-                DBEntities.GetContext().SaveChanges();
-
-
-            }
-        }
-
-        string selectedFileName = "";
-
-        private void AddUser()
-        {
-            var userAdd = new User()
-            {
-                Login = LoginTb.Text,
-                Password = PasswordPb.Text,
-                IdRole = Int32.Parse(RoleCb.SelectedValue.ToString())
-            };
-            DBEntities.GetContext().User.Add(userAdd);
-            DBEntities.GetContext().SaveChanges();
-            user.IdUser = userAdd.IdUser;
+            AddImage();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -118,36 +106,27 @@ namespace MUSICMAN.PageFolder.DirectorPageFolder
             });
         }
 
-
-        private void AddBtn_Click(object sender, RoutedEventArgs e)
+        private void EditUser()
         {
-
-            if (ElementsToolsClass.AllFieldsFilled(this))
-            {
-                try
-                {
-                    AddUser();
-                    WorkerInfoAdd();
-
-                    notifier.ShowSuccess("Сотрудник добавлен");
-                    ElementsToolsClass.ClearAllControls(this);
-                }
-                catch (DbEntityValidationException ex)
-                {
-                    MBClass.ErrorMB(ex);
-                }
-            }
-            else
-            {
-                notifier.ShowError("Вы не ввели все нужные данные!");
-            }
-
+            Worker.User.Login = LoginTb.Text;
+            Worker.User.Password = PasswordPb.Text;
+            Worker.User.Roles = RoleCb.SelectedItem as Roles;
         }
 
-        private void Window_Loaded(object sender, RoutedEventArgs e)
+        private void EmailTb_TextChanged(object sender, TextChangedEventArgs e)
         {
-            WindowTransitionHelper.OpenWindow(this, this);
+            var textBox = (TextBox)sender;
+            var grid = (Grid)textBox.Parent;
+            if (grid != null)
+            {
+                var textBlock = (TextBlock)VisualTreeHelper.GetChild(grid, 1);
+                if (textBlock != null)
+                {
+                    textBlock.Text = textBox.Text.Length.ToString();
+                }
+            }
         }
+
         private void FirstNameTb_TextChanged(object sender, TextChangedEventArgs e)
         {
             var textBox = (TextBox)sender;
@@ -176,7 +155,7 @@ namespace MUSICMAN.PageFolder.DirectorPageFolder
             }
         }
 
-        private void MiddleNameTb_TextChanged(object sender, TextChangedEventArgs e)
+        private void LoginTb_TextChanged(object sender, TextChangedEventArgs e)
         {
             var textBox = (TextBox)sender;
             var grid = (Grid)textBox.Parent;
@@ -190,7 +169,7 @@ namespace MUSICMAN.PageFolder.DirectorPageFolder
             }
         }
 
-        private void LoginTb_TextChanged(object sender, TextChangedEventArgs e)
+        private void MiddleNameTb_TextChanged(object sender, TextChangedEventArgs e)
         {
             var textBox = (TextBox)sender;
             var grid = (Grid)textBox.Parent;
@@ -218,17 +197,30 @@ namespace MUSICMAN.PageFolder.DirectorPageFolder
             }
         }
 
-        private void EmailTb_TextChanged(object sender, TextChangedEventArgs e)
+        private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            var textBox = (TextBox)sender;
-            var grid = (Grid)textBox.Parent;
-            if (grid != null)
+            WindowTransitionHelper.OpenWindow(this, this);
+        }
+
+        private void WorkerInfoAdd()
+        {
+            if (ElementsToolsClass.AllFieldsFilled(this))
             {
-                var textBlock = (TextBlock)VisualTreeHelper.GetChild(grid, 1);
-                if (textBlock != null)
-                {
-                    textBlock.Text = textBox.Text.Length.ToString();
-                }
+                EditUser();
+                Worker.DateOfBirth = DatePickerDP.SelectedDate.Value;
+                Worker.Email = EmailTb.Text;
+                Worker.FirstName = FirstNameTb.Text;
+                Worker.LastName = LastNameTb.Text;
+                Worker.MiddleName = MiddleNameTb.Text;
+                Worker.Number = NumberTb.Text;
+                //Worker.PhotoStaff = !string.IsNullOrEmpty(selectedFileName) ? ImageClass.ConvertImageToByteArray(selectedFileName) : null;
+                Worker.Shop = ShopCb.SelectedItem as Shop;
+                DBEntities.GetContext().SaveChanges();
+                DirectorMainWindow.notifier.ShowSuccess("Сотрудник изменен!");
+            }
+            else
+            {
+                DirectorMainWindow.notifier.ShowError("Вы не заполнили все поля!");
             }
         }
     }

@@ -2,20 +2,9 @@
 using MUSICMAN.DataFolder;
 using MUSICMAN.WindowFolder.ManagerFolder;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using ToastNotifications;
 using ToastNotifications.Messages;
 
 namespace MUSICMAN.PageFolder.ManagerPageFolder
@@ -31,7 +20,6 @@ namespace MUSICMAN.PageFolder.ManagerPageFolder
             ListPlatesDG.ItemsSource = DBEntities.GetContext()
                 .Plates.ToList().OrderBy(u => u.IdPlate);
         }
-
 
         private void UpdateList()
         {
@@ -91,7 +79,7 @@ namespace MUSICMAN.PageFolder.ManagerPageFolder
         private void EditM1_Click(object sender, RoutedEventArgs e)
         {
             Plates selectedPlate = ListPlatesDG.SelectedItem as Plates;
-            if(selectedPlate != null)
+            if (selectedPlate != null)
             {
                 new EditPlate(selectedPlate).ShowDialog();
                 ListPlatesDG.ItemsSource = DBEntities.GetContext()

@@ -16,7 +16,7 @@
         </Grid.ColumnDefinitions>
 
         <TextBox Text="{Binding CurrentRating, UpdateSourceTrigger=PropertyChanged}"
-                 
+
                    Style="{Binding RatingStyle}" />
         <TextBlock Text="/"
                    Grid.Column="1"

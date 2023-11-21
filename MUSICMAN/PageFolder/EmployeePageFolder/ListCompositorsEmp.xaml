@@ -22,8 +22,6 @@
                 <RowDefinition />
             </Grid.RowDefinitions>
 
-
-
             <TextBox x:Name="SearchTb"
                      Grid.Column="1"
                      FontSize="13"
@@ -44,7 +42,6 @@
                     </StackPanel>
                 </materialDesign:HintAssist.Hint>
             </TextBox>
-            
 
             <materialDesign:Card   Grid.Column="1"
                                    UniformCornerRadius="10"
@@ -53,7 +50,6 @@
                                    VerticalAlignment="Bottom"
                                    materialDesign:ShadowAssist.ShadowDepth="Depth5"
                                    Grid.RowSpan="2">
-
 
                 <ListBox x:Name="ListCompositorsLB"
                          Foreground="Black"
@@ -91,7 +87,6 @@
                                                     ImageSource="{Binding PhotoStaff}" />
                                     </Border.Background>
 
-
                                     <Border.BorderBrush>
                                         <LinearGradientBrush StartPoint="0,0"
                                                              EndPoint="1,1">
@@ -102,11 +97,8 @@
                                             <GradientStop Color="#8A16C1"
                                                           Offset="1" />
                                         </LinearGradientBrush>
-
                                     </Border.BorderBrush>
                                 </Border>
-
-
 
                                 <TextBlock Grid.Column="2"
                                    Grid.Row="0"

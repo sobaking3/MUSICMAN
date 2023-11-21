@@ -20,8 +20,6 @@
             <RowDefinition />
         </Grid.RowDefinitions>
 
-
-
         <TextBox x:Name="SearchTb"
                  Grid.Column="1"
                  FontSize="13"
@@ -44,8 +42,8 @@
         </TextBox>
         <Border Grid.Column="1">
         <Button Background="#706F6F" Click="Button_Click"
-                Margin="925,19,22,19" Content="+" Foreground="White" 
-                FontSize="20" Padding="0 0 0.5 6"/>
+                Margin="925,19,22,19" Content="+" Foreground="White"
+                FontSize="20" Padding="0 0 0.5 6" />
         </Border>
         <materialDesign:Card  Grid.ColumnSpan="3"
                               Grid.Row="1" UniformCornerRadius="10" Margin="5" materialDesign:ShadowAssist.ShadowDepth="Depth5">
@@ -53,11 +51,10 @@
                   AlternatingRowBackground="#D8D8D8" AlternationCount="2"
                   Foreground="Black"
                   AutoGenerateColumns="False"
-                  IsReadOnly="True"       
+                  IsReadOnly="True"
                   RowHeight="30"
-                  
+
                   ItemsSource="{Binding User}">
-              
 
                 <DataGrid.ContextMenu>
                 <ContextMenu>
@@ -80,8 +77,6 @@
                 <DataGridTextColumn Header="Роль"
                                     Binding="{Binding Roles.NameRole}"
                                     Width="*" />
-                 
-
                 </DataGrid.Columns>
         </DataGrid>
         </materialDesign:Card>

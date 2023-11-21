@@ -1,18 +1,9 @@
 ﻿using MUSICMAN.ClassFolder;
 using MUSICMAN.DataFolder;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using ToastNotifications;
 using ToastNotifications.Messages;
 
@@ -23,7 +14,8 @@ namespace MUSICMAN.PageFolder.AdminPageFolder
     /// </summary>
     public partial class AddUsers : Window
     {
-        Notifier notifier;
+        private Notifier notifier;
+
         public AddUsers()
         {
             InitializeComponent();
@@ -55,7 +47,6 @@ namespace MUSICMAN.PageFolder.AdminPageFolder
                 notifier.ShowError($"Пользователь {LoginTb.Text} уже создан");
 
                 LoginTb.Focus();
-
             }
             else
             {
@@ -69,7 +60,6 @@ namespace MUSICMAN.PageFolder.AdminPageFolder
                 context.SaveChanges();
                 notifier.ShowSuccess($"Пользователь {LoginTb.Text} создан");
                 ElementsToolsClass.ClearAllControls(this);
-                
             }
         }
 

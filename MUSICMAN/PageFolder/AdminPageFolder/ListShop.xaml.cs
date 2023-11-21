@@ -1,21 +1,10 @@
 ﻿using MUSICMAN.ClassFolder;
 using MUSICMAN.DataFolder;
-using MUSICMAN.PageFolder.DirectorPageFolder;
 using System;
-using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace MUSICMAN.PageFolder.AdminPageFolder
 {
@@ -49,9 +38,9 @@ namespace MUSICMAN.PageFolder.AdminPageFolder
 
         private void ListShopLB_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
         }
     }
+
     public class AdressConverter : IMultiValueConverter
     {
         public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
@@ -62,6 +51,7 @@ namespace MUSICMAN.PageFolder.AdminPageFolder
             string houseNumber = (string)values[3];
             return $"{country}, {city}, {street}, {houseNumber}";
         }
+
         public object[] ConvertBack(object value, Type[] targetTypes, object parameter, CultureInfo culture)
         {
             throw new NotImplementedException();

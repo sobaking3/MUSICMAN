@@ -1,16 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
+﻿using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Media.Imaging;
 
 namespace MUSICMAN.ClassFolder
 {
-    class ImageClass
+    internal class ImageClass
     {
         public static BitmapImage ConvertByteArrayToImage(byte[] array)
         {
@@ -30,6 +25,7 @@ namespace MUSICMAN.ClassFolder
             }
             return null;
         }
+
         public static byte[] ConvertImageToByteArray(string fileName)
         {
             Bitmap bitMap = new Bitmap(fileName);
@@ -40,7 +36,6 @@ namespace MUSICMAN.ClassFolder
                 imageToConvert.Save(ms, bmpFormat);
                 return ms.ToArray();
             }
-
         }
     }
 }

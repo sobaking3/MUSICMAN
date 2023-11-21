@@ -2,18 +2,9 @@
 using MUSICMAN.PageFolder.AdminPageFolder;
 using MUSICMAN.PageFolder.ManagerPageFolder;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using ToastNotifications;
 using ToastNotifications.Messages;
 
@@ -25,13 +16,15 @@ namespace MUSICMAN.WindowFolder.ManagerFolder
     public partial class ManagerMainWindow : Window
     {
         public static Notifier notifier;
+
         public ManagerMainWindow()
         {
             InitializeComponent();
-            
+
             notifier = App.GetWindowNotifer(this);
             EmpName.Text = App.GetCurrentWorkerInitials();
         }
+
         private void ListUserBtn_Click(object sender, RoutedEventArgs e)
         {
             MainFrame.Navigate(new ListEmployee());
@@ -44,12 +37,14 @@ namespace MUSICMAN.WindowFolder.ManagerFolder
                 DragMove();
             }
         }
+
         private void MediaElement_MediaEnded(object sender, RoutedEventArgs e)
         {
             var mediaElement = (MediaElement)sender;
             mediaElement.Position = TimeSpan.Zero;
             mediaElement.Play();
         }
+
         private void MinimizeBtn_Click(object sender, RoutedEventArgs e)
         {
             WindowState = WindowState.Minimized;

@@ -1,15 +1,14 @@
 ﻿<Page x:Class="MUSICMAN.PageFolder.DirectorPageFolder.ListStockDir"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:local="clr-namespace:MUSICMAN.PageFolder.DirectorPageFolder"
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       mc:Ignorable="d"
       d:DesignHeight="450"
       d:DesignWidth="800"
       Title="Список складов">
-
 
     <Grid>
         <Grid Margin="0,-35,0,0">
@@ -59,7 +58,7 @@
                                    VerticalAlignment="Bottom"
                                    materialDesign:ShadowAssist.ShadowDepth="Depth5"
                                    Grid.RowSpan="2">
-                
+
                 <DataGrid x:Name="ListStocksDG"
                           AlternatingRowBackground="#D8D8D8"
                           AlternationCount="2"
@@ -80,8 +79,6 @@
                             <Setter Property="HorizontalAlignment"
                                     Value="Center" />
                         </Style>
-
-                       
                     </DataGrid.Resources>
                     <DataGrid.ContextMenu>
                         <ContextMenu>

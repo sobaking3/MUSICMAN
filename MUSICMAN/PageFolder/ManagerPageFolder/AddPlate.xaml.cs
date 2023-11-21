@@ -1,19 +1,13 @@
 ﻿using MUSICMAN.ClassFolder;
 using MUSICMAN.DataFolder;
 using System;
-using System.Collections.Generic;
 using System.Data.Entity.Validation;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using ToastNotifications;
 using ToastNotifications.Messages;
 
@@ -24,7 +18,8 @@ namespace MUSICMAN.PageFolder.ManagerPageFolder
     /// </summary>
     public partial class AddPlate : Window
     {
-        Notifier notifier;
+        private Notifier notifier;
+
         public AddPlate()
         {
             notifier = App.GetWindowNotifer(this);
@@ -38,7 +33,6 @@ namespace MUSICMAN.PageFolder.ManagerPageFolder
 
         private void Back_Click(object sender, RoutedEventArgs e)
         {
-
             Close(); // Закрытие окна
         }
 
@@ -111,8 +105,6 @@ namespace MUSICMAN.PageFolder.ManagerPageFolder
                 };
                 DBEntities.GetContext().Plates.Add(Plates);
                 DBEntities.GetContext().SaveChanges();
-
-
             }
         }
 

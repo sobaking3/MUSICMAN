@@ -22,8 +22,6 @@
                 <RowDefinition />
             </Grid.RowDefinitions>
 
-
-
             <TextBox x:Name="SearchTb"
                      Grid.Column="1"
                      FontSize="13"
@@ -72,9 +70,8 @@
                                    materialDesign:ShadowAssist.ShadowDepth="Depth5"
                                    Grid.RowSpan="2">
 
-
                 <ListBox x:Name="ListCompositorsLB"
-                        
+
                          Foreground="Black" BorderThickness="0"
                          d:ItemsSource="{d:SampleData ItemCount=5}"
                          Margin="10,10,10,0">
@@ -87,7 +84,7 @@
                     </ListBox.ContextMenu>
                     <ListBox.ItemTemplate>
                         <DataTemplate>
-                            <Grid >
+                            <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="70" />
                                     <ColumnDefinition Width="5" />
@@ -115,7 +112,6 @@
                                                     ImageSource="{Binding PhotoStaff}" />
                                     </Border.Background>
 
-
                                     <Border.BorderBrush>
                                         <LinearGradientBrush StartPoint="0,0"
                                                              EndPoint="1,1">
@@ -126,11 +122,8 @@
                                             <GradientStop Color="#8A16C1"
                                                           Offset="1" />
                                         </LinearGradientBrush>
-
                                     </Border.BorderBrush>
                                 </Border>
-
-
 
                                 <TextBlock Grid.Column="2"
                                            Grid.Row="0"
@@ -171,13 +164,11 @@
                                     FontWeight="Bold" />
                             <Run Text="{Binding Rating}" />
                                 </TextBlock>
-
                             </Grid>
                         </DataTemplate>
                     </ListBox.ItemTemplate>
                 </ListBox>
             </materialDesign:Card>
         </Grid>
-
     </Grid>
 </Page>

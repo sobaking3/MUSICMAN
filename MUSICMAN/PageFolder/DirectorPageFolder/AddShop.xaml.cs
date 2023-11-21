@@ -1,22 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using MUSICMAN.ClassFolder;
+using MUSICMAN.DataFolder;
+using MUSICMAN.WindowFolder.UtilsFolder;
+using System;
+using System.Data.Entity.Validation;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using MUSICMAN.DataFolder;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using MUSICMAN.ClassFolder;
-using System.Data.Entity.Validation;
 using ToastNotifications;
 using ToastNotifications.Messages;
-using MUSICMAN.WindowFolder.UtilsFolder;
 
 namespace MUSICMAN.PageFolder.DirectorPageFolder
 {
@@ -25,8 +19,9 @@ namespace MUSICMAN.PageFolder.DirectorPageFolder
     /// </summary>
     public partial class AddShop : Window
     {
-        Notifier notifier;
-        Adress Adress = new Adress();
+        private Notifier notifier;
+        private Adress Adress = new Adress();
+
         public AddShop()
         {
             notifier = App.GetWindowNotifer(this);
@@ -35,6 +30,7 @@ namespace MUSICMAN.PageFolder.DirectorPageFolder
             CityCb.ItemsSource = DBEntities.GetContext().City.ToList();
             StreetCb.ItemsSource = DBEntities.GetContext().Streets.ToList();
         }
+
         private void AddShop_Click(object sender, RoutedEventArgs e)
         {
             if (ElementsToolsClass.AllFieldsFilled(this))
@@ -71,8 +67,9 @@ namespace MUSICMAN.PageFolder.DirectorPageFolder
 
         private void Back_Click(object sender, RoutedEventArgs e)
         {
-                    Close(); // Закрытие окна
+            Close(); // Закрытие окна
         }
+
         private void ShopInfoAdd()
         {
             if (ElementsToolsClass.AllFieldsFilled(this))
@@ -87,10 +84,9 @@ namespace MUSICMAN.PageFolder.DirectorPageFolder
                 };
                 DBEntities.GetContext().Shop.Add(Shop);
                 DBEntities.GetContext().SaveChanges();
-
-
             }
         }
+
         private void AddAdress()
         {
             var AdressAdd = new Adress()
@@ -288,7 +284,6 @@ namespace MUSICMAN.PageFolder.DirectorPageFolder
 
         private void AdressTb_TextChanged(object sender, TextChangedEventArgs e)
         {
-
         }
     }
 }

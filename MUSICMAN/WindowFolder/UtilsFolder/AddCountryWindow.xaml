@@ -31,8 +31,6 @@
                 <RowDefinition Height="117" />
 
                 <RowDefinition Height="120" />
-
-
             </Grid.RowDefinitions>
             <Label Content="Добавить страну"
     Style="{DynamicResource NormalLabel}" FontWeight="SemiBold"

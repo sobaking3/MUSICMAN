@@ -136,7 +136,7 @@
           <Property Name="LastName" Type="nvarchar" MaxLength="30" Nullable="false" />
           <Property Name="MiddleName" Type="nvarchar" MaxLength="30" />
           <Property Name="DateOfBirth" Type="date" Nullable="false" />
-          <Property Name="Number" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="Number" Type="nvarchar" MaxLength="30" Nullable="false" />
           <Property Name="Email" Type="nvarchar" MaxLength="30" Nullable="false" />
           <Property Name="IdShop" Type="int" />
           <Property Name="PhotoStaff" Type="varbinary(max)" />
@@ -526,7 +526,7 @@
           <Property Name="LastName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="MiddleName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
           <Property Name="DateOfBirth" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="Number" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Number" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Email" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="IdShop" Type="Int32" />
           <Property Name="PhotoStaff" Type="Binary" MaxLength="Max" FixedLength="false" />

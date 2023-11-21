@@ -1,20 +1,8 @@
 ﻿using MUSICMAN.ClassFolder;
-using MUSICMAN.PageFolder.AdminPageFolder;
 using MUSICMAN.PageFolder.DirectorPageFolder;
 using MUSICMAN.PageFolder.ManagerPageFolder;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using ToastNotifications;
 using ToastNotifications.Messages;
 
@@ -25,7 +13,8 @@ namespace MUSICMAN.WindowFolder.DirectorFolder
     /// </summary>
     public partial class DirectorMainWindow : Window
     {
-        Notifier notifier;
+        public static Notifier notifier;
+
         public DirectorMainWindow()
         {
             InitializeComponent();

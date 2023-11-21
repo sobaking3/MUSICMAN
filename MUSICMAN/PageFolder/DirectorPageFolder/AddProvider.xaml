@@ -71,8 +71,6 @@ Style="{DynamicResource NormalLabel}" FontWeight="SemiBold" Grid.ColumnSpan="4" 
                    Height="30"
                    Margin="10,0,10,0" />
 
-            
-            
             <Label Content="Адрес"
                    Style="{DynamicResource NormalLabel}"
                    Grid.Column="1"
@@ -101,8 +99,6 @@ TextChanged="AdressTb_TextChanged"   Margin="0,0,9,0" Grid.ColumnSpan="2" />
   HorizontalAlignment="Center" Margin="0,10,0,0" />
             </Grid>
 
-
-
             <Label Content="Контракт до"
                    Style="{DynamicResource NormalLabel}"
                    Grid.Column="1"
@@ -126,7 +122,6 @@ TextChanged="AdressTb_TextChanged"   Margin="0,0,9,0" Grid.ColumnSpan="2" />
                         </Style.Resources>
                     </Style>
                 </DatePicker.CalendarStyle>
-
             </DatePicker>
 
             <Grid Grid.Row="1" Grid.Column="2">
@@ -154,7 +149,7 @@ TextChanged="NameTb_TextChanged"  Margin="0,0,9,0" Grid.ColumnSpan="2" />
                     Content="Добавить поставщика"
                     Grid.Row="6"
                     Grid.ColumnSpan="4"
-                    Click="AddProviderBtn_Click"    
+                    Click="AddProviderBtn_Click"
                     Style="{DynamicResource ButtonsStyle}"
                     Margin="0,0,40,0">
                 <Button.Template>

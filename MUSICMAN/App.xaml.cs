@@ -1,13 +1,8 @@
 ﻿using MUSICMAN.ClassFolder;
 using MUSICMAN.DataFolder;
 using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
 using ToastNotifications;
 using ToastNotifications.Lifetime;
 using ToastNotifications.Position;
@@ -36,13 +31,14 @@ namespace MUSICMAN
                 return string.Empty;
             }
             Workers worker = App.CurrentUser.Workers.FirstOrDefault();
-            if(worker == null)
+            if (worker == null)
             {
                 return "Сотрудник";
             }
             return $"{worker.LastName} {worker.FirstName[0]}." +
                 (string.IsNullOrEmpty(worker.MiddleName) ? string.Empty : worker.LastName[0] + ".");
         }
+
         public static Notifier Notifier { get; set; } = new Notifier(cfg =>
         {
             cfg.PositionProvider = new WindowPositionProviderCustom(
@@ -50,7 +46,6 @@ namespace MUSICMAN
                 corner: Corner.TopRight,
                 offsetX: 10,
                 offsetY: 10);
-
 
             cfg.LifetimeSupervisor = new TimeAndCountBasedLifetimeSupervisor(
                 notificationLifetime: TimeSpan.FromSeconds(3),
@@ -88,7 +83,7 @@ namespace MUSICMAN
 
         private void IdleDetector_IdleDetect(IdleDetector sender, IdleTimeInfo idleTimeInfo)
         {
-            MessageBox.Show($"Обнаруженно бездействие в течении минуты, вы живы?\n{idleTimeInfo.IdleTime}") ;
+            MessageBox.Show($"Обнаруженно бездействие в течении минуты, вы живы?\n{idleTimeInfo.IdleTime}");
         }
 
         private void Application_Startup(object sender, StartupEventArgs e)

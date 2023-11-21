@@ -1,20 +1,12 @@
 ﻿using MUSICMAN.ClassFolder;
 using MUSICMAN.DataFolder;
-using MUSICMAN.PageFolder.AdminPageFolder;
+using MUSICMAN.PageFolder.DirectorPageFolder;
+using MUSICMAN.WindowFolder.ManagerFolder;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using ToastNotifications.Messages;
 
 namespace MUSICMAN.PageFolder.ManagerPageFolder
 {
@@ -23,7 +15,6 @@ namespace MUSICMAN.PageFolder.ManagerPageFolder
     /// </summary>
     public partial class ListEmployee : Page
     {
-
         public ListEmployee()
         {
             InitializeComponent();
@@ -81,12 +72,24 @@ namespace MUSICMAN.PageFolder.ManagerPageFolder
             }
         }
 
-
-
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             new AddEmployee().ShowDialog();
             UpdateList();
+        }
+
+        private void EditM1_Click(object sender, RoutedEventArgs e)
+        {
+            Workers selectedPlate = ListEmployeeLB.SelectedItem as Workers;
+            if (selectedPlate != null)
+            {
+                new EditEmployee(selectedPlate).ShowDialog();
+                UpdateList();
+            }
+            else
+            {
+                ManagerMainWindow.notifier.ShowError("Вы не выюбрали сотрудника");
+            }
         }
     }
 }

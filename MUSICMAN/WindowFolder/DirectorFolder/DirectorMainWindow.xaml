@@ -26,7 +26,6 @@
             MouseDown="Border_MouseDown"
             MouseLeftButtonDown="Border_MouseLeftButtonDown">
 
-
         <Border CornerRadius="20"
                 BorderThickness="2"
                 Background="#322A2A">
@@ -46,9 +45,6 @@
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
 
-
-
-
                     <Border Grid.Row="0"
                             Background="#252525"
                             Margin="247,0,-946,0"
@@ -67,20 +63,16 @@
                                    FontFamily="Montserrat"
                                    FontWeight="ExtraBold"
                                    Height=" 85"
-                                   Width="121" />                 
+                                   Width="121" />
                     </StackPanel>
                 </TextBlock>
                     </Border>
-
-
-
-
 
                     <Button HorizontalAlignment="Left"
                             Margin="20 28 0 35"
                             Style="{StaticResource topButton}">
                         Width="25"
-                                    Height="25" Foreground="#747474"/>
+                                    Height="25" Foreground="#747474" />
                     </Button>
 
                     <Border Grid.Row="0"
@@ -118,8 +110,6 @@
                                        FontWeight="SemiBold"
                                        DockPanel.Dock="Top"
                                        TextAlignment="Center" />
-
-
 
                             <!--Menu Button-->
 
@@ -171,10 +161,7 @@
                                                                  Height="25"
                                                                  Width="25" />
                                         <TextBlock Text="Список магазинов" />
-
-
                                     </StackPanel>
-
                                 </Button>
                                 <Button Style="{StaticResource menuButton}"
                                         x:Name="ListAuthor"
@@ -204,10 +191,7 @@
                                                                  Height="25"
                                                                  Width="25" />
                                         <TextBlock Text="Список издателей" />
-
-
                                     </StackPanel>
-
                                 </Button>
 
                                 <Button Style="{StaticResource menuButton}"
@@ -222,10 +206,7 @@
                                                                  Height="25"
                                                                  Width="25" />
                                         <TextBlock Text="Список поставщиков" />
-
-
                                     </StackPanel>
-
                                 </Button>
                                 <Button Style="{StaticResource menuButton}"
                                         HorizontalAlignment="Stretch"
@@ -239,10 +220,7 @@
                                                                  Height="25"
                                                                  Width="25" />
                                         <TextBlock Text="Список складов" />
-
-
                                     </StackPanel>
-
                                 </Button>
                             </StackPanel>
 
@@ -265,11 +243,9 @@
                                         <TextBlock Text="Выйти из аккаунта" />
                                     </StackPanel>
                                 </Button>
-
                             </Border>
                         </DockPanel>
                     </Border>
-
                 </Grid>
 
                 <Grid Grid.Column="1"
@@ -286,8 +262,6 @@
                         <RowDefinition Height="30" />
                         <RowDefinition />
                     </Grid.RowDefinitions>
-
-
 
                     <Button x:Name="MinimizeBtn"
                             Background="Transparent"
@@ -324,8 +298,6 @@
                             </ControlTemplate>
                         </Button.Template>
                     </Button>
-
-
 
                     <Button x:Name="CloseBtn"
                             Background="Transparent"
@@ -364,18 +336,15 @@
                         </Button.Template>
                     </Button>
 
-
-
                     <!--TopButtons-->
-
                 </Grid>
                 <Border Grid.Column="1"
-                       
+
                         Margin="0,100,0,0"
                         CornerRadius="20 20 20 0">
                     <Border.Background>
                         <ImageBrush ImageSource="/MUSICMAN;component/ResourceFolder/background.png"
-     Stretch="None"/>
+     Stretch="None" />
                     </Border.Background>
                     <Grid>
                         <Grid.RowDefinitions>

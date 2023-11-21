@@ -192,9 +192,9 @@
     <Compile Include="PageFolder\DirectorPageFolder\AddStock.xaml.cs">
       <DependentUpon>AddStock.xaml</DependentUpon>
     </Compile>
-    <None Include="PageFolder\DirectorPageFolder\EditEmployeeDir.xaml.cs">
+    <Compile Include="PageFolder\DirectorPageFolder\EditEmployeeDir.xaml.cs">
       <DependentUpon>EditEmployeeDir.xaml</DependentUpon>
-    </None>
+    </Compile>
     <Compile Include="PageFolder\DirectorPageFolder\ListEmployeeDir.xaml.cs">
       <DependentUpon>ListEmployeeDir.xaml</DependentUpon>
     </Compile>
@@ -224,6 +224,9 @@
     </Compile>
     <Compile Include="PageFolder\ManagerPageFolder\AddPlate.xaml.cs">
       <DependentUpon>AddPlate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PageFolder\ManagerPageFolder\EditEmployee.xaml.cs">
+      <DependentUpon>EditEmployee.xaml</DependentUpon>
     </Compile>
     <Compile Include="PageFolder\ManagerPageFolder\EditPlate.xaml.cs">
       <DependentUpon>EditPlate.xaml</DependentUpon>
@@ -390,6 +393,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="PageFolder\ManagerPageFolder\AddPlate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PageFolder\ManagerPageFolder\EditEmployee.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

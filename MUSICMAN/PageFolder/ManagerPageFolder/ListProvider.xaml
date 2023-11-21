@@ -20,8 +20,6 @@
                 <RowDefinition />
             </Grid.RowDefinitions>
 
-           
-
             <TextBox x:Name="SearchTb"
                      Grid.Column="1"
                      FontSize="16"

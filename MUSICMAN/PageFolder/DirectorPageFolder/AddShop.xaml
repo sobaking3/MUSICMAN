@@ -54,7 +54,6 @@
                 <RowDefinition Height="10" />
                 <RowDefinition Height="70" />
                 <RowDefinition Height="10" />
-
             </Grid.RowDefinitions>
             <Label Content="Добавить магазин"
 Style="{DynamicResource NormalLabel}" FontWeight="SemiBold"
@@ -68,15 +67,15 @@ Grid.Column="3" Grid.ColumnSpan="5" FontSize="30"
 
                 <Separator.RenderTransform>
                     <TransformGroup>
-                        <ScaleTransform ScaleY="-1"/>
-                        <SkewTransform/>
-                        <RotateTransform/>
-                        <TranslateTransform/>
+                        <ScaleTransform ScaleY="-1" />
+                        <SkewTransform />
+                        <RotateTransform />
+                        <TranslateTransform />
                     </TransformGroup>
                 </Separator.RenderTransform>
             </Separator>
 
-            <Separator Background="Black"  Grid.Column="1" Grid.ColumnSpan="9" Margin="7,47,39,28" RenderTransformOrigin="0.5,0.5" Grid.RowSpan="11"/>
+            <Separator Background="Black"  Grid.Column="1" Grid.ColumnSpan="9" Margin="7,47,39,28" RenderTransformOrigin="0.5,0.5" Grid.RowSpan="11" />
 
             <Label Content="Данные"
 Style="{DynamicResource NormalLabel}" FontWeight="SemiBold"
@@ -137,9 +136,6 @@ TextChanged="AdressTb_TextChanged" Margin="0,0,9,0" Grid.ColumnSpan="2" />
   HorizontalAlignment="Center" Margin="0,10,0,0" />
             </Grid>
 
-
-
-
             <Label Content="Страна"
                    Style="{DynamicResource NormalLabel}"
                    Grid.Column="3"
@@ -154,7 +150,7 @@ TextChanged="AdressTb_TextChanged" Margin="0,0,9,0" Grid.ColumnSpan="2" />
                    Grid.Column="4"
                    FontSize="9"
                    MouseLeftButtonDown="CountryCbHelpText_MouseLeftButtonDown"
-                   Grid.Row="7" 
+                   Grid.Row="7"
                    Visibility="Hidden"
                    Foreground="Blue"
                    VerticalAlignment="Top" Height="11" Margin="0,33,0,0" Grid.RowSpan="2" />
@@ -189,7 +185,7 @@ TextChanged="AdressTb_TextChanged" Margin="0,0,9,0" Grid.ColumnSpan="2" />
                Grid.Column="4"
                FontSize="9"
                MouseLeftButtonDown="CityCbHelpText_MouseLeftButtonDown"
-               Grid.Row="8" 
+               Grid.Row="8"
                Visibility="Hidden"
                Foreground="Blue"
                VerticalAlignment="Top" Height="11" Margin="0,33,0,0" Grid.RowSpan="2" />
@@ -224,7 +220,7 @@ TextChanged="AdressTb_TextChanged" Margin="0,0,9,0" Grid.ColumnSpan="2" />
                Grid.Column="7"
                FontSize="9"
                MouseLeftButtonDown="StreetsCbHelpText_MouseLeftButtonDown"
-               Grid.Row="7" 
+               Grid.Row="7"
                Visibility="Hidden"
                Foreground="Blue"
                VerticalAlignment="Top" Height="11" Margin="0,33,0,0" Grid.RowSpan="2" />
@@ -244,8 +240,6 @@ TextChanged="AdressTb_TextChanged" Margin="0,0,9,0" Grid.ColumnSpan="2" />
             BorderBrush="#312F2F"
             Height="28">
             </ComboBox>
-
-
 
             <Label Content="Время открытия"
                    Style="{DynamicResource NormalLabel}"
@@ -273,7 +267,7 @@ TextChanged="AdressTb_TextChanged" Margin="0,0,9,0" Grid.ColumnSpan="2" />
             <materialDesign:TimePicker  x:Name="CloseTimeTP"
                                         Grid.Row="2"  FontSize="16"   FontFamily="Montserrat"
                                         Grid.Column="7"
-                                     
+
                                         Is24Hours="True"
                                         BorderBrush="#312F2F"
                                         Foreground="Black"
@@ -292,7 +286,7 @@ TextChanged="AdressTb_TextChanged" Margin="0,0,9,0" Grid.ColumnSpan="2" />
         Grid.Column="7"
         Height="22"
         Mask="+7(000)-000-00-00"
-        Text="{Binding PhoneNumber}"/>
+        Text="{Binding PhoneNumber}" />
 
             <Label Content="Номер дома"
                Style="{DynamicResource NormalLabel}"
@@ -321,8 +315,6 @@ TextChanged="AdressTb_TextChanged" Margin="0,0,9,0" Grid.ColumnSpan="2" />
                Grid.Column="2"
                HorizontalAlignment="Center" Margin="0,10,0,0" />
             </Grid>
-
-
 
             <Button x:Name="AddShopBtn"
                     Grid.Row="10"

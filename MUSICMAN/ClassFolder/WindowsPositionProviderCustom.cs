@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using ToastNotifications.Core;
 using ToastNotifications.Position;
@@ -31,7 +27,6 @@ namespace MUSICMAN.ClassFolder
 
         public WindowPositionProviderCustom(Func<int, Window> parentWindow, Corner corner, double offsetX, double offsetY)
         {
-            
             _corner = corner;
             _offsetX = offsetX;
             _offsetY = offsetY;
@@ -47,19 +42,23 @@ namespace MUSICMAN.ClassFolder
         {
             Point actualPosition = ParentWindow2(1).GetActualPosition();
 
-            switch(_corner)
+            switch (_corner)
             {
                 case Corner.TopRight:
                     return GetPositionForTopRightCorner(actualPosition, actualPopupWidth, actualPopupHeight);
-                    
+
                 case Corner.TopLeft:
                     return GetPositionForTopLeftCorner(actualPosition, actualPopupWidth, actualPopupHeight);
+
                 case Corner.BottomRight:
                     return GetPositionForBottomRightCorner(actualPosition, actualPopupWidth, actualPopupHeight);
+
                 case Corner.BottomLeft:
                     return GetPositionForBottomLeftCorner(actualPosition, actualPopupWidth, actualPopupHeight);
+
                 case Corner.BottomCenter:
                     return GetPositionForBottomCenter(actualPosition, actualPopupWidth, actualPopupHeight);
+
                 default:
                     throw new ArgumentOutOfRangeException();
             }
@@ -83,11 +82,13 @@ namespace MUSICMAN.ClassFolder
                 case Corner.TopLeft:
                     EjectDirection = EjectDirection.ToBottom;
                     break;
+
                 case Corner.BottomRight:
                 case Corner.BottomLeft:
                 case Corner.BottomCenter:
                     EjectDirection = EjectDirection.ToTop;
                     break;
+
                 default:
                     throw new ArgumentOutOfRangeException("corner", corner, null);
             }
