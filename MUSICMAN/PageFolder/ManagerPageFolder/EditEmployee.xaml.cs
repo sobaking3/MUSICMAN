@@ -47,7 +47,7 @@ namespace MUSICMAN.PageFolder.ManagerPageFolder
                     //AddUser();
                     WorkerInfoAdd();
 
-                    notifier.ShowSuccess("Сотрудник добавлен");
+                    notifier.ShowSuccess("Сотрудник изменен");
                     //ElementsToolsClass.ClearAllControls(this);
                 }
                 catch (DbEntityValidationException ex)

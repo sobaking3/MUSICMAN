@@ -73,7 +73,7 @@ namespace MUSICMAN.PageFolder.DirectorPageFolder
                     //AddUser();
                     WorkerInfoAdd();
 
-                    notifier.ShowSuccess("Сотрудник добавлен");
+                    notifier.ShowSuccess("Сотрудник изменен");
                     //ElementsToolsClass.ClearAllControls(this);
                 }
                 catch (DbEntityValidationException ex)
@@ -250,5 +250,6 @@ namespace MUSICMAN.PageFolder.DirectorPageFolder
                 DirectorMainWindow.notifier.ShowError("Вы не заполнили все поля!");
             }
         }
+
     }
 }

@@ -79,10 +79,10 @@ Style="{DynamicResource NormalLabel}" FontWeight="SemiBold" Grid.ColumnSpan="4" 
                 </Grid.ColumnDefinitions>
                 <TextBox x:Name="NameTb"
       Style="{DynamicResource TBStyle}"
-      Grid.Column="0" Grid.Row="4"
+      Grid.Column="0"
       Height="22"
       MaxLength="30"
-      TextChanged="NameTb_TextChanged"  Margin="0,0,9,0" Grid.ColumnSpan="2" />
+      TextChanged="NameTb_TextChanged"  Margin="0,0,22,0" />
                 <TextBlock Text="{Binding ElementName=NameTb, Path=Text.Length}"
                     FontSize="16" Opacity="0.75"
         Grid.Column="1"

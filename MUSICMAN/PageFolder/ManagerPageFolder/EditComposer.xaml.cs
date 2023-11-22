@@ -71,8 +71,7 @@ namespace MUSICMAN.PageFolder.ManagerPageFolder
                 try
                 {
                     ComposerInfoAdd();
-                    notifier.ShowSuccess("Исполнитель добавлен");
-                    ElementsToolsClass.ClearAllControls(this);
+                    notifier.ShowSuccess("Исполнитель изменен");
                 }
                 catch (DbEntityValidationException ex)
                 {

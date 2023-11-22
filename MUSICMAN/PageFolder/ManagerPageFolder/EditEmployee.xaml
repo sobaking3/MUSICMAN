@@ -146,7 +146,7 @@
               Grid.Column="0"
               Height="22" Text="{Binding Worker.FirstName, Mode=OneTime}"
               MaxLength="30"
-              Tag="FirstNameTb_TextChanged" Margin="0,0,9,0" />
+              Tag="FirstNameTb_TextChanged" Margin="0,0,11,0" />
                 <TextBlock Text="{Binding ElementName=FirstNameTb, Path=Text.Length}"
                             FontSize="16" Opacity="0.75"
                 Grid.Column="1"
@@ -167,7 +167,7 @@
           Grid.Column="0" Text="{Binding Worker.LastName, Mode=OneTime}"
           Height="22"
           MaxLength="30"
-          Tag="LastNameTb_TextChanged" Margin="0,0,9,0" />
+          Tag="LastNameTb_TextChanged" Margin="0,0,11,0" />
                 <TextBlock Text="{Binding ElementName=LastNameTb, Path=Text.Length}"
                         FontSize="16" Opacity="0.75"
             Grid.Column="1"
@@ -198,7 +198,7 @@
       Grid.Column="0" Text="{Binding Worker.MiddleName, Mode=OneTime}"
                   Tag="Optional"
       Height="22" materialDesign:HintAssist.Hint="Опционально"
-      MaxLength="30" Margin="0,0,9,0" />
+      MaxLength="30" Margin="0,0,11,0" />
                 <TextBlock Text="{Binding ElementName=MiddleNameTb, Path=Text.Length}"
                     FontSize="16" Opacity="0.75"
         Grid.Column="1"
@@ -224,7 +224,7 @@
             Grid.Column="0"
             Height="22" Text="{Binding Worker.User.Login, Mode=OneTime}"
             MaxLength="30"
-            Tag="LoginTb_TextChanged" Margin="0,0,9,0" />
+            Tag="LoginTb_TextChanged" Margin="0,0,11,0" />
                 <TextBlock Text="{Binding ElementName=LoginTb, Path=Text.Length}"
                           FontSize="16" Opacity="0.75"
               Grid.Column="1"
@@ -273,7 +273,7 @@
             Grid.Column="0"
             Height="22" Text="{Binding Worker.User.Password, Mode=OneTime}"
             MaxLength="30"
-            Tag="PasswordPb_TextChanged" Margin="0,0,9,0" Grid.ColumnSpan="2" />
+            Tag="PasswordPb_TextChanged" Margin="0,0,11,0" Grid.ColumnSpan="2" />
                 <TextBlock Text="{Binding ElementName=PasswordPb, Path=Text.Length}"
                           FontSize="16" Opacity="0.75"
               Grid.Column="2"
@@ -309,10 +309,10 @@
                 </Grid.ColumnDefinitions>
                 <TextBox x:Name="EmailTb"
  Style="{DynamicResource TBStyle}"
- Grid.Column="0" Grid.Row="11"
+ Grid.Column="0"
  Height="22" Text="{Binding Worker.Email, Mode=OneTime}"
  MaxLength="30"
- Tag="EmailTb_TextChanged" Margin="0,0,9,0" />
+ Tag="EmailTb_TextChanged" Margin="-4,0,16,0" />
                 <TextBlock Text="{Binding ElementName=EmailTb, Path=Text.Length}"
                FontSize="16" Opacity="0.75"
    Grid.Column="1"

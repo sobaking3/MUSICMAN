@@ -33,7 +33,14 @@ namespace MUSICMAN.PageFolder.DirectorPageFolder
 
         private void AddShop_Click(object sender, RoutedEventArgs e)
         {
-            if (ElementsToolsClass.AllFieldsFilled(this))
+            if (DBEntities.GetContext().Shop.FirstOrDefault(u =>
+            u.ShopName == NameShopTb.Text) != null)
+            {
+                notifier.ShowError($"Магазин c таким названием уже создан");
+
+                NameShopTb.Focus();
+            }
+            else if (ElementsToolsClass.AllFieldsFilled(this))
             {
                 try
                 {

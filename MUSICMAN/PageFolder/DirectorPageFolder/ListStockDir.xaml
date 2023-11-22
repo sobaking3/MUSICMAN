@@ -82,7 +82,7 @@
                     </DataGrid.Resources>
                     <DataGrid.ContextMenu>
                         <ContextMenu>
-                            <MenuItem Header="Удалить пластинку"
+                            <MenuItem Header="Удалить склад"
                                       x:Name="DeleteM1"
                                       Click="DeleteM1_Click" />
                         </ContextMenu>

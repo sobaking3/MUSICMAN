@@ -201,6 +201,9 @@
     <Compile Include="PageFolder\DirectorPageFolder\EditPublisher.xaml.cs">
       <DependentUpon>EditPublisher.xaml</DependentUpon>
     </Compile>
+    <Compile Include="PageFolder\DirectorPageFolder\EditShop.xaml.cs">
+      <DependentUpon>EditShop.xaml</DependentUpon>
+    </Compile>
     <Compile Include="PageFolder\DirectorPageFolder\ListEmployeeDir.xaml.cs">
       <DependentUpon>ListEmployeeDir.xaml</DependentUpon>
     </Compile>
@@ -373,6 +376,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="PageFolder\DirectorPageFolder\EditShop.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="PageFolder\DirectorPageFolder\ListEmployeeDir.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -517,7 +524,7 @@
       <DependentUpon>DBModel.edmx</DependentUpon>
       <LastGenOutput>DBModel.cs</LastGenOutput>
     </Content>
-    <Content Include="ResourceFolder\kj.sql" />
+    <Content Include="ResourceFolder\скрипт.sql" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\..\Downloads\WpfUtils\WpfUtils.csproj">

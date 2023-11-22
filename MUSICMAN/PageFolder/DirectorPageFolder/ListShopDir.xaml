@@ -75,7 +75,9 @@
                         <ContextMenu>
                             <MenuItem Header="Удалить магазин"
                                       x:Name="DeleteM1"
-                                      Click="DeleteM1_Click" />
+                                      Click="DeleteM1_Click"/>
+                            <MenuItem Header="Редактировать магазин"
+                                      x:Name="EditM1" Click="EditM1_Click"/>
                         </ContextMenu>
                     </ListBox.ContextMenu>
                     <ListBox.ItemTemplate>

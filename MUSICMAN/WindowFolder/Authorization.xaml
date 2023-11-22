@@ -145,7 +145,7 @@
                                Text="Аккаунты выдаются администрацией"></TextBlock>
 
                     <TextBox Margin="0,30,0,0"
-                             Text="Alex"
+                             
                              Foreground="White"
                              x:Name="LoginTb"
                              Width="300"
@@ -159,7 +159,6 @@
                     <PasswordBox Margin="0,20,0,0"
                                  x:Name="PasswordPb"
                                  Width="300"
-                                 Password="999"
                                  FontSize="18"
                                  BorderBrush="White"
                                  Opacity="0.75"

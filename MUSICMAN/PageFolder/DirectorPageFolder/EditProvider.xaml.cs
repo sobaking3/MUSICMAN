@@ -65,8 +65,7 @@ namespace MUSICMAN.PageFolder.DirectorPageFolder
                 try
                 {
                     ProviderEdit();
-                    notifier.ShowSuccess("Поставщик добавлен");
-                    ElementsToolsClass.ClearAllControls(this);
+                    notifier.ShowSuccess("Поставщик изменен");
                 }
                 catch (DbEntityValidationException ex)
                 {

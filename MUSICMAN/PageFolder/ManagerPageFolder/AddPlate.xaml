@@ -143,10 +143,10 @@
                 </Grid.ColumnDefinitions>
                 <TextBox x:Name="NameTb"
              Style="{DynamicResource TBStyle}"
-             Grid.Column="0" Grid.Row="4"
+             Grid.Column="0"
              Height="22"
              MaxLength="30"
-             TextChanged="TextBox_TextChanged" Margin="0,0,9,0" Grid.ColumnSpan="2" />
+             TextChanged="TextBox_TextChanged" Margin="0,0,12,0" />
                 <TextBlock Text="{Binding ElementName=NameTb, Path=Text.Length}"
                            FontSize="16" Opacity="0.75"
                Grid.Column="1"
@@ -194,7 +194,7 @@
             Grid.Column="0"
              Height="22"
             MaxLength="30"
-                TextChanged="TextBox_TextChanged" Margin="0,0,9,0" Grid.ColumnSpan="2" />
+                TextChanged="TextBox_TextChanged" Margin="0,0,16,0" />
                 <TextBlock Text="{Binding ElementName=CostTb, Path=Text.Length}"
                 FontSize="16" Opacity="0.75"
                     Grid.Column="1"
@@ -310,7 +310,7 @@
                      Grid.Column="0"
                      Height="22"
                     MaxLength="4" PreviewTextInput="CountTb_PreviewTextInput"
-                     TextChanged="TextBox_TextChanged" Margin="0,0,9,0" Grid.ColumnSpan="2" />
+                     TextChanged="TextBox_TextChanged" Margin="0,0,9,0" />
                 <TextBlock Text="{Binding ElementName=CountTb, Path=Text.Length}"
                                    FontSize="16" Opacity="0.75"
                        Grid.Column="1"

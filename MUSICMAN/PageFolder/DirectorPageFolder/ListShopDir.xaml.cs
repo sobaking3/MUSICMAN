@@ -1,9 +1,12 @@
 ﻿using MUSICMAN.ClassFolder;
 using MUSICMAN.DataFolder;
+using MUSICMAN.PageFolder.ManagerPageFolder;
+using MUSICMAN.WindowFolder.ManagerFolder;
 using System;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using ToastNotifications.Messages;
 
 namespace MUSICMAN.PageFolder.DirectorPageFolder
 {
@@ -68,6 +71,21 @@ namespace MUSICMAN.PageFolder.DirectorPageFolder
             catch (Exception ex)
             {
                 MBClass.ErrorMB(ex);
+            }
+        }
+
+        private void EditM1_Click(object sender, RoutedEventArgs e)
+        {
+            Shop selectedPlate = ListShopLB.SelectedItem as Shop;
+            if (selectedPlate != null)
+            {
+                new EditShop(selectedPlate).ShowDialog();
+                ListShopLB.ItemsSource = DBEntities.GetContext()
+                    .Shop.ToList().OrderBy(u => u.ShopName);
+            }
+            else
+            {
+                ManagerMainWindow.notifier.ShowError("Вы не выюбрали магазин");
             }
         }
     }
