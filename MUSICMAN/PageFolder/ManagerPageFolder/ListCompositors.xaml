@@ -1,10 +1,9 @@
 ﻿<Page x:Class="MUSICMAN.PageFolder.ManagerPageFolder.ListCompositors"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-      xmlns:local="clr-namespace:MUSICMAN.PageFolder.ManagerPageFolder"
-      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       mc:Ignorable="d"
       Style="{x:Null}"
       Background="Transparent"
@@ -77,9 +76,11 @@
                          Margin="10,10,10,0">
                     <ListBox.ContextMenu>
                         <ContextMenu>
-                            <MenuItem Header="Удалить группу"
+                            <MenuItem Header="Удалить исполнителя"
                                       x:Name="DeleteM1"
                                       Click="DeleteM1_Click" />
+                            <MenuItem Header="Редактировать исполнителя"
+                                      x:Name="EditM1" Click="EditM1_Click" />
                         </ContextMenu>
                     </ListBox.ContextMenu>
                     <ListBox.ItemTemplate>

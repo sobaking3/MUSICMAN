@@ -1,9 +1,11 @@
 ﻿using MUSICMAN.ClassFolder;
 using MUSICMAN.DataFolder;
+using MUSICMAN.WindowFolder.ManagerFolder;
 using System;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using ToastNotifications.Messages;
 
 namespace MUSICMAN.PageFolder.ManagerPageFolder
 {
@@ -72,6 +74,20 @@ namespace MUSICMAN.PageFolder.ManagerPageFolder
             catch (Exception ex)
             {
                 MBClass.ErrorMB(ex);
+            }
+        }
+
+        private void EditM1_Click(object sender, RoutedEventArgs e)
+        {
+            Composer selectedPlate = ListCompositorsLB.SelectedItem as Composer;
+            if (selectedPlate != null)
+            {
+                new EditComposer(selectedPlate).ShowDialog();
+                UpdateList();
+            }
+            else
+            {
+                ManagerMainWindow.notifier.ShowError("Вы не выюбрали исполнителя");
             }
         }
     }

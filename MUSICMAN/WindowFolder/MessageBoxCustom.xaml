@@ -8,7 +8,7 @@
         Title="MessageBoxWindow"
         Height="230"
         SizeToContent="Height"
-        Width="510"
+        Width="530"
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
         AllowsTransparency="True"
@@ -24,7 +24,7 @@
         FontFamily="{DynamicResource MaterialDesignFont}">
 
     <materialDesign:Card UniformCornerRadius="15"
-                         Height="220"
+                         Height="220" Width="510"
                          VerticalAlignment="Top"
                          materialDesign:ShadowAssist.ShadowDepth="Depth1">
         <Grid>

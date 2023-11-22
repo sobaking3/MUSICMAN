@@ -195,6 +195,12 @@
     <Compile Include="PageFolder\DirectorPageFolder\EditEmployeeDir.xaml.cs">
       <DependentUpon>EditEmployeeDir.xaml</DependentUpon>
     </Compile>
+    <Compile Include="PageFolder\DirectorPageFolder\EditProvider.xaml.cs">
+      <DependentUpon>EditProvider.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PageFolder\DirectorPageFolder\EditPublisher.xaml.cs">
+      <DependentUpon>EditPublisher.xaml</DependentUpon>
+    </Compile>
     <Compile Include="PageFolder\DirectorPageFolder\ListEmployeeDir.xaml.cs">
       <DependentUpon>ListEmployeeDir.xaml</DependentUpon>
     </Compile>
@@ -224,6 +230,9 @@
     </Compile>
     <Compile Include="PageFolder\ManagerPageFolder\AddPlate.xaml.cs">
       <DependentUpon>AddPlate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PageFolder\ManagerPageFolder\EditComposer.xaml.cs">
+      <DependentUpon>EditComposer.xaml</DependentUpon>
     </Compile>
     <Compile Include="PageFolder\ManagerPageFolder\EditEmployee.xaml.cs">
       <DependentUpon>EditEmployee.xaml</DependentUpon>
@@ -356,6 +365,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="PageFolder\DirectorPageFolder\EditProvider.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PageFolder\DirectorPageFolder\EditPublisher.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="PageFolder\DirectorPageFolder\ListEmployeeDir.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -393,6 +410,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="PageFolder\ManagerPageFolder\AddPlate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PageFolder\ManagerPageFolder\EditComposer.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

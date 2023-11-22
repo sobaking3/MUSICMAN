@@ -4,7 +4,6 @@ using MUSICMAN.DataFolder;
 using MUSICMAN.WindowFolder.DirectorFolder;
 using MUSICMAN.WindowFolder.ManagerFolder;
 using System;
-using System.ComponentModel;
 using System.Data.Entity.Validation;
 using System.Linq;
 using System.Threading.Tasks;
@@ -206,7 +205,34 @@ namespace MUSICMAN.PageFolder.ManagerPageFolder
 
         private void WorkerInfoAdd()
         {
-            if (ElementsToolsClass.AllFieldsFilled(this))
+            if (DBEntities.GetContext()
+               .Workers.FirstOrDefault(w => w.LastName == LastNameTb.Text
+               && w.FirstName == FirstNameTb.Text && w.MiddleName == MiddleNameTb.Text) != null)
+            {
+                notifier.ShowError($"Такой пользователь уже создан");
+
+                FirstNameTb.Focus();
+                LastNameTb.Focus();
+                MiddleNameTb.Focus();
+
+            }
+            else if (DBEntities.GetContext().Workers.FirstOrDefault(u =>
+            u.Number == NumberTb.Text) != null)
+            {
+                notifier.ShowError($"Пользователь c номером {NumberTb.Text} уже создан");
+
+                NumberTb.Focus();
+            }
+            else if (DBEntities.GetContext()
+                        .User
+                        .FirstOrDefault(
+                u => u.Login == LoginTb.Text) != null)
+            {
+                notifier.ShowError($"Пользователь {LoginTb.Text} уже создан");
+
+                LoginTb.Focus();
+            }
+            else if (ElementsToolsClass.AllFieldsFilled(this))
             {
                 EditUser();
                 Worker.DateOfBirth = DatePickerDP.SelectedDate.Value;

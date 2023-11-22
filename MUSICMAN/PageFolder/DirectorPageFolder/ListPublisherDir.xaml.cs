@@ -1,9 +1,12 @@
 ﻿using MUSICMAN.ClassFolder;
 using MUSICMAN.DataFolder;
+using MUSICMAN.PageFolder.ManagerPageFolder;
+using MUSICMAN.WindowFolder.ManagerFolder;
 using System;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using ToastNotifications.Messages;
 
 namespace MUSICMAN.PageFolder.DirectorPageFolder
 {
@@ -71,6 +74,20 @@ namespace MUSICMAN.PageFolder.DirectorPageFolder
             catch (Exception ex)
             {
                 MBClass.ErrorMB(ex);
+            }
+        }
+
+        private void EditM1_Click(object sender, RoutedEventArgs e)
+        {
+            Publisher selectedPlate = ListPublisherDG.SelectedItem as Publisher;
+            if (selectedPlate != null)
+            {
+                new EditPublisher(selectedPlate).ShowDialog();
+                Updater();
+            }
+            else
+            {
+                ManagerMainWindow.notifier.ShowError("Вы не выюбрали поставщика");
             }
         }
     }

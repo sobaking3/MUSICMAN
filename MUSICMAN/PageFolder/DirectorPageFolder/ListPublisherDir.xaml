@@ -85,6 +85,8 @@
                             <MenuItem Header="Удалить издателя"
                                       x:Name="DeleteM1"
                                       Click="DeleteM1_Click" />
+                            <MenuItem Header="Изменить издателя"
+                                      x:Name="EditM1" Click="EditM1_Click"/>
                         </ContextMenu>
                     </DataGrid.ContextMenu>
                     <DataGrid.RowHeight>30</DataGrid.RowHeight>

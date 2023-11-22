@@ -14,7 +14,7 @@ WindowStartupLocation="CenterScreen"
 WindowStyle="None"
 d:DesignHeight="560"
 Title="Добавление сотрудника"
-Width="1020" >
+Width="1020">
 
     <materialDesign:Card UniformCornerRadius="15"
                  Margin="5" Height="560" Width="1000"
