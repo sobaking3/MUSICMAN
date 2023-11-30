@@ -80,7 +80,7 @@ Style="{DynamicResource NormalLabel}" FontWeight="SemiBold" Grid.ColumnSpan="4" 
                 <TextBox x:Name="NameTb"
       Style="{DynamicResource TBStyle}"
       Grid.Column="0"
-      Height="22" 
+      Height="22"
       MaxLength="30"
       Text="{Binding Publisher.PublisherName, Mode=OneTime}"  Margin="0,0,17,0" />
                 <TextBlock Text="{Binding ElementName=NameTb, Path=Text.Length}"
@@ -102,7 +102,7 @@ Style="{DynamicResource NormalLabel}" FontWeight="SemiBold" Grid.ColumnSpan="4" 
                         SelectedDate="{Binding Publisher.PublisherContractTil, Mode=OneTime}"
                         Grid.Column="2" Height="26"
                         Grid.Row="3" FontFamily="Montserrat"
-                        FontSize="16" 
+                        FontSize="16"
                         BorderBrush="#312F2F"
                         Foreground="Black">
                 <DatePicker.CalendarStyle>

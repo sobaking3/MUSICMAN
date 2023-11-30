@@ -1,12 +1,11 @@
 ﻿<Window x:Class="MUSICMAN.PageFolder.DirectorPageFolder.AddEmployeeDir"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:MUSICMAN.PageFolder.DirectorPageFolder"
-                   xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
-xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-mc:Ignorable="d" Loaded="Window_Loaded"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        mc:Ignorable="d" Loaded="Window_Loaded"
 AllowsTransparency="True"
 Background="Transparent"
 ResizeMode="NoResize"
@@ -258,6 +257,46 @@ Width="1020">
                     </Style>
                 </DatePicker.CalendarStyle>
             </DatePicker>
+
+            <Label Content="Возраст"
+Style="{DynamicResource NormalLabel}"
+ Grid.Column="6"
+ Grid.Row="4"
+Margin="10,0,0,0" Height="30" />
+            <Grid Grid.Row="4" Grid.Column="7">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="181.513" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <TextBox x:Name="AgeCountTb"
+          Style="{DynamicResource TBStyle}"
+          Grid.Column="0" Grid.Row="4"
+          Height="22"
+          MaxLength="4"  PreviewTextInput="AgeCountTb_PreviewTextInput"
+          Margin="0,0,9,0" Grid.ColumnSpan="2" />
+                <TextBlock Text="{Binding ElementName=TracksCountTb, Path=Text.Length}"
+                        FontSize="16" Opacity="0.75"
+            Grid.Column="1"
+            HorizontalAlignment="Center" Margin="0,10,0,0" />
+                <TextBlock Text="/4" FontSize="16" Opacity="0.75"
+            Grid.Column="2"
+            HorizontalAlignment="Center" Margin="0,10,0,0" />
+            </Grid>
+            <Label Content="Пол"
+Style="{DynamicResource NormalLabel}"
+ Grid.Column="6"
+ Grid.Row="6"
+Margin="10,0,0,0" Height="30" />
+
+            <ComboBox x:Name="GenderCb" Padding="0 0 0 0"
+          Grid.Row="6" FontSize="16"
+          Foreground="Black"  FontFamily="Montserrat"
+          Background="Transparent"
+          Grid.Column="7" SelectedItem="{Binding Workers.Gender}"
+          SelectedValuePath="IdGender"
+          DisplayMemberPath="GenderName"
+          BorderBrush="#312F2F" Height="22" />
 
             <Label Content="Пароль"
        Style="{DynamicResource NormalLabel}"

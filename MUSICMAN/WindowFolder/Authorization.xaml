@@ -145,7 +145,7 @@
                                Text="Аккаунты выдаются администрацией"></TextBlock>
 
                     <TextBox Margin="0,30,0,0"
-                             
+
                              Foreground="White"
                              x:Name="LoginTb"
                              Width="300"

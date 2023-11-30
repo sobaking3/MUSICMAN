@@ -33,7 +33,9 @@ namespace MUSICMAN.PageFolder.DirectorPageFolder
             Publisher = publisher;
             InitializeComponent();
         }
+
         public Publisher Publisher { get; set; }
+
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             Close(); // Закрытие окна
@@ -55,7 +57,6 @@ namespace MUSICMAN.PageFolder.DirectorPageFolder
             }
         }
 
-
         private void EditPublisherBtn_Click(object sender, RoutedEventArgs e)
         {
             if (ElementsToolsClass.AllFieldsFilled(this))
@@ -75,6 +76,7 @@ namespace MUSICMAN.PageFolder.DirectorPageFolder
                 notifier.ShowError("Вы не ввели все нужные данные!");
             }
         }
+
         private void RatingTb_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             // Проверяем, является ли вводимый символ цифрой
@@ -100,6 +102,7 @@ namespace MUSICMAN.PageFolder.DirectorPageFolder
                 e.Handled = true;
             }
         }
+
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             WindowTransitionHelper.OpenWindow(this, this);

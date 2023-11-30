@@ -12,23 +12,16 @@ namespace MUSICMAN.DataFolder
     using System;
     using System.Collections.Generic;
     
-    public partial class Workers
+    public partial class Gender
     {
-        public int IdWorkerInfo { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string MiddleName { get; set; }
-        public System.DateTime DateOfBirth { get; set; }
-        public string Number { get; set; }
-        public string Email { get; set; }
-        public int IdShop { get; set; }
-        public byte[] PhotoStaff { get; set; }
-        public int IdUser { get; set; }
-        public int Age { get; set; }
-        public int IdGender { get; set; }
+        public Gender()
+        {
+            this.Workers = new HashSet<Workers>();
+        }
     
-        public virtual Gender Gender { get; set; }
-        public virtual Shop Shop { get; set; }
-        public virtual User User { get; set; }
+        public int IdGender { get; set; }
+        public string GenderName { get; set; }
+    
+        public virtual ICollection<Workers> Workers { get; set; }
     }
 }

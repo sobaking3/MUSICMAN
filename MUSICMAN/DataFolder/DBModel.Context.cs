@@ -29,6 +29,7 @@ namespace MUSICMAN.DataFolder
         public DbSet<City> City { get; set; }
         public DbSet<Composer> Composer { get; set; }
         public DbSet<Country> Country { get; set; }
+        public DbSet<Gender> Gender { get; set; }
         public DbSet<Plates> Plates { get; set; }
         public DbSet<Provider> Provider { get; set; }
         public DbSet<Publisher> Publisher { get; set; }

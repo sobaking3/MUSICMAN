@@ -22,6 +22,7 @@ namespace MUSICMAN.PageFolder.ManagerPageFolder
         private Workers Workers = new Workers();
         private User user = new User();
         private Shop shop = new Shop();
+        private Gender gender = new Gender();
 
         public AddEmployee()
         {
@@ -32,6 +33,7 @@ namespace MUSICMAN.PageFolder.ManagerPageFolder
            || r.NameRole == "Директор" || r.NameRole == "Менеджер"))
            .ToList();
             ShopCb.ItemsSource = DBEntities.GetContext().Shop.ToList();
+            GenderCb.ItemsSource = DBEntities.GetContext().Gender.ToList();
         }
 
         private void AddPhoto_Click(object sender, RoutedEventArgs e)
@@ -74,6 +76,8 @@ namespace MUSICMAN.PageFolder.ManagerPageFolder
                     DateOfBirth = DatePickerDP.SelectedDate.Value,
                     Number = NumberTb.Text,
                     Email = EmailTb.Text,
+                    Age = Convert.ToInt32(AgeCountTb),
+                    IdGender = Int32.Parse(GenderCb.SelectedValue.ToString()),
                     IdShop = Int32.Parse(ShopCb.SelectedValue.ToString()),
                     IdUser = user.IdUser,
                     PhotoStaff = !string.IsNullOrEmpty(selectedFileName) ? ImageClass.ConvertImageToByteArray(selectedFileName) : null
@@ -120,7 +124,6 @@ namespace MUSICMAN.PageFolder.ManagerPageFolder
                 FirstNameTb.Focus();
                 LastNameTb.Focus();
                 MiddleNameTb.Focus();
-
             }
             else if (DBEntities.GetContext().Workers.FirstOrDefault(u =>
             u.Number == NumberTb.Text) != null)
@@ -245,6 +248,28 @@ namespace MUSICMAN.PageFolder.ManagerPageFolder
                 {
                     textBlock.Text = textBox.Text.Length.ToString();
                 }
+            }
+        }
+
+        private void AgeCountTb_TextChanged(object sender, TextChangedEventArgs e)
+        {
+        }
+
+        private void AgeCountTb_PreviewTextInput(object sender, System.Windows.Input.TextCompositionEventArgs e)
+        {
+            // Проверяем, является ли вводимый символ цифрой
+            if (!char.IsDigit(e.Text, e.Text.Length - 1))
+            {
+                // Если символ не является цифрой, отменяем его ввод
+                e.Handled = true;
+            }
+
+            // Указываем максимальное количество символов в текстбоксе
+            int maxLength = 5; // Здесь можно указать нужное значение
+            TextBox textBox = (TextBox)sender;
+            if (textBox.Text.Length >= maxLength)
+            {
+                e.Handled = true;
             }
         }
     }

@@ -41,6 +41,13 @@
           <Property Name="IdCountry" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="30" Nullable="false" />
         </EntityType>
+        <EntityType Name="Gender">
+          <Key>
+            <PropertyRef Name="IdGender" />
+          </Key>
+          <Property Name="IdGender" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GenderName" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
         <EntityType Name="Plates">
           <Key>
             <PropertyRef Name="IdPlate" />
@@ -138,9 +145,11 @@
           <Property Name="DateOfBirth" Type="date" Nullable="false" />
           <Property Name="Number" Type="nvarchar" MaxLength="30" Nullable="false" />
           <Property Name="Email" Type="nvarchar" MaxLength="30" Nullable="false" />
-          <Property Name="IdShop" Type="int" />
+          <Property Name="IdShop" Type="int" Nullable="false" />
           <Property Name="PhotoStaff" Type="varbinary(max)" />
           <Property Name="IdUser" Type="int" Nullable="false" />
+          <Property Name="Age" Type="int" Nullable="false" />
+          <Property Name="IdGender" Type="int" Nullable="false" />
         </EntityType>
         <Association Name="FK_Adress_City">
           <End Role="City" Type="Self.City" Multiplicity="1" />
@@ -274,8 +283,20 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Workers_Gender">
+          <End Role="Gender" Type="Self.Gender" Multiplicity="1" />
+          <End Role="Workers" Type="Self.Workers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gender">
+              <PropertyRef Name="IdGender" />
+            </Principal>
+            <Dependent Role="Workers">
+              <PropertyRef Name="IdGender" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Workers_Shop1">
-          <End Role="Shop" Type="Self.Shop" Multiplicity="0..1" />
+          <End Role="Shop" Type="Self.Shop" Multiplicity="1" />
           <End Role="Workers" Type="Self.Workers" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Shop">
@@ -303,6 +324,7 @@
           <EntitySet Name="City" EntityType="Self.City" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Composer" EntityType="Self.Composer" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Country" EntityType="Self.Country" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Gender" EntityType="Self.Gender" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Plates" EntityType="Self.Plates" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Provider" EntityType="Self.Provider" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Publisher" EntityType="Self.Publisher" Schema="dbo" store:Type="Tables" />
@@ -356,6 +378,10 @@
           <AssociationSet Name="FK_User_Roles1" Association="Self.FK_User_Roles1">
             <End Role="Roles" EntitySet="Roles" />
             <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Workers_Gender" Association="Self.FK_Workers_Gender">
+            <End Role="Gender" EntitySet="Gender" />
+            <End Role="Workers" EntitySet="Workers" />
           </AssociationSet>
           <AssociationSet Name="FK_Workers_Shop1" Association="Self.FK_Workers_Shop1">
             <End Role="Shop" EntitySet="Shop" />
@@ -415,6 +441,14 @@
           <Property Name="Name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Adress" Relationship="Self.FK_Adress_Country" FromRole="Country" ToRole="Adress" />
           <NavigationProperty Name="Composer" Relationship="Self.FK_Composer_Country" FromRole="Country" ToRole="Composer" />
+        </EntityType>
+        <EntityType Name="Gender">
+          <Key>
+            <PropertyRef Name="IdGender" />
+          </Key>
+          <Property Name="IdGender" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GenderName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Workers" Relationship="Self.FK_Workers_Gender" FromRole="Gender" ToRole="Workers" />
         </EntityType>
         <EntityType Name="Plates">
           <Key>
@@ -528,9 +562,12 @@
           <Property Name="DateOfBirth" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="Number" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Email" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="IdShop" Type="Int32" />
+          <Property Name="IdShop" Type="Int32" Nullable="false" />
           <Property Name="PhotoStaff" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="IdUser" Type="Int32" Nullable="false" />
+          <Property Name="Age" Type="Int32" Nullable="false" />
+          <Property Name="IdGender" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Gender" Relationship="Self.FK_Workers_Gender" FromRole="Workers" ToRole="Gender" />
           <NavigationProperty Name="Shop" Relationship="Self.FK_Workers_Shop1" FromRole="Workers" ToRole="Shop" />
           <NavigationProperty Name="User" Relationship="Self.FK_Workers_User" FromRole="Workers" ToRole="User" />
         </EntityType>
@@ -606,6 +643,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Workers_Gender">
+          <End Role="Gender" Type="Self.Gender" Multiplicity="1" />
+          <End Role="Workers" Type="Self.Workers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gender">
+              <PropertyRef Name="IdGender" />
+            </Principal>
+            <Dependent Role="Workers">
+              <PropertyRef Name="IdGender" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Plates_Provider">
           <End Role="Provider" Type="Self.Provider" Multiplicity="1" />
           <End Role="Plates" Type="Self.Plates" Multiplicity="*" />
@@ -667,7 +716,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Workers_Shop1">
-          <End Role="Shop" Type="Self.Shop" Multiplicity="0..1" />
+          <End Role="Shop" Type="Self.Shop" Multiplicity="1" />
           <End Role="Workers" Type="Self.Workers" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Shop">
@@ -695,6 +744,7 @@
           <EntitySet Name="City" EntityType="Self.City" />
           <EntitySet Name="Composer" EntityType="Self.Composer" />
           <EntitySet Name="Country" EntityType="Self.Country" />
+          <EntitySet Name="Gender" EntityType="Self.Gender" />
           <EntitySet Name="Plates" EntityType="Self.Plates" />
           <EntitySet Name="Provider" EntityType="Self.Provider" />
           <EntitySet Name="Publisher" EntityType="Self.Publisher" />
@@ -728,6 +778,10 @@
           <AssociationSet Name="FK_Plates_Composer" Association="Self.FK_Plates_Composer">
             <End Role="Composer" EntitySet="Composer" />
             <End Role="Plates" EntitySet="Plates" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Workers_Gender" Association="Self.FK_Workers_Gender">
+            <End Role="Gender" EntitySet="Gender" />
+            <End Role="Workers" EntitySet="Workers" />
           </AssociationSet>
           <AssociationSet Name="FK_Plates_Provider" Association="Self.FK_Plates_Provider">
             <End Role="Provider" EntitySet="Provider" />
@@ -801,6 +855,14 @@
               <MappingFragment StoreEntitySet="Country">
                 <ScalarProperty Name="IdCountry" ColumnName="IdCountry" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Gender">
+            <EntityTypeMapping TypeName="DBModel.Gender">
+              <MappingFragment StoreEntitySet="Gender">
+                <ScalarProperty Name="IdGender" ColumnName="IdGender" />
+                <ScalarProperty Name="GenderName" ColumnName="GenderName" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -912,6 +974,8 @@
                 <ScalarProperty Name="IdShop" ColumnName="IdShop" />
                 <ScalarProperty Name="PhotoStaff" ColumnName="PhotoStaff" />
                 <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+                <ScalarProperty Name="Age" ColumnName="Age" />
+                <ScalarProperty Name="IdGender" ColumnName="IdGender" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

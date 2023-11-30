@@ -135,6 +135,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DBModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="DataFolder\Gender.cs">
+      <DependentUpon>DBModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataFolder\Plates.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>

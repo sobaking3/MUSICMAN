@@ -1,6 +1,5 @@
 ﻿using MUSICMAN.ClassFolder;
 using MUSICMAN.DataFolder;
-using MUSICMAN.PageFolder.ManagerPageFolder;
 using MUSICMAN.WindowFolder.ManagerFolder;
 using System;
 using System.Linq;

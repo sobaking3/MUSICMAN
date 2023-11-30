@@ -34,6 +34,7 @@ namespace MUSICMAN.PageFolder.ManagerPageFolder
            || r.NameRole == "Директор" || r.NameRole == "Менеджер"))
            .ToList();
             ShopCb.ItemsSource = DBEntities.GetContext().Shop.ToList();
+            GenderCb.ItemsSource = DBEntities.GetContext().Gender.ToList();
         }
 
         public Workers Worker { get; set; }
@@ -214,7 +215,6 @@ namespace MUSICMAN.PageFolder.ManagerPageFolder
                 FirstNameTb.Focus();
                 LastNameTb.Focus();
                 MiddleNameTb.Focus();
-
             }
             else if (DBEntities.GetContext().Workers.FirstOrDefault(u =>
             u.Number == NumberTb.Text) != null)
@@ -241,6 +241,8 @@ namespace MUSICMAN.PageFolder.ManagerPageFolder
                 Worker.LastName = LastNameTb.Text;
                 Worker.MiddleName = MiddleNameTb.Text;
                 Worker.Number = NumberTb.Text;
+                Worker.Age = Convert.ToInt32(AgeCountTb);
+                Worker.Gender = GenderCb.SelectedItem as Gender;
                 //Worker.PhotoStaff = !string.IsNullOrEmpty(selectedFileName) ? ImageClass.ConvertImageToByteArray(selectedFileName) : null;
                 Worker.Shop = ShopCb.SelectedItem as Shop;
                 DBEntities.GetContext().SaveChanges();
@@ -249,6 +251,24 @@ namespace MUSICMAN.PageFolder.ManagerPageFolder
             else
             {
                 DirectorMainWindow.notifier.ShowError("Вы не заполнили все поля!");
+            }
+        }
+
+        private void AgeCountTb_PreviewTextInput(object sender, System.Windows.Input.TextCompositionEventArgs e)
+        {
+            // Проверяем, является ли вводимый символ цифрой
+            if (!char.IsDigit(e.Text, e.Text.Length - 1))
+            {
+                // Если символ не является цифрой, отменяем его ввод
+                e.Handled = true;
+            }
+
+            // Указываем максимальное количество символов в текстбоксе
+            int maxLength = 5; // Здесь можно указать нужное значение
+            TextBox textBox = (TextBox)sender;
+            if (textBox.Text.Length >= maxLength)
+            {
+                e.Handled = true;
             }
         }
     }

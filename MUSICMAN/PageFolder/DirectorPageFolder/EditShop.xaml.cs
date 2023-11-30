@@ -39,6 +39,7 @@ namespace MUSICMAN.PageFolder.DirectorPageFolder
             CityCb.ItemsSource = DBEntities.GetContext().City.ToList();
             StreetCb.ItemsSource = DBEntities.GetContext().Streets.ToList();
         }
+
         public Shop Shop { get; set; }
 
         private void AddShop_Click(object sender, RoutedEventArgs e)
@@ -81,7 +82,6 @@ namespace MUSICMAN.PageFolder.DirectorPageFolder
 
         private void ShopInfoEdit()
         {
-
             if (ElementsToolsClass.AllFieldsFilled(this))
             {
                 EditAdress();
@@ -94,9 +94,9 @@ namespace MUSICMAN.PageFolder.DirectorPageFolder
                 DirectorMainWindow.notifier.ShowSuccess("Магазин изменен!");
             }
         }
+
         private void EditAdress()
         {
-
             var AdressAdd = new Adress()
             {
                 IdCountry = Int32.Parse(CountryCb.SelectedValue.ToString()),

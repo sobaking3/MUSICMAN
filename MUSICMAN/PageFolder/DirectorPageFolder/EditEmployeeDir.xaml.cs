@@ -33,6 +33,7 @@ namespace MUSICMAN.PageFolder.DirectorPageFolder
            .Roles.Except(DBEntities.GetContext().Roles.Where(r => r.NameRole == "Директор"))
            .ToList();
             ShopCb.ItemsSource = DBEntities.GetContext().Shop.ToList();
+            GenderCb.ItemsSource = DBEntities.GetContext().Gender.ToList();
         }
 
         public Workers Worker { get; set; }
@@ -48,7 +49,6 @@ namespace MUSICMAN.PageFolder.DirectorPageFolder
                 FirstNameTb.Focus();
                 LastNameTb.Focus();
                 MiddleNameTb.Focus();
-
             }
             else if (DBEntities.GetContext().Workers.FirstOrDefault(u =>
             u.Number == NumberTb.Text) != null)
@@ -210,6 +210,24 @@ namespace MUSICMAN.PageFolder.DirectorPageFolder
             }
         }
 
+        private void AgeCountTb_PreviewTextInput(object sender, System.Windows.Input.TextCompositionEventArgs e)
+        {
+            // Проверяем, является ли вводимый символ цифрой
+            if (!char.IsDigit(e.Text, e.Text.Length - 1))
+            {
+                // Если символ не является цифрой, отменяем его ввод
+                e.Handled = true;
+            }
+
+            // Указываем максимальное количество символов в текстбоксе
+            int maxLength = 5; // Здесь можно указать нужное значение
+            TextBox textBox = (TextBox)sender;
+            if (textBox.Text.Length >= maxLength)
+            {
+                e.Handled = true;
+            }
+        }
+
         private void PasswordPb_TextChanged(object sender, TextChangedEventArgs e)
         {
             var textBox = (TextBox)sender;
@@ -231,7 +249,7 @@ namespace MUSICMAN.PageFolder.DirectorPageFolder
 
         private void WorkerInfoAdd()
         {
-            if(ElementsToolsClass.AllFieldsFilled(this))
+            if (ElementsToolsClass.AllFieldsFilled(this))
             {
                 EditUser();
                 Worker.DateOfBirth = DatePickerDP.SelectedDate.Value;
@@ -242,6 +260,8 @@ namespace MUSICMAN.PageFolder.DirectorPageFolder
                 Worker.Number = NumberTb.Text;
                 //Worker.PhotoStaff = !string.IsNullOrEmpty(selectedFileName) ? ImageClass.ConvertImageToByteArray(selectedFileName) : null;
                 Worker.Shop = ShopCb.SelectedItem as Shop;
+                Worker.Age = Convert.ToInt32(AgeCountTb);
+                Worker.Gender = GenderCb.SelectedItem as Gender;
                 DBEntities.GetContext().SaveChanges();
                 DirectorMainWindow.notifier.ShowSuccess("Сотрудник изменен!");
             }
@@ -250,6 +270,5 @@ namespace MUSICMAN.PageFolder.DirectorPageFolder
                 DirectorMainWindow.notifier.ShowError("Вы не заполнили все поля!");
             }
         }
-
     }
 }

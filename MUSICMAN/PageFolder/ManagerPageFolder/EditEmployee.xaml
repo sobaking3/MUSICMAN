@@ -112,6 +112,42 @@
                 </Button>
             </Border>
 
+            <Label Content="Возраст"
+Style="{DynamicResource NormalLabel}"
+ Grid.Column="6"
+ Grid.Row="4"
+Margin="10,0,0,0" Height="30" />
+            <Grid Grid.Row="4" Grid.Column="7">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="250" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <TextBox x:Name="AgeCountTb"
+          Style="{DynamicResource TBStyle}"
+          Grid.Column="0" Grid.Row="4"
+          Height="22" Text="{Binding Worker.Age}"
+          MaxLength="4"  PreviewTextInput="AgeCountTb_PreviewTextInput"
+          Margin="0,0,9,0" Grid.ColumnSpan="2" />
+                <TextBlock Text="{Binding ElementName=TracksCountTb, Path=Text.Length}"
+                        FontSize="16" Opacity="0.75"
+            Grid.Column="1"
+            HorizontalAlignment="Center" Margin="0,10,0,0" />
+            </Grid>
+            <Label Content="Пол"
+Style="{DynamicResource NormalLabel}"
+ Grid.Column="6"
+ Grid.Row="6"
+Margin="10,0,0,0" Height="30" />
+
+            <ComboBox x:Name="GenderCb" Padding="0 0 0 0"
+          Grid.Row="6" FontSize="16"
+          Foreground="Black"  FontFamily="Montserrat"
+          Background="Transparent"
+          Grid.Column="7" SelectedItem="{Binding Worker.Gender, Mode=OneTime}"
+          SelectedValuePath="IdGender"
+          DisplayMemberPath="GenderName"
+          BorderBrush="#312F2F" Height="22" />
             <Label Content="Изменение сотрудника"
        Style="{DynamicResource NormalLabel}" FontWeight="SemiBold"
        Grid.Column="3" Grid.ColumnSpan="5" FontSize="30"
@@ -123,7 +159,7 @@
             <Label Content="Личная информация"
     Style="{DynamicResource NormalLabel}" FontWeight="SemiBold"
     Grid.Column="3" Grid.ColumnSpan="5" FontSize="25" Grid.Row="1"
-        HorizontalAlignment="Center" Width="634" Height="46" />
+        HorizontalAlignment="Left" Width="634" Height="46" Margin="39,1,0,0" Grid.RowSpan="2" VerticalAlignment="Top" />
 
             <Label Content="Данные"
         Style="{DynamicResource NormalLabel}" FontWeight="SemiBold"
