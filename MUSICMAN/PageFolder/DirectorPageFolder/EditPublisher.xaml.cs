@@ -49,7 +49,6 @@ namespace MUSICMAN.PageFolder.DirectorPageFolder
                 Publisher.PublisherContractTil = DateContractTb.SelectedDate.Value;
                 Publisher.Rating = RatingTb.Text;
                 DBEntities.GetContext().SaveChanges();
-                DirectorMainWindow.notifier.ShowSuccess("Поставщик изменен!");
             }
             else
             {

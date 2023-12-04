@@ -527,7 +527,7 @@
       <DependentUpon>DBModel.edmx</DependentUpon>
       <LastGenOutput>DBModel.cs</LastGenOutput>
     </Content>
-    <Content Include="ResourceFolder\скрипт.sql" />
+    <Content Include="ResourceFolder\фывфы.sql" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\..\Downloads\WpfUtils\WpfUtils.csproj">

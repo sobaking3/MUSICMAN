@@ -94,7 +94,6 @@ namespace MUSICMAN.PageFolder.ManagerPageFolder
                 Composer.Rating = RateTb.Text;
                 Composer.Country = CountryCb.SelectedItem as Country;
                 DBEntities.GetContext().SaveChanges();
-                ManagerMainWindow.notifier.ShowSuccess("Сотрудник изменен!");
             }
             else
             {

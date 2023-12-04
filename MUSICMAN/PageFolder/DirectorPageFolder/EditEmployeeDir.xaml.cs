@@ -40,33 +40,7 @@ namespace MUSICMAN.PageFolder.DirectorPageFolder
 
         private void AddBtn_Click(object sender, RoutedEventArgs e)
         {
-            if (DBEntities.GetContext()
-               .Workers.FirstOrDefault(w => w.LastName == LastNameTb.Text
-               && w.FirstName == FirstNameTb.Text && w.MiddleName == MiddleNameTb.Text) != null)
-            {
-                notifier.ShowError($"Такой пользователь уже создан");
-
-                FirstNameTb.Focus();
-                LastNameTb.Focus();
-                MiddleNameTb.Focus();
-            }
-            else if (DBEntities.GetContext().Workers.FirstOrDefault(u =>
-            u.Number == NumberTb.Text) != null)
-            {
-                notifier.ShowError($"Пользователь c номером {NumberTb.Text} уже создан");
-
-                NumberTb.Focus();
-            }
-            else if (DBEntities.GetContext()
-                        .User
-                        .FirstOrDefault(
-                u => u.Login == LoginTb.Text) != null)
-            {
-                notifier.ShowError($"Пользователь {LoginTb.Text} уже создан");
-
-                LoginTb.Focus();
-            }
-            else if (ElementsToolsClass.AllFieldsFilled(this))
+            if (ElementsToolsClass.AllFieldsFilled(this))
             {
                 try
                 {
@@ -260,10 +234,9 @@ namespace MUSICMAN.PageFolder.DirectorPageFolder
                 Worker.Number = NumberTb.Text;
                 //Worker.PhotoStaff = !string.IsNullOrEmpty(selectedFileName) ? ImageClass.ConvertImageToByteArray(selectedFileName) : null;
                 Worker.Shop = ShopCb.SelectedItem as Shop;
-                Worker.Age = Convert.ToInt32(AgeCountTb);
+                Worker.Age = Convert.ToInt32(AgeCountTb.Text);
                 Worker.Gender = GenderCb.SelectedItem as Gender;
                 DBEntities.GetContext().SaveChanges();
-                DirectorMainWindow.notifier.ShowSuccess("Сотрудник изменен!");
             }
             else
             {

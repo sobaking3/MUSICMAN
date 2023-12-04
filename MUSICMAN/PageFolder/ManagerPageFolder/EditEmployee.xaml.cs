@@ -241,12 +241,11 @@ namespace MUSICMAN.PageFolder.ManagerPageFolder
                 Worker.LastName = LastNameTb.Text;
                 Worker.MiddleName = MiddleNameTb.Text;
                 Worker.Number = NumberTb.Text;
-                Worker.Age = Convert.ToInt32(AgeCountTb);
+                Worker.Age = Convert.ToInt32(AgeCountTb.Text);
                 Worker.Gender = GenderCb.SelectedItem as Gender;
                 //Worker.PhotoStaff = !string.IsNullOrEmpty(selectedFileName) ? ImageClass.ConvertImageToByteArray(selectedFileName) : null;
                 Worker.Shop = ShopCb.SelectedItem as Shop;
                 DBEntities.GetContext().SaveChanges();
-                ManagerMainWindow.notifier.ShowSuccess("Сотрудник изменен!");
             }
             else
             {

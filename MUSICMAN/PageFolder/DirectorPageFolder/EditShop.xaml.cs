@@ -91,7 +91,6 @@ namespace MUSICMAN.PageFolder.DirectorPageFolder
                 Shop.IdShopPlace = Adress.IdShopPlace;
                 Shop.PhoneOfDirector = PhoneDirTb.Text;
                 DBEntities.GetContext().SaveChanges();
-                DirectorMainWindow.notifier.ShowSuccess("Магазин изменен!");
             }
         }
 

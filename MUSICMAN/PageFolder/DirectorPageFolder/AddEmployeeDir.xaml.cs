@@ -75,7 +75,7 @@ namespace MUSICMAN.PageFolder.DirectorPageFolder
                     DateOfBirth = DatePickerDP.SelectedDate.Value,
                     Number = NumberTb.Text,
                     Email = EmailTb.Text,
-                    Age = Convert.ToInt32(AgeCountTb),
+                    Age = Convert.ToInt32(AgeCountTb.Text),
                     IdGender = Int32.Parse(GenderCb.SelectedValue.ToString()),
                     IdShop = Int32.Parse(ShopCb.SelectedValue.ToString()),
                     IdUser = user.IdUser,

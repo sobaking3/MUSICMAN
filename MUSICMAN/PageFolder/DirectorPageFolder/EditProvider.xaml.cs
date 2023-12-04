@@ -37,7 +37,6 @@ namespace MUSICMAN.PageFolder.DirectorPageFolder
                 Provider.ProviderUrAdress = AdressTb.Text;
                 Provider.ContractTil = DateContractTb.SelectedDate.Value;
                 DBEntities.GetContext().SaveChanges();
-                DirectorMainWindow.notifier.ShowSuccess("Поставщик изменен!");
             }
             else
             {
